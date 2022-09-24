@@ -1,0 +1,35 @@
+.watch-wrapper {
+  height: 700px;
+  width: 100%;
+  background-image: url("/src/../assets/img/GiantPanda.jpg");
+  background-position: 0px -80px;
+  display: flex;
+  flex-direction: column;
+  div {
+    margin-left: 807px;
+    margin-top: 12px;
+    height: 465px;
+    width: 465px;
+    background: $orangeGradient;
+    border-radius: 50%;
+  }
+  button {
+    margin-left: 983px;
+    margin-top: 69px;
+  }
+  h1 {
+    @include robotoBold;
+    position: relative;
+    left: 123px;
+    top: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    height: 500px;
+    width: 400px;
+    span {
+      color: $yelow;
+      margin-left: -40px;
+    }
+  }
+}
