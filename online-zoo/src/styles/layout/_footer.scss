@@ -1,0 +1,52 @@
+.footer {
+  height: 402px;
+  width: 100%;
+  background: $footerBg;
+  padding-top: 41px;
+  .footer-wrapper {
+    margin-left: 220px;
+    width: 1160px;
+    display: grid;
+    grid-template-columns: 298px 1fr 367px;
+    grid-template-rows: 120px 94px 134px;
+    .logo {
+      background-position: 9px 20px;
+      p {
+        margin-top: -3px;
+      }
+    }
+    .button {
+      @include robotoBtn;
+      border-radius: 5px;
+      text-transform: uppercase;
+    }
+    .footer-nav {
+      grid-row: span 3;
+      @include nav;
+      @include robotoBtn;
+      color: white;
+      margin-left: 101px;
+      margin-right: 32px;
+      margin-top: 330px;
+    }
+    .subscribe {
+      grid-row: span 2;
+    }
+    .footer-credits {
+      @include robotoUltraLight;
+      @include textMArginReset;
+      color: white;
+      p {
+        margin-left: 140px;
+      }
+      .credits-item {
+        margin-top: 87px;
+      }
+      .credits-item2 {
+        margin-top: -5px;
+        font-size: 15px;
+        letter-spacing: 0.4px;
+      }
+    }
+  }
+}

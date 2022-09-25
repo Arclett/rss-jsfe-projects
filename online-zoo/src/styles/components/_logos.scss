@@ -1,4 +1,4 @@
-.header-logo {
+.logo {
   @include robotoRegular;
   box-sizing: border-box;
   //   border
@@ -17,4 +17,12 @@
   background-image: url("/src/../assets/svg/bamboo.svg");
   background-repeat: no-repeat;
   background-position: 10px 24px;
+}
+
+.pick-logo {
+  box-sizing: border-box;
+  height: 167px;
+  width: 167px;
+  border-radius: 5px;
+  border: 1px solid $orange;
 }

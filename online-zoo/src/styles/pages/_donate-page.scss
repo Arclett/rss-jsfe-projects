@@ -1,0 +1,30 @@
+.panda-bg {
+  height: 390px;
+  width: 100%;
+  background: url("/src/../assets/img/panda_bg.jpg");
+}
+
+.pick-donate {
+  height: 1482px;
+  .donate-title {
+    color: white;
+    @include robotoRegular;
+    @include textMArginReset;
+    font-weight: 400px;
+    font-size: 36px;
+    font-style: normal;
+    width: 1156px;
+    margin-left: 220px;
+    margin-top: -31px;
+  }
+  p {
+    @include textMArginReset;
+    @include robotoRegular;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: white;
+    width: 1160px;
+    margin-left: 220px;
+    margin-top: 15px;
+  }
+}

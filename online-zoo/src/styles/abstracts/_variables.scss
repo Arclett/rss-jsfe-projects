@@ -4,3 +4,22 @@ $orange: #fe9013;
 $yelow: rgba(255, 238, 46, 1);
 $text: rgba(51, 59, 65, 1);
 $orangeGradient: linear-gradient(113.96deg, #f9804b 1.49%, #fe9013 101.44%);
+$pink: rgba(254, 189, 171, 0.74);
+$pinkGradient: linear-gradient(
+  315.75deg,
+  rgba(254, 189, 171, 0.74) 30.06%,
+  rgba(243, 169, 248, 0.66) 50.74%,
+  #e0d8f0 80.49%,
+  #eaf7fe 127.9%,
+  #eaf7fe 149.54%
+);
+$textGray: rgba(118, 116, 116, 1);
+$textlightGray: #bdbdbd;
+$logoGray: rgba(196, 196, 196, 0.5);
+$footerBg: #111115;
+$submBg: #f1f3f2;
+$green: rgba(75, 146, 0, 1);
+
+// svg
+
+$vectorPick: url("/src/../assets/svg/VectorPick.svg") no-repeat left 50% top 28%;

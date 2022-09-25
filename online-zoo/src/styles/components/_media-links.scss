@@ -1,0 +1,40 @@
+.media-links {
+  margin-top: 5px;
+  width: 111px;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  grid-template-rows: repeat(4 26px);
+  grid-column-gap: 12px;
+  grid-row-gap: 10px;
+  .media-item {
+    p {
+      @include textMArginReset;
+      @include robotoRegular;
+      color: white;
+      font-size: 16px;
+      line-height: 22.4px;
+      margin-top: 4px;
+    }
+  }
+  .media-logo {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+  .fb {
+    background: url("/src/../assets/svg/fb-logo.svg") no-repeat top 50% left 50%,
+      $logoGray;
+  }
+  .tw {
+    background: url("/src/../assets/svg/tw-logo.svg") no-repeat top 50% left 50%,
+      $logoGray;
+  }
+  .is {
+    background: url("/src/../assets/svg/is-logo.svg") no-repeat top 50% left 50%,
+      $logoGray;
+  }
+  .yt {
+    background: url("/src/../assets/svg/yt-logo.svg") no-repeat top 50% left 50%,
+      $logoGray;
+  }
+}

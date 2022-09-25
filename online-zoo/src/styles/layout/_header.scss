@@ -15,9 +15,7 @@
 
 .nav {
   @include robotoBtn;
-  display: flex;
-  justify-content: space-between;
-  gap: 58px;
+  @include nav;
   margin-left: 63px;
 }
 

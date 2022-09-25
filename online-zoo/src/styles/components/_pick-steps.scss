@@ -1,0 +1,33 @@
+.steps {
+  margin: 40px auto 59px auto;
+  width: 764px;
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr 130px 1fr;
+  grid-template-rows: 168px 46px;
+  grid-row-gap: 30px;
+  .steps-item1 {
+    background: url("/src/../assets/svg/pay.svg") no-repeat top 50% left 50%,
+      white;
+  }
+  .steps-item2 {
+    grid-row: span 2;
+    background: $vectorPick;
+  }
+  .steps-item3 {
+    background: url("/src/../assets/svg/zoo.svg") no-repeat top 50% left 50%,
+      white;
+  }
+  .steps-item4 {
+    grid-row: span 2;
+    background: $vectorPick;
+  }
+  .steps-item5 {
+    background: url("/src/../assets/svg/monkey.svg") no-repeat top 50% left 50%,
+      white;
+  }
+  .steps-text {
+    @include robotoRegular;
+    font-size: 16px;
+    line-height: 22.4px;
+  }
+}
