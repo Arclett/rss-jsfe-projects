@@ -1,0 +1,48 @@
+.radio-wrap {
+  margin-bottom: 10px;
+}
+.radio-wrap input[type="radio"] {
+  display: none;
+}
+.radio-wrap label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 0;
+  line-height: 18px;
+  user-select: none;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  color: #333b41;
+}
+.radio-wrap label:before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  background: url("/src/../assets/svg/radio.svg") 0 0 no-repeat;
+}
+
+/* Checked */
+.radio-wrap input[type="radio"]:checked + label:before {
+  background: orange;
+  background: url("/src/../assets/svg/radio-chck.svg") 0 0 no-repeat;
+}
+
+/* Hover */
+.radio-wrap label:hover:before {
+  filter: brightness(120%);
+}
+
+/* Disabled */
+.radio-wrap input[type="radio"]:disabled + label:before {
+  filter: grayscale(100%);
+}

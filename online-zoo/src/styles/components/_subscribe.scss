@@ -1,0 +1,42 @@
+.subscribe {
+  h3 {
+    @include textMArginReset;
+    @include robotoRegular;
+    font-size: 24px;
+    line-height: 28.8px;
+    color: white;
+  }
+  form {
+    @include textMArginReset;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    .email-inp {
+      @include textMArginReset;
+      width: 220px;
+      height: 38px;
+      border-radius: 2px;
+      border: 0.7px solid $orange;
+      background: $footerBg;
+      &::placeholder {
+        padding-left: 6px;
+        @include robotoRegular;
+        font-size: 16px;
+        line-height: 22.4px;
+        color: $textlightGray;
+      }
+    }
+    .email-subm {
+      width: 129px;
+      height: 42px;
+      background: $submBg;
+      border-radius: 5px;
+      border: 1px solid $green;
+      @include robotoRegular;
+      font-size: 16px;
+      line-height: 22.4px;
+      color: $green;
+    }
+  }
+}
