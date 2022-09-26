@@ -1,0 +1,54 @@
+.progress-bar-wrapper {
+  box-sizing: border-box;
+  margin-top: 18px;
+  margin-left: -6px;
+  padding-top: 12px;
+  width: 976px;
+  height: 27px;
+  background: #404950;
+  border-radius: 2px;
+  .progress-line {
+    width: 915px;
+    height: 2px;
+    background: #72828e;
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    .progress-point {
+      margin-top: -4px;
+      margin-left: -3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ffee2e;
+    }
+  }
+}
+
+.progress-price {
+  margin-top: 12px;
+  margin-left: -8px;
+  width: 991px;
+  height: 36px;
+  display: flex;
+  justify-content: flex-start;
+  .price-point {
+    background: url("/src/../assets/svg/dollar-icon.svg") no-repeat left top 60%;
+    margin-left: 118px;
+    p {
+      @include textMArginReset;
+      width: 0px;
+      margin-left: 12px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 140%;
+      text-transform: uppercase;
+      color: #333b41;
+    }
+  }
+  .p1 {
+    margin-left: 0px;
+  }
+}

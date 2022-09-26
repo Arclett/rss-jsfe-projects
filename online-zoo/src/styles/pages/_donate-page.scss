@@ -1,11 +1,11 @@
 .panda-bg {
-  height: 390px;
+  height: 387px;
   width: 100%;
-  background: url("/src/../assets/img/panda_bg.jpg");
+  background: url("/src/../assets/img/panda_bg.jpg") bottom;
 }
 
 .pick-donate {
-  height: 1482px;
+  height: 1412px;
   .donate-title {
     color: white;
     @include robotoRegular;
@@ -15,16 +15,98 @@
     font-style: normal;
     width: 1156px;
     margin-left: 220px;
-    margin-top: -31px;
+    margin-top: -28px;
   }
   p {
     @include textMArginReset;
     @include robotoRegular;
+    font-weight: 500;
     font-size: 16px;
     line-height: 22.4px;
     color: white;
     width: 1160px;
     margin-left: 220px;
-    margin-top: 15px;
+    margin-top: 14px;
+  }
+  .inform {
+    @include textMArginReset;
+    color: #fe9013;
+    @include robotoRegular;
+    font-size: 36px;
+    line-height: 48.6px;
+    margin-top: 40px;
+    margin-left: 220px;
+  }
+  .pick-wrapper {
+    height: 964px;
+    margin-top: 60px;
+    .pick-title-donate {
+      @include textMArginReset;
+      margin-left: 344px;
+    }
+    .pick-description-donate__subtitle {
+      @include textMArginReset;
+      margin-top: 23px;
+      margin-left: -6px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 120%;
+      color: #333b41;
+    }
+    .donate-amount {
+      margin-top: -2px;
+      margin-left: -2px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: #000000;
+    }
+    .other-amount {
+      margin-left: 346px;
+      margin-top: 50px;
+      width: 264px;
+      height: 50px;
+      border-radius: 2px;
+      border: 1px solid #929699;
+      background: url("/src/../assets/svg/dolar-pale.svg") no-repeat left 95%
+          top 50%,
+        rgba(0, 0, 0, 0);
+      &::placeholder {
+        padding-left: 6px;
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: #929699;
+      }
+    }
+    .donation-type {
+      height: 21px;
+      margin-top: 25px;
+      margin-left: 376px;
+      display: flex;
+      justify-content: space-between;
+      width: 195px;
+    }
+    button {
+      margin-left: 336px;
+      margin-top: 31px;
+    }
+    .share {
+      @include textMArginReset;
+      margin-top: 30px;
+      margin-left: 334px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 140%;
+      color: #333b41;
+    }
   }
 }
