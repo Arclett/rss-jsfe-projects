@@ -8,13 +8,13 @@
 
 .gallery {
   width: 1158px;
-  margin: -62px auto 0 auto;
+  margin-top: -62px;
+  margin-left: 218px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 30px;
   grid-row-gap: 20px;
-
   .gal-item {
     box-sizing: border-box;
     width: 366px;
@@ -23,6 +23,7 @@
     overflow: hidden;
     border-radius: 5px;
     .pet-card {
+      overflow: hidden;
       height: 366px;
       width: 366px;
     }
@@ -98,4 +99,15 @@
   font-size: 16px;
   line-height: 22.4px;
   text-transform: uppercase;
+}
+
+.pet-info {
+  transition: 0.7s;
+  background: rgba(0, 0, 0, 40%);
+  @include robotoRegular;
+  font-size: 24px;
+  padding: 20px;
+  color: white;
+  height: 426px;
+  transform: translateY(100%);
 }

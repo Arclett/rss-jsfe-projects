@@ -1,0 +1,102 @@
+html {
+  scroll-behavior: smooth;
+}
+.active {
+  color: #f9804b;
+}
+
+.text-link {
+  text-decoration: none;
+  color: white;
+  &:active {
+    color: #f9804b;
+  }
+  &:visited {
+    color: white;
+  }
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+}
+
+.link-active {
+  background: $green !important;
+}
+
+button {
+  transition: 0.3s;
+  &:active {
+    background: $green;
+    transform: scale(2);
+  }
+  &:hover {
+    transform: scale(1.1);
+    background: darken(#f9804b, 15%);
+  }
+}
+
+.arrow-left,
+.arrow-right {
+  &:active {
+    background: $green;
+  }
+  &:hover {
+    transform: scale(1.1);
+    background-color: darken(#f9804b, 15%);
+  }
+}
+
+.emergency {
+  text-decoration: underline;
+  text-decoration-color: #f9804b;
+  &:active {
+    color: #f9804b;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.email-subm {
+  &:active {
+    background: $green;
+  }
+  &:hover {
+    transform: scale(1.1);
+    background-color: darken(#f9804b, 15%);
+  }
+}
+
+.media-item {
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  &:active {
+    color: $green;
+  }
+}
+
+.media-logo {
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  &:active {
+    background: $green;
+  }
+}
+
+.pet-card {
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.progress-point {
+  &:hover {
+    background: #f9804b;
+    transform: scale(1.5);
+  }
+}
