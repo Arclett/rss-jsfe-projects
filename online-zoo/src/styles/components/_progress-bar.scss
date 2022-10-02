@@ -3,15 +3,23 @@
   margin-top: 18px;
   margin-left: -6px;
   padding-top: 12px;
-  width: 976px;
+  // width: 976px;
+  width: 100%;
+  min-width: 810px;
   height: 27px;
   background: #404950;
   border-radius: 2px;
+  @media (max-width: $smallDesktop) {
+    width: 810px;
+    margin-left: 17px;
+  }
   .progress-line {
-    width: 915px;
+    // width: 915px;
+    width: 94.75%;
     height: 2px;
     background: #72828e;
-    margin-left: 30px;
+    // margin-left: 30px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     .progress-point {
@@ -29,13 +37,19 @@
 .progress-price {
   margin-top: 12px;
   margin-left: -8px;
-  width: 991px;
+  // width: 991px;
+  width: 85.43%;
+  min-width: 810px;
   height: 36px;
   display: flex;
   justify-content: flex-start;
+  @media (max-width: $smallDesktop) {
+    width: 88.3%;
+    margin-left: 17px;
+  }
   .price-point {
     background: url("/src/../assets/svg/dollar-icon.svg") no-repeat left top 60%;
-    margin-left: 118px;
+    margin-left: 11.5%;
     p {
       @include textMArginReset;
       width: 0px;

@@ -1,8 +1,11 @@
 .pet-diet-wrapper {
-  margin-left: 208px;
+  margin-left: 17.93%;
   display: grid;
   grid-template-columns: 170px 14px 348px;
   grid-template-rows: 223px 131px;
+  @media (max-width: $smallDesktop) {
+    margin-left: 16.85%;
+  }
   .diet-amount {
     @include textMArginReset;
     font-family: "Roboto";

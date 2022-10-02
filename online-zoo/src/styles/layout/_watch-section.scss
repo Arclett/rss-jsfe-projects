@@ -2,20 +2,37 @@
   height: 700px;
   width: 100%;
   background-image: url("/src/../assets/img/GiantPanda.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: 0px -80px;
   display: flex;
   flex-direction: column;
+  @media (max-width: $smallDesktop) {
+    height: 504px;
+    width: 1198px;
+    margin-left: -9.9%;
+  }
   div {
-    margin-left: 807px;
+    margin-left: 50.44%;
     margin-top: 12px;
     height: 465px;
     width: 465px;
     background: $orangeGradient;
     border-radius: 50%;
+    @media (max-width: $smallDesktop) {
+      height: 367px;
+      width: 367px;
+      margin-left: 46.5%;
+      margin-top: -11px;
+    }
   }
   button {
     margin-left: 983px;
     margin-top: 69px;
+    @media (max-width: $smallDesktop) {
+      margin-left: 55.42%;
+      margin-top: 47px;
+    }
   }
   h2 {
     @include robotoBold;
@@ -26,9 +43,19 @@
     text-transform: uppercase;
     color: white;
     width: 400px;
+    @media (max-width: $smallDesktop) {
+      left: 58px;
+      top: 53.8px;
+      font-size: 85px;
+      line-height: 64px;
+      margin: 0;
+    }
     span {
       color: $yelow;
       margin-left: -40px;
+      @media (max-width: $smallDesktop) {
+        margin-left: 0;
+      }
     }
   }
 }

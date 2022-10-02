@@ -1,13 +1,24 @@
 .steps {
   margin: 40px auto 59px auto;
-  width: 764px;
+  // width: 764px;
+  width: 65.86%;
   display: grid;
-  grid-template-columns: 1fr 130px 1fr 130px 1fr;
-  grid-template-rows: 168px 46px;
+  // grid-template-columns: 1fr 130px 1fr 130px 1fr;
+  grid-template-columns: 22% 17% 22% 17% 22%;
+  // grid-template-rows: 168px 46px;
+  grid-template-rows: 1fr 46px;
   grid-row-gap: 30px;
+  @media (max-width: $smallDesktop) {
+    width: 81.28%;
+    margin-bottom: 70px;
+  }
   .steps-item1 {
     background: url("/src/../assets/svg/pay.svg") no-repeat top 50% left 50%,
       white;
+    @media (max-width: $smallDesktop) {
+      width: 168px;
+      aspect-ratio: 1/1;
+    }
   }
   .steps-item2 {
     grid-row: span 2;

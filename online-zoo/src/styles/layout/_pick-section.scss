@@ -25,31 +25,51 @@
     );
   opacity: 0.9;
   padding-top: 69px;
+  @media (max-width: $smallDesktop) {
+    padding-top: 30px;
+    height: 846px;
+  }
 }
 
 .pick-wrapper {
   box-sizing: border-box;
-  width: 1160px;
+  // width: 1160px;
+  width: 72.5%;
+  min-width: 940px;
   height: 835px;
   border-radius: 20px;
   background: rgba(253, 253, 255, 0.52);
   backdrop-filter: blur(2px);
-  margin-left: 220px;
+  // margin-left: 220px;
+  margin: 0 auto;
   padding: 41px 0 99px 0;
+  @media (max-width: $smallDesktop) {
+    padding: 30px 0 50px 0;
+    height: 796px;
+  }
   h2 {
+    @include textMArginReset;
     @include robotoRegular;
     text-align: center;
     font-size: 48px;
     line-height: 57.6px;
-    width: 463px;
+    // width: 463px;
+    width: 39.91%;
     color: $orange;
-    margin-top: 0px;
+    // margin-top: 0px;
     padding: 0;
-    margin-left: 350px;
-    margin-bottom: 31px;
+    // margin-left: 350px;
+    // margin-bottom: 31px;
+    margin: 0px auto 31px auto;
+    @media (max-width: $smallDesktop) {
+      width: 49.25%;
+      margin-bottom: 20px;
+    }
   }
   button {
-    margin-left: 431px;
+    // margin-left: 431px;
+    display: block;
+    margin: 0 auto;
     text-transform: uppercase;
     background: $orangeGradient;
   }

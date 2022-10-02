@@ -7,19 +7,37 @@
   justify-content: flex-start;
   align-items: center;
   color: white;
+  @media (max-width: $tablet) {
+    height: 34px;
+  }
 }
 
-.header-logo_margin {
-  margin-left: 220px;
+.logo-link {
+  margin-left: 13.75%;
+  @media (max-width: $smallDesktop) {
+    margin-left: 3%;
+  }
 }
 
 .nav {
   @include robotoBtn;
   @include nav;
-  margin-left: 63px;
+  margin-left: 3.98%;
+  @media (max-width: $smallDesktop) {
+    margin-left: 6.4%;
+  }
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }
 
 .credits {
   @include robotoBtn;
-  margin-left: 438px;
+  margin-left: 27.4%;
+  @media (max-width: $smallDesktop) {
+    margin-left: 25.9%;
+  }
+  @media (max-width: $tablet) {
+    display: none;
+  }
 }

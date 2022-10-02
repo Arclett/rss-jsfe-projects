@@ -1,40 +1,68 @@
 .testimonials {
   background: url("/src/../assets/img/leav_foto.jpg") no-repeat bottom -134px right;
+  @media (max-width: $smallDesktop) {
+    background: url("/src/../assets/img/leav_foto-small.jpg") no-repeat bottom -88px
+      right;
+    height: 842px;
+  }
 }
 
 .testimonials-wrapper {
   padding-top: 140px;
-  margin-left: 220px;
+  // margin-left: 220px;
+  margin: 0 auto;
   height: 779px;
-  width: 100%;
+  width: 72.5%;
+  min-width: 940px;
+  object-fit: contain;
+  overflow: hidden;
+  @media (max-width: $smallDesktop) {
+    padding-top: 100px;
+  }
   h2 {
     @include robotoRegular;
     @include textMArginReset;
     font-size: 36px;
     line-height: 46.8px;
-    width: 206px;
-    margin-left: 477px;
-    margin-bottom: 47px;
+    // width: 206px;
+    width: 17.76%;
+    // margin-left: 477px;
+    // margin-bottom: 47px;
+    margin: 0px auto 47px auto;
+    @media (max-width: $smallDesktop) {
+      width: 21.91%;
+      margin-bottom: 30px;
+    }
   }
   .replays-wrapper {
     height: 391px;
     margin-bottom: 21px;
-    width: 1160px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 29.5px;
     .replay {
       min-width: 268px;
       height: 391px;
+      @media (max-width: $smallDesktop) {
+        min-width: 294px;
+      }
     }
   }
   .scroll-bar {
-    margin-left: 280px;
+    // margin-left: 280px;
+    margin: 0px auto;
   }
 }
 
 .button-testim {
   border-radius: 5px;
   text-transform: uppercase;
-  margin-top: 31px;
+  margin-top: 51px;
+}
+
+.rep4 {
+  @media (max-width: $smallDesktop) {
+    display: none;
+  }
 }

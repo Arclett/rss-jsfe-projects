@@ -48,5 +48,9 @@
 @mixin nav {
   display: flex;
   justify-content: space-between;
-  gap: 58px;
+  width: 29.5%;
+  @media (max-width: $smallDesktop) {
+    width: 43.1%;
+  }
+  // gap: 5%;
 }

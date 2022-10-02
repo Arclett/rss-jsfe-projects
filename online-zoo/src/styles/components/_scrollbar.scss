@@ -1,14 +1,22 @@
 .scroll-bar {
-  width: 599px;
+  // width: 599px;
+  width: 37.44%;
+  min-width: 390px;
   height: 7px;
   border: 0.5px solid $pink;
   border-radius: 5px;
   background: #f5f7f6;
+  @media (max-width: $smallDesktop) {
+    width: 39%;
+  }
   .scroll-btn {
     width: 115.2px;
     height: 7px;
     background: $orange;
     border-radius: 5px;
+    @media (max-width: $smallDesktop) {
+      width: 75px;
+    }
     &:hover {
       transform: scale(1.2);
     }

@@ -1,31 +1,54 @@
 .choose-wrapper {
   height: 1106px;
   width: 100%;
+  align-content: center;
   background: url("/src/../assets/img/palm_foto.jpg") no-repeat left bottom,
     url("/src/../assets/img/strelitzia1.png") no-repeat right bottom;
-  display: inline-block;
+  // display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: $smallDesktop) {
+    height: 1070px;
+    background: url("/src/../assets/img/palm_foto-small.jpg") no-repeat left
+        bottom,
+      url("/src/../assets/img/strelitzia1-small.jpg") no-repeat right bottom;
+  }
 }
 
 .gallery {
-  width: 1158px;
-  margin-top: -62px;
-  margin-left: 218px;
+  width: 72.375%;
+  min-width: 940px;
+  // margin-top: -62px;
+  // margin-left: 13.625%;
+  margin: -62px auto 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 30px;
   grid-row-gap: 20px;
+  @media (max-width: 1130px) {
+    grid-row-gap: 92px;
+    margin-top: -67px;
+  }
   .gal-item {
     box-sizing: border-box;
-    width: 366px;
-    height: 426px;
+    // width: 366px;
+    width: 100%;
+    aspect-ratio: 61/71;
+    // height: 426px;
     border: 1px solid rgba(250, 111, 50, 1);
     overflow: hidden;
     border-radius: 5px;
+    @media (max-width: $smallDesktop) {
+      aspect-ratio: 294/354;
+    }
     .pet-card {
       overflow: hidden;
-      height: 366px;
-      width: 366px;
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
     .herby {
       background: url("/src/../assets/svg/banana-bamboo_icon.svg") no-repeat;
@@ -69,7 +92,7 @@
 }
 
 .cheetah {
-  background: url("/src/../assets/img/cheetahsGal.svg");
+  background: url("/src/../assets/img/cheetahsGal.jpg");
 }
 
 .penguins {
@@ -78,24 +101,27 @@
 
 .arrow-left {
   @include arrow;
-  left: 138px;
-  top: 402px;
+  // left: 138px;
+  // top: 402px;
   background: url("/src/../assets/svg/Vector.svg") no-repeat left 50% bottom 50%,
     $orangeGradient;
 }
 
 .arrow-right {
   @include arrow;
-  bottom: 468px;
-  left: 1400px;
+  // bottom: 468px;
+  // left: 1400px;
   background: url("/src/../assets/svg/VectorRight.svg") no-repeat left 50%
       bottom 50%,
     $orangeGradient;
 }
 
 .choose-button {
-  margin-top: 18px;
-  margin-left: 651px;
+  // margin-top: 18px;
+  // // margin-left: 651px;
+  // margin-left: auto;
+  // margin-right: auto;
+  margin: 80px;
   font-size: 16px;
   line-height: 22.4px;
   text-transform: uppercase;
@@ -110,4 +136,21 @@
   color: white;
   height: 426px;
   transform: translateY(100%);
+}
+
+.arrow-container {
+  position: relative;
+  top: 402px;
+  display: flex;
+  justify-content: space-between;
+  width: 82.625%;
+  min-width: 1130px;
+  height: 62px;
+  margin: 0 auto;
+  @media (max-width: $galleryMedia) {
+    top: 364px;
+    min-width: 295px;
+    max-width: 295px;
+    height: 62px;
+  }
 }

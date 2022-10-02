@@ -4,22 +4,58 @@
   background-repeat: no-repeat;
   background-position: right 12px;
   padding: 140px 0 180px 0;
+  @media (max-width: 1300px) {
+    background: none;
+  }
+  @media (max-width: $smallDesktop) {
+    background: none;
+    padding: 109px 0 152px 0;
+  }
 }
 
 .backstage-wrapper {
   height: 403px;
-  width: 1161px;
-  //   width: 609px;
+  // width: 1161px;
+  width: 72.56%;
+  min-width: 960px;
   display: flex;
   justify-content: space-between;
-  gap: 87px;
+  // gap: 87px;
+  gap: 7.49%;
   margin: 0px auto;
+  @media (max-width: $smallDesktop) {
+    height: 414px;
+    margin-left: 30px;
+    margin-right: 0px;
+    width: 94%;
+    gap: 31px;
+  }
+  .backstage-img {
+    width: 609px;
+    width: 52.45%;
+    aspect-ratio: 609/403;
+    // height: 403px;
+    background: url("/src/../assets/img/bamboo-cap.jpg");
+    @media (max-width: $smallDesktop) {
+      width: 455px;
+      height: 408px;
+      background: url("/src/../assets/img/bamboo-cap-small.jpg");
+    }
+  }
 }
 
 .backstage-text {
+  margin-top: -7px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  object-fit: contain;
+  width: 40%;
+  @media (max-width: $smallDesktop) {
+    width: 48.3%;
+    min-width: 454px;
+    // width: 454px;
+  }
   gap: 0;
   h2 {
     @include robotoRegular;
@@ -27,9 +63,12 @@
     line-height: 57.6px;
     margin-block-start: 0;
     margin-block-end: 0;
-    margin: 0 0 24px 0;
+    margin: 0 0 27px 0;
     padding: 0;
     color: $text;
+    @media (max-width: $smallDesktop) {
+      margin: 0 0 21px 0;
+    }
   }
   p {
     @include robotoRegular;

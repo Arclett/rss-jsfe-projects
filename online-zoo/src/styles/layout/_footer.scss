@@ -4,13 +4,24 @@
   background: $footerBg;
   padding-top: 41px;
   .footer-wrapper {
-    margin-left: 220px;
-    width: 1160px;
+    // margin-left: 220px;
+    margin: 0px auto;
+    // width: 1160px;
+    width: 72.5%;
     display: grid;
-    grid-template-columns: 298px 1fr 367px;
+    // grid-template-columns: 298px 1fr 367px;
+    grid-template-columns: 25.69% 42.67% 31.64%;
     grid-template-rows: 120px 94px 134px;
+    @media (max-width: $smallDesktop) {
+      width: 90.7%;
+      margin: 0px auto 0px 44px;
+    }
     .logo {
       background-position: 9px 20px;
+      @media (max-width: $smallDesktop) {
+        margin-left: -6px;
+        margin-top: -1px;
+      }
       p {
         margin-top: -3px;
       }
@@ -22,30 +33,51 @@
     }
     .footer-nav {
       grid-row: span 3;
+      min-width: 332px;
       @include nav;
       @include robotoBtn;
       color: white;
       margin-left: 101px;
       margin-right: 32px;
       margin-top: 330px;
+      @media (max-width: $smallDesktop) {
+        width: 332px;
+        margin: 330px 0 0 58px;
+      }
     }
     .subscribe {
       grid-row: span 2;
+      @media (max-width: $smallDesktop) {
+        width: 366px;
+        margin-left: -80px;
+      }
     }
     .footer-credits {
       @include robotoUltraLight;
       @include textMArginReset;
       color: white;
+      @media (max-width: $smallDesktop) {
+        width: 228px;
+      }
       p {
         margin-left: 140px;
+        @media (max-width: $smallDesktop) {
+          margin-left: 89px;
+        }
       }
       .credits-item {
         margin-top: 87px;
+        @media (max-width: $smallDesktop) {
+          width: 228px;
+        }
       }
       .credits-item2 {
         margin-top: -5px;
         font-size: 15px;
         letter-spacing: 0.4px;
+        @media (max-width: $smallDesktop) {
+          width: 228px;
+        }
       }
     }
   }

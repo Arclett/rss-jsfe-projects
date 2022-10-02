@@ -1,29 +1,44 @@
 .pick-description {
   color: #333b41;
   text-align: left;
-  margin-left: 99px;
+  // margin-left: 99px;
+  margin-left: 8.53%;
+  @media (max-width: $smallDesktop) {
+    margin-left: 5.21%;
+  }
   p {
     display: block;
   }
   .pick-description__subtitle {
     @include robotoRegular;
     @include textMArginReset;
+    display: block;
     font-size: 24px;
     line-height: 28.8px;
   }
   .pick-description__first-p {
     @include robotoBtn;
     @include textMArginReset;
+    display: block;
     line-height: 20.8px;
     margin-top: 41px;
+    @media (max-width: $smallDesktop) {
+      margin-top: 20px;
+      width: 89%;
+    }
   }
   .pick-description__second-p {
     @include robotoRegular;
     @include textMArginReset;
-    width: 863px;
+    display: block;
+    // width: 863px;
+    width: 81.34%;
     font-size: 16px;
     line-height: 20.8px;
     margin-top: 11px;
+    @media (max-width: $smallDesktop) {
+      width: 90%;
+    }
     a {
       color: #333b41;
     }
@@ -34,7 +49,13 @@
   @include robotoRegular;
   font-size: 36px;
   line-height: 46.8px;
-  margin-top: 60px;
-  width: 209px;
-  margin-left: 475px;
+  // margin-top: 60px;
+  // width: 209px;
+  width: 18%;
+  // margin-left: 475px;
+  margin: 60px auto 0px auto;
+  @media (max-width: $smallDesktop) {
+    width: 22.23%;
+    margin-top: 40px;
+  }
 }
