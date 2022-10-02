@@ -3,6 +3,10 @@
   width: 100%;
   background: $footerBg;
   padding-top: 41px;
+  @media (max-width: $tablet) {
+    height: 314px;
+    padding-top: 12px;
+  }
   .footer-wrapper {
     // margin-left: 220px;
     margin: 0px auto;
@@ -16,12 +20,26 @@
       width: 90.7%;
       margin: 0px auto 0px 44px;
     }
+    .volunt-link {
+      @media (max-width: $tablet) {
+        order: 3;
+      }
+    }
+    @media (max-width: $tablet) {
+      width: 93.75%;
+      grid-template-columns: 49.67% 50.33%;
+      grid-template-rows: 84px 80px 94px;
+      margin: 0 auto;
+    }
     .logo {
       background-position: 9px 20px;
       @media (max-width: $smallDesktop) {
         margin-left: -6px;
         margin-top: -1px;
       }
+      @media (max-width: $tablet) {
+      }
+
       p {
         margin-top: -3px;
       }
@@ -44,12 +62,26 @@
         width: 332px;
         margin: 330px 0 0 58px;
       }
+      @media (max-width: $tablet) {
+        order: 4;
+        min-width: 301px;
+        width: 301px;
+        gap: 37px;
+        grid-row: span 1;
+        margin: 73px 0 0 0;
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 400;
+      }
     }
     .subscribe {
       grid-row: span 2;
       @media (max-width: $smallDesktop) {
         width: 366px;
         margin-left: -80px;
+      }
+      @media (max-width: $tablet) {
+        display: none;
       }
     }
     .footer-credits {
@@ -59,16 +91,25 @@
       @media (max-width: $smallDesktop) {
         width: 228px;
       }
+      @media (max-width: $tablet) {
+        order: 4;
+      }
       p {
         margin-left: 140px;
         @media (max-width: $smallDesktop) {
           margin-left: 89px;
+        }
+        @media (max-width: $tablet) {
+          margin-left: 72px;
         }
       }
       .credits-item {
         margin-top: 87px;
         @media (max-width: $smallDesktop) {
           width: 228px;
+        }
+        @media (max-width: $tablet) {
+          margin-top: 42px;
         }
       }
       .credits-item2 {
@@ -80,5 +121,11 @@
         }
       }
     }
+  }
+}
+
+.logo-link {
+  @media (max-width: $tablet) {
+    order: -1;
   }
 }

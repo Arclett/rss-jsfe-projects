@@ -17,6 +17,10 @@
     @media (max-width: $smallDesktop) {
       width: 263px;
     }
+    @media (max-width: $tablet) {
+      width: 94.7%;
+      height: 78px;
+    }
     .userpic {
       float: left;
       margin-right: 10px;
@@ -43,6 +47,14 @@
       @include textMArginReset;
       margin-top: 10px;
       color: $textGray;
+      @media (max-width: $tablet) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
     }
   }
 }

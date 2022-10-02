@@ -9,6 +9,8 @@
   color: white;
   @media (max-width: $tablet) {
     height: 34px;
+    position: fixed;
+    z-index: 4;
   }
 }
 

@@ -12,6 +12,12 @@
     width: 1198px;
     margin-left: -9.9%;
   }
+  @media (max-width: $tablet) {
+    width: 119%;
+    background-size: cover;
+    background-position: bottom;
+    height: 339px;
+  }
   div {
     margin-left: 50.44%;
     margin-top: 12px;
@@ -25,6 +31,12 @@
       margin-left: 46.5%;
       margin-top: -11px;
     }
+    @media (max-width: $tablet) {
+      width: 237.6px;
+      height: 237.6px;
+      margin-left: 51.52%;
+      margin-top: 10.23px;
+    }
   }
   button {
     margin-left: 983px;
@@ -32,6 +44,10 @@
     @media (max-width: $smallDesktop) {
       margin-left: 55.42%;
       margin-top: 47px;
+    }
+    @media (max-width: $tablet) {
+      margin-left: 10.9%;
+      margin-top: -3px;
     }
   }
   h2 {
@@ -48,6 +64,14 @@
       top: 53.8px;
       font-size: 85px;
       line-height: 64px;
+      margin: 0;
+    }
+    @media (max-width: $tablet) {
+      width: 255.6px;
+      left: 40px;
+      top: 35.8px;
+      font-size: 54.3px;
+      line-height: 40.72px;
       margin: 0;
     }
     span {

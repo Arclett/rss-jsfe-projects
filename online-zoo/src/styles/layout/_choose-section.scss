@@ -14,6 +14,12 @@
         bottom,
       url("/src/../assets/img/strelitzia1-small.jpg") no-repeat right bottom;
   }
+  @media (max-width: $tablet) {
+    height: 964px;
+    background: url("/src/../assets/img/palm_foto-tab.jpg") no-repeat left
+        bottom,
+      url("/src/../assets/img/strelitzia1-tab.jpg") no-repeat right bottom;
+  }
 }
 
 .gallery {
@@ -31,6 +37,11 @@
     grid-row-gap: 92px;
     margin-top: -67px;
   }
+  @media (max-width: 990px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    min-width: 600px;
+  }
   .gal-item {
     box-sizing: border-box;
     // width: 366px;
@@ -42,6 +53,9 @@
     border-radius: 5px;
     @media (max-width: $smallDesktop) {
       aspect-ratio: 294/354;
+    }
+    @media (max-width: $tablet) {
+      aspect-ratio: 285/332;
     }
     .pet-card {
       overflow: hidden;
@@ -65,12 +79,23 @@
         font-size: 15px;
         line-height: 18px;
         letter-spacing: 0.8px;
+        @media (max-width: $tablet) {
+          letter-spacing: 0px;
+          font-size: 12.47px;
+          line-height: 17.46px;
+        }
       }
       p {
         @include robotoLight;
         font-size: 15px;
         margin-top: 10px;
         margin-left: 16px;
+        @media (max-width: $tablet) {
+          margin-top: 6px;
+          margin-left: 12px;
+          font-size: 11.96px;
+          line-height: 14.03px;
+        }
       }
     }
   }
@@ -99,6 +124,12 @@
   background: url("/src/../assets/img/pinguinsGal.jpg");
 }
 
+.tab {
+  @media (max-width: 990px) {
+    display: none;
+  }
+}
+
 .arrow-left {
   @include arrow;
   // left: 138px;
@@ -125,6 +156,9 @@
   font-size: 16px;
   line-height: 22.4px;
   text-transform: uppercase;
+  @media (max-width: $tablet) {
+    margin-top: 60px;
+  }
 }
 
 .pet-info {
@@ -151,6 +185,12 @@
     top: 364px;
     min-width: 295px;
     max-width: 295px;
+    height: 62px;
+  }
+  @media (max-width: $tablet) {
+    top: 338px;
+    min-width: 154px;
+    max-width: 154px;
     height: 62px;
   }
 }

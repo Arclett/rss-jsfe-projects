@@ -12,6 +12,11 @@
     width: 81.28%;
     margin-bottom: 70px;
   }
+  @media (max-width: $tablet) {
+    width: 91.85%;
+    grid-template-columns: 28.6% 7.1% 28.6% 7.1% 28.6%;
+    margin: 20px auto 39px auto;
+  }
   .steps-item1 {
     background: url("/src/../assets/svg/pay.svg") no-repeat top 50% left 50%,
       white;
@@ -23,6 +28,15 @@
   .steps-item2 {
     grid-row: span 2;
     background: $vectorPick;
+    @media (max-width: $tablet) {
+      background: url("/src/../assets/svg/green-arrow-gor.svg") no-repeat left
+        50% top;
+      position: relative;
+      z-index: 2;
+      left: -37px;
+      top: -15px;
+      width: 100px;
+    }
   }
   .steps-item3 {
     background: url("/src/../assets/svg/zoo.svg") no-repeat top 50% left 50%,
@@ -31,6 +45,15 @@
   .steps-item4 {
     grid-row: span 2;
     background: $vectorPick;
+    @media (max-width: $tablet) {
+      background: url("/src/../assets/svg/green-arrow-gor.svg") no-repeat left
+        50% top;
+      position: relative;
+      z-index: 2;
+      left: -37px;
+      top: -15px;
+      width: 100px;
+    }
   }
   .steps-item5 {
     background: url("/src/../assets/svg/monkey.svg") no-repeat top 50% left 50%,
