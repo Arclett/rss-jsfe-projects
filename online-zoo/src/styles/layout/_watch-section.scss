@@ -18,6 +18,12 @@
     background-position: bottom;
     height: 339px;
   }
+  @media (max-width: $mobile) {
+    width: 384px;
+    height: 227px;
+    background-size: contain;
+    background-position: 0px 34px;
+  }
   div {
     margin-left: 50.44%;
     margin-top: 12px;
@@ -37,6 +43,12 @@
       margin-left: 51.52%;
       margin-top: 10.23px;
     }
+    @media (max-width: $mobile) {
+      width: 119.09px;
+      height: 119.09px;
+      margin-left: 50.75%;
+      margin-top: 57.17px;
+    }
   }
   button {
     margin-left: 983px;
@@ -48,6 +60,12 @@
     @media (max-width: $tablet) {
       margin-left: 10.9%;
       margin-top: -3px;
+    }
+    @media (max-width: $mobile) {
+      display: block;
+      position: relative;
+      top: 72.43px;
+      height: 56px;
     }
   }
   h2 {
@@ -72,6 +90,14 @@
       top: 35.8px;
       font-size: 54.3px;
       line-height: 40.72px;
+      margin: 0;
+    }
+    @media (max-width: $mobile) {
+      width: 128.13px;
+      left: 18.7px;
+      top: 18.95px;
+      font-size: 28px;
+      line-height: 21px;
       margin: 0;
     }
     span {

@@ -20,6 +20,13 @@
         bottom,
       url("/src/../assets/img/strelitzia1-tab.jpg") no-repeat right bottom;
   }
+  @media (max-width: $mobile) {
+    height: 1457px;
+    margin-top: 20px;
+    background: url("/src/../assets/img/palm_foto-mob.jpg") no-repeat left
+        bottom,
+      url("/src/../assets/img/strelitzia1-mob.jpg") no-repeat right bottom;
+  }
 }
 
 .gallery {
@@ -42,6 +49,15 @@
     grid-template-rows: repeat(2, 1fr);
     min-width: 600px;
   }
+  @media (max-width: $mobile) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1388px;
+    gap: 20px;
+    width: 285.24px;
+    margin-left: 10px;
+  }
   .gal-item {
     box-sizing: border-box;
     // width: 366px;
@@ -56,6 +72,10 @@
     }
     @media (max-width: $tablet) {
       aspect-ratio: 285/332;
+    }
+    @media (max-width: $tablet) {
+      width: 285.24px;
+      height: 332px;
     }
     .pet-card {
       overflow: hidden;
@@ -128,6 +148,9 @@
   @media (max-width: 990px) {
     display: none;
   }
+  @media (max-width: 320px) {
+    display: none;
+  }
 }
 
 .arrow-left {
@@ -158,6 +181,10 @@
   text-transform: uppercase;
   @media (max-width: $tablet) {
     margin-top: 60px;
+  }
+  @media (max-width: $mobile) {
+    margin-top: 20px;
+    margin-bottom: 0px;
   }
 }
 
@@ -192,5 +219,8 @@
     min-width: 154px;
     max-width: 154px;
     height: 62px;
+  }
+  @media (max-width: $mobile) {
+    display: none;
   }
 }

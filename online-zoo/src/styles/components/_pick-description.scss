@@ -40,6 +40,9 @@
       font-size: 16px;
       line-height: 20.8px;
     }
+    @media (max-width: $mobile) {
+      display: none !important;
+    }
   }
   .pick-description__second-p {
     @include robotoRegular;
@@ -57,6 +60,9 @@
       width: 100%;
       font-size: 16px;
       line-height: 20.8px;
+    }
+    @media (max-width: $mobile) {
+      display: none !important;
     }
     a {
       color: #333b41;

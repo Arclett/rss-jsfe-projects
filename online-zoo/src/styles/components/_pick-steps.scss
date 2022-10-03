@@ -17,6 +17,12 @@
     grid-template-columns: 28.6% 7.1% 28.6% 7.1% 28.6%;
     margin: 20px auto 39px auto;
   }
+  @media (max-width: $mobile) {
+    grid-template-columns: 28.6% 7.1% 28.6% 7.1% 28.6%;
+    grid-auto-flow: row;
+    // grid-template-columns: 100%;
+    // grid-template-rows: 168px 64px 20px 168px 64px 20px 168px 64px;
+  }
   .steps-item1 {
     background: url("/src/../assets/svg/pay.svg") no-repeat top 50% left 50%,
       white;
