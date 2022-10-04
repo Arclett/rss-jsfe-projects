@@ -10,6 +10,11 @@
     background: url("/src/../assets/img/leav_foto-tab.jpg") no-repeat bottom -69px
       right;
   }
+  @media (max-width: $tablet) {
+    height: 580px;
+    background: url("/src/../assets/img/leav_foto-mob.jpg") no-repeat bottom -29px
+      right;
+  }
 }
 
 .testimonials-wrapper {
@@ -30,6 +35,12 @@
     min-width: 640px;
     padding-top: 60px;
   }
+  @media (max-width: $mobile) {
+    width: 100%;
+    min-width: 320px;
+    padding-top: 30px;
+    height: 500px;
+  }
   h2 {
     @include robotoRegular;
     @include textMArginReset;
@@ -47,6 +58,12 @@
     @media (max-width: $tablet) {
       width: 32.18%;
     }
+    @media (max-width: $mobile) {
+      width: 43.125%;
+      font-size: 24px;
+      line-height: 28.8px;
+      margin-bottom: 20px;
+    }
   }
   .replays-wrapper {
     height: 391px;
@@ -63,6 +80,9 @@
       gap: 15px;
       height: 357px;
     }
+    @media (max-width: $mobile) {
+      min-width: 299px;
+    }
     .replay {
       min-width: 268px;
       height: 391px;
@@ -70,6 +90,10 @@
         min-width: 294px;
       }
       @media (max-width: $tablet) {
+        height: 109px;
+      }
+      @media (max-width: $mobile) {
+        min-width: 299px;
         height: 109px;
       }
     }
@@ -91,6 +115,9 @@
     display: block;
     margin: 40px auto 0 auto;
     width: 240px;
+  }
+  @media (max-width: $mobile) {
+    margin-top: 30px;
   }
 }
 

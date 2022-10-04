@@ -24,6 +24,12 @@
       font-size: 22px;
       line-height: 26.4px;
     }
+    @media (max-width: $tablet) {
+      width: 100%;
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+    }
   }
   .pick-description__first-p {
     @include robotoBtn;
@@ -88,5 +94,11 @@
     width: 32.65%;
     font-size: 36px;
     line-height: 46.8px;
+  }
+  @media (max-width: $mobile) {
+    margin-top: 20px;
+    width: 46.33%;
+    font-size: 24px;
+    line-height: 29px;
   }
 }
