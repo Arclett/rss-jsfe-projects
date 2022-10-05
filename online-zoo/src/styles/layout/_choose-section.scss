@@ -20,7 +20,7 @@
         bottom,
       url("/src/../assets/img/strelitzia1-tab.jpg") no-repeat right bottom;
   }
-  @media (max-width: $mobile) {
+  @media (max-width: 600px) {
     height: 1457px;
     margin-top: 20px;
     background: url("/src/../assets/img/palm_foto-mob.jpg") no-repeat left
@@ -49,12 +49,17 @@
     grid-template-rows: repeat(2, 1fr);
     min-width: 600px;
   }
-  @media (max-width: $mobile) {
+  @media (max-width: 600px) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 1388px;
     gap: 20px;
+    width: 100%;
+    min-width: 285.24px;
+    align-items: center;
+  }
+  @media (max-width: $mobile) {
     width: 285.24px;
     margin-left: 10px;
   }
@@ -73,7 +78,7 @@
     @media (max-width: $tablet) {
       aspect-ratio: 285/332;
     }
-    @media (max-width: $tablet) {
+    @media (max-width: 600px) {
       width: 285.24px;
       height: 332px;
     }
@@ -87,10 +92,19 @@
     .herby {
       background: url("/src/../assets/svg/banana-bamboo_icon.svg") no-repeat;
       background-position: right 11px top 2px;
+      @media (max-width: $tablet) {
+        background: url("/src/../assets/svg/banana-bamboo_icon-mob.svg")
+          no-repeat;
+        background-position: right 6px top 2px;
+      }
     }
     .meet {
       background: url("/src/../assets/svg/meet-fish_icon.svg") no-repeat;
       background-position: right 8px top -1px;
+      @media (max-width: $tablet) {
+        background: url("/src/../assets/svg/meet-fish_icon-mob.svg") no-repeat;
+        background-position: right 6px top 2px;
+      }
     }
     div {
       span {
@@ -129,15 +143,15 @@
 }
 
 .gorillas {
-  background: url("/src/../assets/img/gorrilasGal.jpg");
+  background: url("/src/../assets/img/cheetahsGal.jpg");
 }
 
 .sloth {
-  background: url("/src/../assets/img/slothGal.jpg");
+  background: url("/src/../assets/img/gorrilasGal.jpg");
 }
 
 .cheetah {
-  background: url("/src/../assets/img/cheetahsGal.jpg");
+  background: url("/src/../assets/img/crocodileGal-small.jpg");
 }
 
 .penguins {
@@ -182,7 +196,7 @@
   @media (max-width: $tablet) {
     margin-top: 60px;
   }
-  @media (max-width: $mobile) {
+  @media (max-width: 600px) {
     margin-top: 20px;
     margin-bottom: 0px;
   }
@@ -220,7 +234,7 @@
     max-width: 154px;
     height: 62px;
   }
-  @media (max-width: $mobile) {
+  @media (max-width: 600px) {
     display: none;
   }
 }

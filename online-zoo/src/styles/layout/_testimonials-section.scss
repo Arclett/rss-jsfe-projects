@@ -10,7 +10,7 @@
     background: url("/src/../assets/img/leav_foto-tab.jpg") no-repeat bottom -69px
       right;
   }
-  @media (max-width: $tablet) {
+  @media (max-width: $mobile) {
     height: 580px;
     background: url("/src/../assets/img/leav_foto-mob.jpg") no-repeat bottom -29px
       right;
@@ -35,7 +35,7 @@
     min-width: 640px;
     padding-top: 60px;
   }
-  @media (max-width: $mobile) {
+  @media (max-width: 630px) {
     width: 100%;
     min-width: 320px;
     padding-top: 30px;
@@ -58,7 +58,7 @@
     @media (max-width: $tablet) {
       width: 32.18%;
     }
-    @media (max-width: $mobile) {
+    @media (max-width: 630px) {
       width: 43.125%;
       font-size: 24px;
       line-height: 28.8px;
@@ -80,7 +80,7 @@
       gap: 15px;
       height: 357px;
     }
-    @media (max-width: $mobile) {
+    @media (max-width: 630px) {
       min-width: 299px;
     }
     .replay {
@@ -92,7 +92,7 @@
       @media (max-width: $tablet) {
         height: 109px;
       }
-      @media (max-width: $mobile) {
+      @media (max-width: 630px) {
         min-width: 299px;
         height: 109px;
       }

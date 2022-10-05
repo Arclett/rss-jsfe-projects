@@ -33,6 +33,10 @@
     padding-top: 20px;
     height: 763px;
   }
+  @media (max-width: 620px) {
+    height: 1162px;
+    padding-top: 20px;
+  }
   @media (max-width: $mobile) {
     height: 1062px;
     padding-top: 20px;
@@ -60,6 +64,11 @@
   @media (max-width: $tablet) {
     padding: 10px 0 20px 0;
     height: 741px;
+  }
+  @media (max-width: 620px) {
+    padding: 20px 0 20px 0;
+    min-width: 300px;
+    height: 1142px;
   }
   @media (max-width: $mobile) {
     padding: 20px 0 20px 0;
@@ -103,6 +112,9 @@
     margin: 0 auto;
     text-transform: uppercase;
     background: $orangeGradient;
+    @media (max-width: 620px) {
+      margin-top: -95px;
+    }
     @media (max-width: $mobile) {
       margin-top: 62px;
     }

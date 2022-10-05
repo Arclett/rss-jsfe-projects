@@ -48,8 +48,12 @@
       @include robotoBtn;
       border-radius: 5px;
       text-transform: uppercase;
+      @media (max-width: 600px) {
+        width: 240px;
+      }
       @media (max-width: $mobile) {
         margin-top: 30px;
+        width: 290px;
       }
     }
     .footer-nav {
@@ -76,6 +80,9 @@
         line-height: 22px;
         font-weight: 400;
       }
+      @media (max-width: 630px) {
+        margin-top: 93px;
+      }
       @media (max-width: $mobile) {
         height: 22px;
         min-width: 278px;
@@ -89,6 +96,9 @@
       @media (max-width: $smallDesktop) {
         width: 366px;
         margin-left: -80px;
+      }
+      @media (max-width: 980px) {
+        width: 36%;
       }
       @media (max-width: $tablet) {
         display: none;
@@ -120,14 +130,29 @@
       }
       .credits-item {
         margin-top: 87px;
+        @media (max-width: 1300px) {
+          margin-top: 22px;
+        }
         @media (max-width: $smallDesktop) {
           width: 228px;
+          margin-top: 87px;
+        }
+
+        @media (max-width: 980px) {
+          margin-top: 22px;
+          margin-left: -20px;
         }
         @media (max-width: $tablet) {
           margin-top: 42px;
+          margin-left: 72px;
+        }
+        @media (max-width: 600px) {
+          margin-top: 30px;
+          margin-left: -60px;
         }
         @media (max-width: $mobile) {
           margin-top: 30px;
+          margin-left: 50px;
         }
       }
       .credits-item2 {
@@ -136,6 +161,15 @@
         letter-spacing: 0.4px;
         @media (max-width: $smallDesktop) {
           width: 228px;
+        }
+        @media (max-width: 980px) {
+          margin-left: -20px;
+        }
+        @media (max-width: $tablet) {
+          margin-left: 72px;
+        }
+        @media (max-width: 600px) {
+          margin-left: -60px;
         }
         @media (max-width: $mobile) {
           margin-left: 50px;

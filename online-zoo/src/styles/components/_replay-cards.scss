@@ -21,6 +21,9 @@
       width: 94.7%;
       height: 78px;
     }
+    @media (max-width: 630px) {
+      width: 90%;
+    }
     @media (max-width: $mobile) {
       width: 272px;
       height: 84px;
