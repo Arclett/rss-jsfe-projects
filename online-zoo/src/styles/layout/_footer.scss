@@ -217,3 +217,28 @@
     background-position: 72px -4px !important;
   }
 }
+
+.footer-donate {
+  .footer-wrapper {
+    @media (max-width: $smallDesktop) {
+      margin-left: 30px;
+    }
+    @media (max-width: $tablet) {
+      margin-left: 16px !important;
+    }
+    @media (max-width: $mobile) {
+      margin-left: 0px !important;
+    }
+    .footer-nav {
+      @media (max-width: $smallDesktop) {
+        margin-left: 70px;
+      }
+      @media (max-width: $tablet) {
+        margin-left: 5px !important;
+      }
+      @media (max-width: $mobile) {
+        margin-left: 20px !important;
+      }
+    }
+  }
+}

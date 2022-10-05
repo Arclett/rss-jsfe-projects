@@ -43,3 +43,27 @@
     display: none;
   }
 }
+
+.burger {
+  display: none;
+  @media (max-width: $tablet) {
+    position: relative;
+    left: 83.9%;
+    top: -2px;
+    height: 10px;
+    width: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .burger-part {
+      margin-top: 2px;
+      border-top: 2px solid white;
+    }
+    @media (max-width: 550px) {
+      left: 70%;
+    }
+    @media (max-width: $mobile) {
+      left: 234px;
+    }
+  }
+}

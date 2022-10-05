@@ -7,10 +7,41 @@
     height: 390px;
     margin-left: -17.2%;
   }
+  @media (max-width: $tablet) {
+    width: 100%;
+    height: 335px;
+    margin: 34px 0 0 0;
+    background: url("/src/../assets/img/panda_bg-tab.jpg") bottom;
+  }
+  @media (max-width: $mobile) {
+    width: 100%;
+    height: 187px;
+    margin: 34px 0 0 0;
+    background: url("/src/../assets/img/panda_bg-mob.jpg") bottom;
+  }
 }
 
 .pick-donate {
   height: 1412px;
+  @media (max-width: $smallDesktop) {
+    height: 1303px;
+  }
+  @media (max-width: $tablet) {
+    height: 1313px;
+  }
+  @media (max-width: 999px) {
+    height: 1500px;
+  }
+  @media (max-width: $tablet) {
+    height: 1313px;
+  }
+  @media (max-width: 560px) {
+    height: 1500px;
+  }
+
+  @media (max-width: $mobile) {
+    height: 1126px;
+  }
   .donate-title {
     color: white;
     @include robotoRegular;
@@ -28,6 +59,17 @@
       margin-top: 12px;
       margin-left: 31px;
     }
+    @media (max-width: $tablet) {
+      width: 93.7%;
+      margin-top: 12px;
+      margin-left: 20px;
+      font-size: 24px;
+      line-height: 120%;
+    }
+    @media (max-width: $mobile) {
+      width: 300px;
+      margin-left: 10px;
+    }
   }
   p {
     @include textMArginReset;
@@ -43,6 +85,9 @@
       width: 93.9%;
       margin-top: 41px;
     }
+    @media (max-width: $tablet) {
+      margin-top: 20px;
+    }
   }
   .inform {
     @include textMArginReset;
@@ -55,12 +100,33 @@
     @media (max-width: $smallDesktop) {
       width: 93.9%;
     }
+    @media (max-width: $tablet) {
+      margin-top: 28px;
+    }
+    @media (max-width: $mobile) {
+      margin-top: 26px;
+      font-size: 24px;
+      line-height: 28.8px;
+    }
   }
   .pick-wrapper {
     height: 964px;
     margin-top: 60px;
     @media (max-width: $smallDesktop) {
       margin-top: 43px;
+      height: 916px;
+    }
+    @media (max-width: $tablet) {
+      margin-top: 26px;
+      height: 918px;
+      width: 93.75%;
+      min-width: 320px;
+    }
+    @media (max-width: $mobile) {
+      margin-top: 26px;
+      height: 591px;
+      width: 94.1%;
+      min-width: 301px;
     }
     .pick-title-donate {
       @include textMArginReset;
@@ -70,6 +136,16 @@
         width: 49.25%;
         margin-left: 24.57%;
         margin-top: -10px;
+      }
+      @media (max-width: $tablet) {
+        width: 77.17%;
+        margin: 20px auto 0px auto;
+        font-size: 48px;
+      }
+      @media (max-width: $mobile) {
+        width: 232px;
+        margin: 0px auto 0px auto;
+        font-size: 24px;
       }
     }
     .pick-description-donate {
@@ -94,6 +170,18 @@
       font-size: 24px;
       line-height: 120%;
       color: #333b41;
+      @media (max-width: $tablet) {
+        width: 100%;
+        margin: 40px 0px 0px -5px;
+        text-align: center;
+      }
+      @media (max-width: $mobile) {
+        width: 110%;
+        margin: 24px 0px 0px -15px;
+        font-size: 16px;
+        line-height: 22.4px;
+        text-align: center;
+      }
     }
     .donate-amount {
       margin-top: -2px;
@@ -105,7 +193,15 @@
       line-height: 140%;
       color: #000000;
       @media (max-width: $smallDesktop) {
-        margin-left: 17px;
+        margin-left: 14px;
+      }
+      @media (max-width: $tablet) {
+        margin-left: -22px;
+        margin-top: -10px;
+      }
+      @media (max-width: 639px) {
+        margin-left: -15px;
+        margin-top: 5px;
       }
     }
     .other-amount {
@@ -129,6 +225,17 @@
         line-height: 140%;
         color: #929699;
       }
+      @media (max-width: $smallDesktop) {
+        margin: 50px 0px 0px 284px;
+      }
+      @media (max-width: $tablet) {
+        margin: 46px 0 0 176px;
+        height: 38px;
+        width: 176px;
+      }
+      @media (max-width: 639px) {
+        margin: 3px 0 0 43px;
+      }
     }
     .donation-type {
       height: 21px;
@@ -138,10 +245,30 @@
       display: flex;
       justify-content: space-between;
       width: 195px;
+      @media (max-width: $smallDesktop) {
+        margin: 25px auto 0 310px;
+      }
+      @media (max-width: $tablet) {
+        margin: 30px 0 0 157px;
+      }
+      @media (max-width: 639px) {
+        margin: 24px 0 0 24px;
+      }
     }
+
     button {
       margin-left: 336px;
       margin-top: 31px;
+      @media (max-width: $smallDesktop) {
+        margin-left: 274px;
+      }
+      @media (max-width: $tablet) {
+        margin-left: 118px;
+      }
+      @media (max-width: 639px) {
+        margin-left: -15px;
+        margin-top: 28px;
+      }
     }
     .share {
       @include textMArginReset;
@@ -153,6 +280,17 @@
       font-size: 16px;
       line-height: 140%;
       color: #333b41;
+      @media (max-width: $smallDesktop) {
+        margin-left: 274px;
+      }
+      @media (max-width: $tablet) {
+        margin-left: 118px;
+      }
+      @media (max-width: 639px) {
+        width: 115%;
+        margin-left: -23px;
+        text-align: center;
+      }
     }
   }
 }
