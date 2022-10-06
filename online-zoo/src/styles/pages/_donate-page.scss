@@ -192,14 +192,23 @@
       font-size: 16px;
       line-height: 140%;
       color: #000000;
-      @media (max-width: $smallDesktop) {
+      @media (max-width: 1599px) {
+        text-align: center;
+      }
+      @media (width: $smallDesktop) {
         margin-left: 14px;
       }
-      @media (max-width: $tablet) {
+      @media (max-width: 999px) {
+        text-align: center;
+      }
+      @media (width: $tablet) {
         margin-left: -22px;
         margin-top: -10px;
       }
       @media (max-width: 639px) {
+        text-align: center;
+      }
+      @media (width: $mobile) {
         margin-left: -15px;
         margin-top: 5px;
       }
@@ -225,8 +234,16 @@
         line-height: 140%;
         color: #929699;
       }
+      @media (max-width: 1599px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
       @media (max-width: $smallDesktop) {
         margin: 50px 0px 0px 284px;
+      }
+      @media (max-width: 999px) {
+        margin-left: auto;
+        margin-right: auto;
       }
       @media (max-width: $tablet) {
         margin: 46px 0 0 176px;
@@ -234,6 +251,10 @@
         width: 176px;
       }
       @media (max-width: 639px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (width: $mobile) {
         margin: 3px 0 0 43px;
       }
     }
@@ -245,13 +266,25 @@
       display: flex;
       justify-content: space-between;
       width: 195px;
+      @media (max-width: 1599px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
       @media (max-width: $smallDesktop) {
         margin: 25px auto 0 310px;
+      }
+      @media (max-width: 999px) {
+        margin-left: auto;
+        margin-right: auto;
       }
       @media (max-width: $tablet) {
         margin: 30px 0 0 157px;
       }
       @media (max-width: 639px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (width: $mobile) {
         margin: 24px 0 0 24px;
       }
     }
@@ -259,13 +292,25 @@
     button {
       margin-left: 336px;
       margin-top: 31px;
-      @media (max-width: $smallDesktop) {
+      @media (max-width: 1599px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (width: $smallDesktop) {
         margin-left: 274px;
       }
-      @media (max-width: $tablet) {
+      @media (max-width: 999px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (width: $tablet) {
         margin-left: 118px;
       }
       @media (max-width: 639px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (width: $mobile) {
         margin-left: -15px;
         margin-top: 28px;
       }
@@ -280,13 +325,25 @@
       font-size: 16px;
       line-height: 140%;
       color: #333b41;
+      @media (max-width: 1599px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
       @media (max-width: $smallDesktop) {
         margin-left: 274px;
+      }
+      @media (max-width: 999px) {
+        margin-left: auto;
+        margin-right: auto;
       }
       @media (max-width: $tablet) {
         margin-left: 118px;
       }
       @media (max-width: 639px) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (width: $mobile) {
         width: 115%;
         margin-left: -23px;
         text-align: center;

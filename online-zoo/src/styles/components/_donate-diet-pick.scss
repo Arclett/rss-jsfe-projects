@@ -1,10 +1,17 @@
 .pet-diet-wrapper {
-  margin-left: 17.93%;
+  // margin-left: 17.93%;
+  margin-left: 215px;
   display: grid;
   grid-template-columns: 170px 14px 348px;
   grid-template-rows: 223px 131px;
+  @media (max-width: 1599px) {
+    margin: 0px auto 0px auto;
+  }
   @media (max-width: $smallDesktop) {
     margin-left: 16.85%;
+  }
+  @media (max-width: 999px) {
+    margin: 0px auto 0px auto;
   }
   @media (max-width: $tablet) {
     margin-left: -7.7px;
@@ -14,6 +21,9 @@
     width: 300px;
     grid-template-columns: 1fr 8px 197.05px;
     grid-template-rows: 111.65px 40.6px;
+    margin: -7px auto 0 auto;
+  }
+  @media (width: $mobile) {
     margin-left: -14px;
   }
   .diet-amount {
@@ -61,12 +71,12 @@
   .diet-icon {
     grid-row: span 2;
     background: url("/src/../assets/svg/panda-icon.svg") no-repeat top 53% left
-      80%;
-    @media (max-width: $tablet) {
+      95%;
+    @media (max-width: 999px) {
       background: url("/src/../assets/svg/panda-icon.svg") no-repeat top 53%
         left 95%;
     }
-    @media (max-width: $mobile) {
+    @media (max-width: 639px) {
       background: url("/src/../assets/svg/panda_icon-mob.svg") no-repeat bottom
         right;
     }
