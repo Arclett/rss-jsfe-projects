@@ -45,6 +45,9 @@
   @media (max-width: $tablet) {
     height: 367px;
   }
+  @media (max-width: 549px) {
+    height: 600px;
+  }
   @media (max-width: $mobile) {
     height: 388px;
     width: 93.75%;

@@ -28,6 +28,7 @@
   overflow: hidden;
   @media (max-width: $smallDesktop) {
     padding-top: 100px;
+    min-width: 640px;
   }
   @media (max-width: $tablet) {
     height: 668px;
@@ -122,10 +123,19 @@
 }
 
 .rep4 {
-  @media (max-width: $smallDesktop) {
+  @media (max-width: 1599px) {
     display: none;
   }
   @media (max-width: $tablet) {
     display: none !important;
+  }
+}
+
+.rep3 {
+  @media (max-width: 999px) {
+    display: none;
+  }
+  @media (max-width: $tablet) {
+    display: block;
   }
 }
