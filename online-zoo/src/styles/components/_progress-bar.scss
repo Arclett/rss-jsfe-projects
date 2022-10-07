@@ -1,7 +1,7 @@
 .progress-bar-wrapper {
   box-sizing: border-box;
   margin-top: 18px;
-  margin-left: -6px;
+  margin-left: 0px;
   padding-top: 12px;
   width: 976px;
   height: 27px;
@@ -76,7 +76,7 @@
 
 .progress-price {
   margin-top: 12px;
-  margin-left: -8px;
+  margin-left: 0px;
   width: 991px;
   // width: 85.43%;
   // min-width: 810px;
@@ -111,7 +111,7 @@
   }
   .price-point {
     background: url("/src/../assets/svg/dollar-icon.svg") no-repeat left top 60%;
-    margin-left: 11.5%;
+    margin-left: 118px;
     @media (max-width: 1599px) {
       margin-left: 117px;
     }
@@ -221,5 +221,17 @@
         margin-left: 70px !important;
       }
     }
+  }
+}
+
+.active-price {
+  p {
+    color: $orange !important;
+  }
+  background: url("/src/../assets/svg/dollar-icon-active.svg") no-repeat left
+    top 60% !important;
+  @media (max-width: 639px) {
+    background: url("/src/../assets/svg/dollar-icon-mob-active.svg") no-repeat
+      right top 10% !important;
   }
 }

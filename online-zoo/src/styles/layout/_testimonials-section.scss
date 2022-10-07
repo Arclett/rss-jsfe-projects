@@ -28,6 +28,8 @@
   overflow: hidden;
   @media (max-width: $smallDesktop) {
     padding-top: 100px;
+  }
+  @media (max-width: 999px) {
     min-width: 640px;
   }
   @media (max-width: $tablet) {

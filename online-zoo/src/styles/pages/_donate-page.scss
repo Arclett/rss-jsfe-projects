@@ -196,12 +196,14 @@
         text-align: center;
       }
       @media (width: $smallDesktop) {
+        text-align: start;
         margin-left: 14px;
       }
       @media (max-width: 999px) {
         text-align: center;
       }
       @media (width: $tablet) {
+        text-align: start;
         margin-left: -22px;
         margin-top: -10px;
       }
@@ -209,6 +211,7 @@
         text-align: center;
       }
       @media (width: $mobile) {
+        text-align: start;
         margin-left: -15px;
         margin-top: 5px;
       }

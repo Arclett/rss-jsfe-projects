@@ -82,12 +82,12 @@
                 <div class="price-point p2"><p>2000</p></div>
                 <div class="price-point p3"><p>1000</p></div>
                 <div class="price-point p4"><p>500</p></div>
-                <div class="price-point p5"><p>250</p></div>
-                <div class="price-point p6"><p>100</p></div>
+                <div class="price-point p5 "><p>250</p></div>
+                <div class="price-point p6 active-price"><p>100</p></div>
                 <div class="price-point p7"><p>50</p></div>
                 <div class="price-point p8"><p>25</p></div>
               </div>
-              <input type="number" class="other-amount" placeholder="Another amount" max="9999">
+              <input type="number" class="other-amount" placeholder="Another amount" maxlength="4" oninput="if (value.length > 4) value = value.slice(0,4)">
               <div class="donation-type">
                 <div class="radio-wrap">
                   <input id='radio1'type="radio" name="donation-type" required>
