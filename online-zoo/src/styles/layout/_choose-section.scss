@@ -228,12 +228,20 @@
     max-width: 295px;
     height: 62px;
   }
+  @media (max-width: 999px) {
+    margin: 0;
+    top: 364px;
+    width: 95%;
+    max-width: 95%;
+    height: 62px;
+  }
   @media (max-width: $tablet) {
     top: 338px;
     min-width: 154px;
     max-width: 154px;
     height: 62px;
   }
+
   @media (max-width: 600px) {
     display: none;
   }
