@@ -13,4 +13,9 @@ export const popup = function () {
   overlayElement.addEventListener("click", function () {
     showPopUp();
   });
+  popupElement.addEventListener("click", function (e) {
+    if (e.target.classList.contains("burg-link")) {
+      showPopUp();
+    }
+  });
 };

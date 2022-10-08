@@ -27,6 +27,9 @@
     background-repeat: no-repeat;
     background-position: 12.2% 78%;
     margin-bottom: 15.4px;
+    @media (width: $mobile) {
+      margin-left: -9px;
+    }
   }
   .popup-part {
     @include robotoRegular;
