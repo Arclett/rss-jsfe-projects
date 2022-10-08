@@ -1,0 +1,77 @@
+.popup-window {
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: 0.5s;
+  position: fixed;
+  width: 100% !important;
+  background: white;
+  height: 329px;
+  top: 0px;
+  left: 0px;
+  transform: translateY(-329px);
+  z-index: 4;
+  .logo {
+    width: 65.6px;
+    height: 41.6px;
+    border: 1px solid $orange;
+    text-align: center;
+    padding: 2.84px 3.8px;
+    font-size: 15.2px;
+    line-height: 18px;
+    color: $orange;
+    margin-left: -19px;
+    background-image: url("/src/../assets/svg/bamboo-ornge.svg");
+    background-repeat: no-repeat;
+    background-position: 12.2% 78%;
+    margin-bottom: 15.4px;
+  }
+  .popup-part {
+    @include robotoRegular;
+    font-size: 16px;
+    line-height: 22px;
+    color: $text;
+    margin-top: 15px;
+  }
+}
+
+.burger-active {
+  transition: 0.3s;
+  .burger-part:nth-child(2) {
+    opacity: 0;
+  }
+  .burger-part:nth-child(1) {
+    transform: rotate(45deg) translateX(5.5px);
+    border-top: 2px solid black;
+  }
+  .burger-part:nth-child(3) {
+    transform: rotate(-45deg) translateX(5.5px);
+    border-top: 2px solid black;
+  }
+}
+
+.overlay-hidden {
+  display: none !important;
+}
+
+.popup-show {
+  transform: translateY(0px);
+}
+
+.burger-link {
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      color: $orange !important;
+    }
+    &:visited {
+      color: black;
+    }
+    &:active {
+      color: $green;
+    }
+  }
+}
