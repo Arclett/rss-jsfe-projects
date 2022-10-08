@@ -34,20 +34,7 @@ export const animation = function () {
   const emailInpElem = document.querySelector(".email-inp");
 
   window.addEventListener("keyup", function () {
-    console.log("kla");
     if (emailInpElem.checkValidity()) submElem.style.color = "green";
     else submElem.style.color = "red";
   });
-
-  // progress-bar animation
-
-  const pointElem = document.querySelectorAll(".progress-point");
-  pointElem.forEach((elem) =>
-    elem.addEventListener("click", function () {
-      document
-        .querySelectorAll(".border-one")
-        .forEach((elem) => elem.classList.remove("border-active-one"));
-      elem.querySelector(".border-one").classList.add("border-active-one");
-    })
-  );
 };
