@@ -29,6 +29,25 @@
   }
 }
 
+.gallery-wrapper {
+  width: 300%;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.7s;
+  transform: translateX(0%);
+}
+
+.toLeft {
+  transform: translateX(33%) !important;
+}
+.toRight {
+  transform: translateX(-33%) !important;
+}
+
+.slide-wrapper {
+  width: 100%;
+}
+
 .gallery {
   width: 72.375%;
   min-width: 940px;
@@ -138,20 +157,45 @@
 .panda {
   background: url("/src/../assets/img/giantPandaGal.jpg");
 }
+
+.lion {
+  background: url("/src/../assets/img/lionGal.jpg");
+}
+
+.tiger {
+  background: url("/src/../assets/img/tigerGal.jpg");
+}
+
+.deer {
+  background: url("/src/../assets/img/deerGal.jpg");
+}
+
+.bear {
+  background: url("/src/../assets/img/bearGal.jpg");
+}
+
+.elephant {
+  background: url("/src/../assets/img/elephantGal.jpg");
+}
+
 .eagles {
   background: url("/src/../assets/img/eaglesGal.jpg");
 }
 
-.gorillas {
-  background: url("/src/../assets/img/cheetahsGal.jpg");
-}
-
-.sloth {
+.gorrilas {
   background: url("/src/../assets/img/gorrilasGal.jpg");
 }
 
-.cheetah {
+.sloth {
+  background: url("/src/../assets/img/slothGal.jpg");
+}
+
+.alligator {
   background: url("/src/../assets/img/crocodileGal-small.jpg");
+}
+
+.cheetah {
+  background: url("/src/../assets/img/cheetahsGal.jpg");
 }
 
 .penguins {
@@ -222,6 +266,7 @@
   min-width: 1130px;
   height: 62px;
   margin: 0 auto;
+  z-index: 3;
   @media (max-width: $galleryMedia) {
     top: 364px;
     min-width: 295px;

@@ -14,19 +14,19 @@ export const animation = function () {
   );
 
   //pet-card animation
-  const petCardElement = document.querySelectorAll(".pet-card");
-  petCardElement.forEach((el) =>
-    el.addEventListener("mouseover", function (e) {
-      el.style.transform = "translateY(-10%) scale(1.2)";
-      el.querySelector(".pet-info").style.transform = "translateY(0)";
-    })
-  );
-  petCardElement.forEach((el) =>
-    el.addEventListener("mouseout", function (e) {
-      el.style.transform = "translateY(0%) scale(1)";
-      el.querySelector(".pet-info").style.transform = "translateY(100%)";
-    })
-  );
+  // const petCardElement = document.querySelectorAll(".pet-card");
+  // petCardElement.forEach((el) =>
+  //   el.addEventListener("mouseover", function (e) {
+  //     el.style.transform = "translateY(-10%) scale(1.2)";
+  //     el.querySelector(".pet-info").style.transform = "translateY(0)";
+  //   })
+  // );
+  // petCardElement.forEach((el) =>
+  //   el.addEventListener("mouseout", function (e) {
+  //     el.style.transform = "translateY(0%) scale(1)";
+  //     el.querySelector(".pet-info").style.transform = "translateY(100%)";
+  //   })
+  // );
 
   // footer form validation
 
