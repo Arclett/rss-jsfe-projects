@@ -68,34 +68,49 @@ export const galleryAnimation = function () {
   // moving gallery
 
   let slidePosition = 2;
-
+  let animation = false;
   arrowRightElement.addEventListener("click", function () {
-    if (slidePosition === 2) {
-      galleryWrapperElement.classList.add("toRight");
-      slidePosition = 3;
-    } else if (slidePosition === 3) {
-      generateSlide("slide1");
-      galleryWrapperElement.classList.remove("toRight");
-      galleryWrapperElement.classList.add("toLeft");
-      slidePosition = 1;
-    } else if (slidePosition === 1) {
-      galleryWrapperElement.classList.remove("toLeft");
-      slidePosition = 2;
+    if (!animation) {
+      animation = true;
+      if (slidePosition === 2) {
+        generateSlide("slide3");
+        galleryWrapperElement.classList.add("toRight");
+        slidePosition = 3;
+      } else if (slidePosition === 3) {
+        generateSlide("slide1");
+        galleryWrapperElement.classList.remove("toRight");
+        galleryWrapperElement.classList.add("toLeft");
+        slidePosition = 1;
+      } else if (slidePosition === 1) {
+        generateSlide("slide2");
+        galleryWrapperElement.classList.remove("toLeft");
+        slidePosition = 2;
+      }
+      setTimeout(function () {
+        animation = false;
+      }, 700);
     }
   });
   arrowLeftElement.addEventListener("click", function () {
-    if (slidePosition === 2) {
-      galleryWrapperElement.classList.add("toLeft");
-      slidePosition = 1;
-    } else if (slidePosition === 3) {
-      generateSlide("slide1");
-      galleryWrapperElement.classList.remove("toRight");
-      slidePosition = 2;
-    } else if (slidePosition === 1) {
-      generateSlide("slide3");
-      galleryWrapperElement.classList.remove("toLeft");
-      galleryWrapperElement.classList.add("toRight");
-      slidePosition = 3;
+    if (!animation) {
+      animation = true;
+      if (slidePosition === 2) {
+        generateSlide("slide1");
+        galleryWrapperElement.classList.add("toLeft");
+        slidePosition = 1;
+      } else if (slidePosition === 3) {
+        generateSlide("slide2");
+        galleryWrapperElement.classList.remove("toRight");
+        slidePosition = 2;
+      } else if (slidePosition === 1) {
+        generateSlide("slide3");
+        galleryWrapperElement.classList.remove("toLeft");
+        galleryWrapperElement.classList.add("toRight");
+        slidePosition = 3;
+      }
+      setTimeout(function () {
+        animation = false;
+      }, 700);
     }
   });
 };

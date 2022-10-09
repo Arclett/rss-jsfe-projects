@@ -1,4 +1,5 @@
 .testimonials {
+  transition: 0.5s;
   background: url("/src/../assets/img/leav_foto.jpg") no-repeat bottom -134px right;
   @media (max-width: $smallDesktop) {
     background: url("/src/../assets/img/leav_foto-small.jpg") no-repeat bottom -88px
@@ -26,11 +27,16 @@
   min-width: 940px;
   object-fit: contain;
   overflow: hidden;
-  @media (max-width: $smallDesktop) {
+  @media (max-width: 1599px) {
+    min-width: 940px;
+    width: 940px;
+  }
+  @media (width: $smallDesktop) {
     padding-top: 100px;
   }
   @media (max-width: 999px) {
     min-width: 640px;
+    width: 640px;
   }
   @media (max-width: $tablet) {
     height: 668px;
@@ -69,38 +75,48 @@
     }
   }
   .replays-wrapper {
-    height: 391px;
-    margin-bottom: 21px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 29.5px;
-    @media (max-width: $tablet) {
-      width: 93.75%;
-      min-width: 600px;
-      margin: 0 auto;
-      flex-direction: column;
-      gap: 15px;
-      height: 357px;
-    }
-    @media (max-width: 630px) {
-      min-width: 299px;
-    }
-    .replay {
-      min-width: 268px;
+    overflow: hidden;
+    .replays-inner-wrapper {
+      transition: 0.5s;
       height: 391px;
-      @media (max-width: $smallDesktop) {
-        min-width: 294px;
-      }
+      margin-bottom: 21px;
+      width: 277.24%; //3216px//
+      display: flex;
+      justify-content: flex-start;
+      gap: 29px;
+      // transform: translateX(-9.2%);
       @media (max-width: $tablet) {
-        height: 109px;
+        width: 93.75%;
+        min-width: 600px;
+        margin: 0 auto;
+        flex-direction: column;
+        gap: 15px;
+        height: 357px;
       }
       @media (max-width: 630px) {
         min-width: 299px;
-        height: 109px;
+      }
+      .replay {
+        min-width: 268px;
+        height: 391px;
+        @media (max-width: 1599px) {
+          min-width: 294px;
+        }
+        @media (width: $smallDesktop) {
+          min-width: 294px;
+        }
+        @media (max-width: $tablet) {
+          height: 109px;
+        }
+        @media (max-width: 630px) {
+          min-width: 299px;
+          height: 109px;
+        }
       }
     }
   }
+
   .scroll-bar {
     // margin-left: 280px;
     margin: 0px auto;
@@ -113,7 +129,7 @@
 .button-testim {
   border-radius: 5px;
   text-transform: uppercase;
-  margin-top: 51px;
+  margin-top: 30px;
   @media (max-width: $tablet) {
     display: block;
     margin: 40px auto 0 auto;

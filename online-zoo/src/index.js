@@ -5,3 +5,5 @@ import { popup } from "./assets/scripts/popup";
 popup();
 import { galleryAnimation } from "./assets/scripts/galleryAnimation";
 galleryAnimation();
+import { testimonials } from "./assets/scripts/testimonials";
+testimonials();
