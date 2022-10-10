@@ -45,24 +45,24 @@ export const userReplayArray = [
     userName: "Lena Ivanova",
     date: "Five days ago",
     avatar: "./src/../assets/svg/user_icon.svg",
-    text: "The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
+    text: "The best online zoo I've met. My son Lena delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
   },
   {
     userName: "Ivan Petrov",
     date: "One week ago",
     avatar: "./src/../assets/svg/user_icon.svg",
-    text: "The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
+    text: "The best online zoo I've met. My son delighted very much ljves to watch Deer. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
   },
   {
     userName: "Petr Petrov",
     date: "One week ago",
     avatar: "./src/../assets/svg/user_icon.svg",
-    text: "The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
+    text: "The best online zoo I've met. My son Ivan delighted very much ljves to watch tigers. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
   },
   {
     userName: "Petr Ivanov",
     date: "One week ago",
     avatar: "./src/../assets/svg/user_icon.svg",
-    text: "The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
+    text: "The best online zoo I've met. My Petr son delighted very much ljves to watch bears. Online zoo is one jf the ways to instill a love for animals.The best online zoo I've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.<br>The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zo've met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for",
   },
 ];

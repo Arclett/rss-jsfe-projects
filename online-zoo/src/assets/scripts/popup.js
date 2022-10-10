@@ -8,8 +8,10 @@ export const popup = function () {
     popupElement.classList.toggle("popup-show");
     overlayElement.classList.toggle("overlay-hidden");
   };
-  burgerElement.addEventListener("click", function () {
-    if (testimPopupElement.classList.contains("overlay-hidden")) {
+  burgerElement.addEventListener("click", function (e) {
+    if (e.target.closest(".donate-header")) {
+      showPopUp();
+    } else if (testimPopupElement.classList.contains("overlay-hidden")) {
       showPopUp();
     } else {
       testimPopupElement.classList.add("overlay-hidden");

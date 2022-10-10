@@ -3,7 +3,8 @@ export const galleryAnimation = function () {
   const arrowRightElement = document.querySelector(".arrow-right");
   const arrowLeftElement = document.querySelector(".arrow-left");
   const galleryWrapperElement = document.querySelector(".gallery-wrapper");
-
+  const chooseWrapperElement = document.querySelector(".choose-wrapper");
+  let width = chooseWrapperElement.getBoundingClientRect().width;
   // support function
 
   const randomInt = function (min, max) {
@@ -25,17 +26,24 @@ export const galleryAnimation = function () {
   const generateSlide = function (slide) {
     const galleryElement = document.querySelector(`.${slide}`);
     const galItemElement = galleryElement.querySelectorAll(".gal-item");
-    let visibleGalElem = [];
     galItemElement.forEach((e) => {
-      if (getComputedStyle(e).display === "block") visibleGalElem.push(e);
+      if (e.childNodes.length > 0) {
+        e.childNodes.forEach((e) => e.remove());
+      }
+    });
+    let visibleGalElem = [];
+    galItemElement.forEach((e, i) => {
+      width = chooseWrapperElement.getBoundingClientRect().width;
+      let amount;
+      width > 990 ? (amount = 6) : (amount = 4);
+      if (i < amount) visibleGalElem.push(e);
     });
     const petsGal = generateRandomPets(visibleGalElem.length);
     visibleGalElem.forEach((e, i) => {
       e.insertAdjacentHTML(
         "afterbegin",
         `<div class="pet-card ${petsGal[i].source}">
-        <div class="pet-info">${petsGal[i].info}
-        </div>
+          <div class="pet-info">${petsGal[i].info}</div>        
       </div>
       <div class="${petsGal[i].foodType}">
         <p>
@@ -70,6 +78,7 @@ export const galleryAnimation = function () {
   let slidePosition = 2;
   let animation = false;
   arrowRightElement.addEventListener("click", function () {
+    // document.querySelectorAll(".pet-card").forEach((e) => e.remove());
     if (!animation) {
       animation = true;
       if (slidePosition === 2) {
@@ -91,7 +100,7 @@ export const galleryAnimation = function () {
       }, 700);
     }
   });
-  arrowLeftElement.addEventListener("click", function () {
+  arrowLeftElement.addEventListener("click", function (e) {
     if (!animation) {
       animation = true;
       if (slidePosition === 2) {
@@ -113,4 +122,21 @@ export const galleryAnimation = function () {
       }, 700);
     }
   });
+
+  //observer
+
+  const observerCallbackPets = function () {
+    width = chooseWrapperElement.getBoundingClientRect().width;
+    if (width === 991 || width === 989) {
+      galleryWrapperElement.classList.remove("toLeft");
+      galleryWrapperElement.classList.remove("toRight");
+      slidePosition = 2;
+      generateSlide("slide1");
+      generateSlide("slide2");
+      generateSlide("slide3");
+    }
+  };
+
+  const resizePet = new ResizeObserver(observerCallbackPets);
+  resizePet.observe(chooseWrapperElement);
 };

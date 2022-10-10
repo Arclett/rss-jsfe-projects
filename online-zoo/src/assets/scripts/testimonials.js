@@ -1,21 +1,26 @@
 import { userReplayArray } from "./user-replays";
 export const testimonials = function () {
   const innerWrapperElement = document.querySelector(".replays-inner-wrapper");
+  const replayWrapperElement = document.querySelector(".replays-wrapper");
   const scrollInputElement = document.querySelector(".scroll-bar");
   const testimPopupElement = document.querySelector(".popup-testim");
   const overlayElement = document.querySelector(".overlay");
   const testimCrossElement = document.querySelector(".testim-cross");
-  const width = document
+  let width = document
     .querySelector(".body-wrapper")
     .getBoundingClientRect().width;
 
   //generate replays fom array
 
-  if (width > 640) {
-    userReplayArray.forEach((e, i) => {
-      innerWrapperElement.insertAdjacentHTML(
-        "beforeend",
-        `<div class="replay rep${i + 1}">
+  const fillReplayGallery = function () {
+    width = document
+      .querySelector(".body-wrapper")
+      .getBoundingClientRect().width;
+    if (width > 640) {
+      userReplayArray.forEach((e, i) => {
+        innerWrapperElement.insertAdjacentHTML(
+          "beforeend",
+          `<div class="replay rep${i + 1}">
       <div class="replay-inner">
         <img class="userpic" src=${e.avatar} alt="avatar">
         <h3>${e.userName}</h3>
@@ -23,14 +28,14 @@ export const testimonials = function () {
         <p>${e.text}</p>
         </div>
         </div>`
-      );
-    });
-  } else {
-    userReplayArray.forEach((e, i) => {
-      if (i < 3) {
-        innerWrapperElement.insertAdjacentHTML(
-          "beforeend",
-          `<div class="replay rep${i + 1}">
+        );
+      });
+    } else {
+      userReplayArray.forEach((e, i) => {
+        if (i < 3) {
+          innerWrapperElement.insertAdjacentHTML(
+            "beforeend",
+            `<div class="replay rep${i + 1}">
         <div class="replay-inner">
           <img class="userpic" src=${e.avatar} alt="avatar">
           <h3>${e.userName}</h3>
@@ -38,10 +43,26 @@ export const testimonials = function () {
           <p>${e.text}</p>
           </div>
           </div>`
-        );
-      }
-    });
-  }
+          );
+        }
+      });
+    }
+  };
+  fillReplayGallery();
+
+  // refill when window resized
+
+  const observerCallback = function () {
+    width = document
+      .querySelector(".body-wrapper")
+      .getBoundingClientRect().width;
+    if (width === 1000 || width === 1600 || width >= 640)
+      document.querySelectorAll(".replay").forEach((e) => e.remove());
+    fillReplayGallery();
+  };
+
+  const resize = new ResizeObserver(observerCallback);
+  resize.observe(replayWrapperElement);
 
   // scroll-bar functionality
 
@@ -80,6 +101,10 @@ export const testimonials = function () {
         );
         testimPopupElement.classList.remove("overlay-hidden");
         overlayElement.classList.remove("overlay-hidden");
+        setTimeout(function () {
+          document.querySelector(".replay-popup").style.opacity = "1";
+          testimCrossElement.style.opacity = "1";
+        }, 100);
       }
     }
   });
