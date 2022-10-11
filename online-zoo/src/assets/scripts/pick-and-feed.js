@@ -36,23 +36,24 @@ export const pickAndFeed = function () {
       clearPoint();
       pricePointElement.forEach((e) => {
         const selector = e.className.split(" ")[1];
-
         if (inputValue === document.querySelector(`.${selector}`).textContent) {
-          console.log(selector);
           e.classList.add("active-price");
           document
             .querySelector(`[data-sum = '${selector}']`)
             .firstChild.classList.add("border-active-one");
         }
       });
+    } else {
+      pointElem.forEach((e) =>
+        e.firstChild.classList.remove("border-active-one")
+      );
+      pricePointElement.forEach((e) => e.classList.remove("active-price"));
     }
   };
 
-  anotherAmountElement.addEventListener("blur", inputDonate);
-  anotherAmountElement.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      inputDonate();
-      anotherAmountElement.blur();
-    }
+  // anotherAmountElement.addEventListener("blur", inputDonate);
+  anotherAmountElement.addEventListener("keyup", function () {
+    inputDonate();
+    // anotherAmountElement.blur();
   });
 };
