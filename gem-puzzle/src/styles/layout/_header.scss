@@ -1,0 +1,16 @@
+.header-wrapper {
+  @include bg;
+  width: 90%;
+  height: 100px;
+  margin: 0px auto 30px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .title {
+    text-align: center;
+    height: 50px;
+    font-size: 40px;
+    margin: 0px;
+    color: rgb(32, 8, 77);
+  }
+}
