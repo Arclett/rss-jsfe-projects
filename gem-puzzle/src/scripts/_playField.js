@@ -1,10 +1,119 @@
 const pfWrapper = document.querySelector(".play-field-wrapper");
 
 export class PlayField {
+  #animationGo;
+  #moveTarget;
+  #movable;
   constructor(matrix) {
     this.matrix = matrix;
     this.renderField(this.matrix);
     pfWrapper.addEventListener("click", this.moveTile.bind(this));
+    this.#animationGo = false;
+    pfWrapper.addEventListener("dragstart", this.dragTile.bind(this));
+    pfWrapper.addEventListener("drop", this.dropTile.bind(this));
+    pfWrapper.addEventListener("dragend", this.dropTile.bind(this));
+  }
+
+  //Move tile
+
+  moveTile(e) {
+    if (
+      e.target.classList.contains("gem") &&
+      this.#animationGo === false &&
+      e.target !== document.querySelector("#e0")
+    ) {
+      this.#animationGo = true;
+      let value = +e.target.textContent;
+      if (this.#movable.some((elem) => elem.tile === e.target)) {
+        let dir;
+        this.#movable.forEach((elem) => {
+          if (e.target === elem.tile) {
+            dir = elem.direction;
+          }
+        });
+        e.target.classList.add(`move${dir}`);
+      } else {
+        this.#animationGo = false;
+        return;
+      }
+      this.updateMatrix(value);
+      setTimeout(
+        function () {
+          this.renderField(this.matrix);
+          this.#animationGo = false;
+        }.bind(this),
+        200
+      );
+    }
+  }
+
+  dragTile(e) {
+    e.target.classList.add("dragging");
+    this.#moveTarget = e.target;
+  }
+
+  dropTile(e) {
+    e.preventDefault();
+    if (e.target !== document.querySelector("#e0")) {
+      this.#moveTarget.classList.remove("dragging");
+      return;
+    }
+    if (e.target === document.querySelector("#e0")) {
+      let value = +this.#moveTarget.textContent;
+      this.updateMatrix(value);
+      this.renderField(this.matrix);
+    }
+  }
+
+  // Generating and updating
+
+  updateMatrix(value) {
+    let tempMatrix = this.matrix.flat();
+    const zeroIndex = tempMatrix.indexOf(0);
+    const targetIndex = tempMatrix.indexOf(value);
+    tempMatrix.splice(zeroIndex, 1, value);
+    tempMatrix.splice(targetIndex, 1, 0);
+    const res = [];
+    for (let i = 0; i < this.matrix.length; i++) {
+      res.push(tempMatrix.slice(i * 4, (i + 1) * 4));
+    }
+    this.matrix = res;
+  }
+
+  isDraggable() {
+    this.#movable = [];
+    document.querySelectorAll(".gem").forEach((elem) => {
+      let value = +elem.textContent;
+      const tileCoords = this.getCoords(value);
+      const zeroCoords = this.getCoords(0);
+      if (zeroCoords.x - tileCoords.x === 1 && zeroCoords.y === tileCoords.y) {
+        this.#movable.push({ tile: elem, direction: "Right" });
+      }
+      if (zeroCoords.x - tileCoords.x === -1 && zeroCoords.y === tileCoords.y) {
+        this.#movable.push({ tile: elem, direction: "Left" });
+      }
+      if (zeroCoords.y - tileCoords.y === 1 && zeroCoords.x === tileCoords.x) {
+        this.#movable.push({ tile: elem, direction: "Bottom" });
+      }
+      if (zeroCoords.y - tileCoords.y === -1 && zeroCoords.x === tileCoords.x) {
+        this.#movable.push({ tile: elem, direction: "Top" });
+      }
+    });
+    this.#movable.forEach((element) => {
+      element.tile.classList.add("draggable");
+      element.tile.setAttribute("draggable", "true");
+    });
+  }
+
+  getCoords(val) {
+    let coords = {};
+    this.matrix.forEach((el, i) => {
+      el.forEach((elem, index) => {
+        if (elem === val) coords.x = index;
+      });
+      if (el.includes(val)) coords.y = i;
+    });
+    return coords;
   }
 
   renderField(array) {
@@ -20,80 +129,9 @@ export class PlayField {
       })
     );
     document.querySelector("#e0").classList.add("zero");
-  }
-
-  moveTile(e) {
-    if (e.target.classList.contains("gem")) {
-      let value = +e.target.textContent;
-      const tileCoords = this.getCoords(value);
-      const zeroCoords = this.getCoords(0);
-      console.log(zeroCoords, tileCoords);
-      console.log(zeroCoords.x - tileCoords.x);
-      console.log(e.target);
-      let zeroPos;
-      let tempMatrix = this.matrix.flat();
-      if (zeroCoords.x - tileCoords.x === 1 && zeroCoords.y === tileCoords.y) {
-        e.target.classList.add("moveRight");
-        zeroPos = document.querySelector(
-          `[data-position='${+e.target.dataset.position + 1}']`
-        );
-      } else if (
-        zeroCoords.x - tileCoords.x === -1 &&
-        zeroCoords.y === tileCoords.y
-      ) {
-        e.target.classList.add("moveLeft");
-        zeroPos = document.querySelector(
-          `[data-position='${+e.target.dataset.position - 1}']`
-        );
-        console.log(zeroPos);
-      } else if (
-        zeroCoords.y - tileCoords.y === 1 &&
-        zeroCoords.x === tileCoords.x
-      ) {
-        e.target.classList.add("moveBottom");
-        zeroPos = document.querySelector(
-          `[data-position='${+e.target.dataset.position + this.matrix.length}']`
-        );
-        console.log(zeroPos);
-      } else if (
-        zeroCoords.y - tileCoords.y === -1 &&
-        zeroCoords.x === tileCoords.x
-      ) {
-        e.target.classList.add("moveTop");
-        zeroPos = document.querySelector(
-          `[data-position='${+e.target.dataset.position - this.matrix.length}']`
-        );
-        console.log(zeroPos);
-      } else {
-        return;
-      }
-      const zeroIndex = tempMatrix.indexOf(0);
-      const targetIndex = tempMatrix.indexOf(value);
-      tempMatrix.splice(zeroIndex, 1, value);
-      tempMatrix.splice(targetIndex, 1, 0);
-      const res = [];
-      for (let i = 0; i < this.matrix.length; i++) {
-        res.push(tempMatrix.slice(i * 4, (i + 1) * 4));
-      }
-      this.matrix = res;
-      setTimeout(
-        function () {
-          this.renderField(res);
-          console.log(this.matrix);
-        }.bind(this),
-        500
-      );
-    }
-  }
-
-  getCoords(val) {
-    let coords = {};
-    this.matrix.forEach((el, i) => {
-      el.forEach((elem, index) => {
-        if (elem === val) coords.x = index;
-      });
-      if (el.includes(val)) coords.y = i;
+    document.querySelector("#e0").addEventListener("dragover", function (e) {
+      e.preventDefault();
     });
-    return coords;
+    this.isDraggable();
   }
 }

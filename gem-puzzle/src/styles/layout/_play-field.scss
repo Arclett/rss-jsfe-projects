@@ -18,7 +18,7 @@
     justify-content: center;
     font-size: 30px;
     color: white;
-    transition: 0.5s;
+    transition: 0.2s;
   }
 }
 
@@ -39,4 +39,19 @@
 }
 .zero {
   opacity: 0;
+}
+
+.readyToMove {
+  position: relative;
+  z-index: 100;
+}
+
+.draggable {
+  border: 2px solid rgb(117, 95, 218) !important;
+  cursor: grab;
+}
+
+.dragging {
+  opacity: 0;
+  transition: 0 !important;
 }
