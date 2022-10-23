@@ -1,20 +1,41 @@
 .paused {
-  width: 50%;
+  width: 70%;
   min-width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: rgb(112, 77, 170);
+  background-color: $blue;
+  padding: 10px;
+  @include border;
   color: white;
   padding: 10px;
   margin: 0 auto;
   align-items: center;
+  h2 {
+    margin: 10px auto 10px auto;
+    background-color: brown;
+    @include border;
+    padding: 5px;
+  }
+  h3 {
+    margin: 10px auto 10px auto;
+  }
   .records {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
     width: 100%;
+    .records-head {
+      div {
+        border-bottom: 1px solid white;
+      }
+      .mov,
+      .time {
+        &:hover {
+          @include active;
+        }
+      }
+    }
     .records-elem {
       display: flex;
       flex-direction: row;
@@ -26,9 +47,7 @@
       .pos,
       .time {
         width: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include center;
       }
     }
   }

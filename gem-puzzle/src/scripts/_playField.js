@@ -1,5 +1,5 @@
-const pfWrapper = document.querySelector(".play-field-wrapper");
-const movesElement = document.querySelector(".moves");
+// const pfWrapper = document.querySelector(".play-field-wrapper");
+// const movesElement = document.querySelector(".moves");
 
 export class PlayField {
   #animationGo;
@@ -8,11 +8,16 @@ export class PlayField {
   typeF;
   moves;
   time;
-  sound = false;
+  sound;
+  pfWrapper;
+  movesElement;
   constructor(matrix, type) {
     //initial
+    this.sound = false;
+    this.pfWrapper = document.querySelector(".play-field-wrapper");
+    this.movesElement = document.querySelector(".moves");
     this.moves = 0;
-    movesElement.textContent = `Moves: ${this.moves}`;
+    this.movesElement.textContent = `Moves: ${this.moves}`;
     this.typeF = type;
     this.matrix = matrix;
     this.renderField(this.matrix);
@@ -20,13 +25,13 @@ export class PlayField {
 
     //even handlers
 
-    pfWrapper.addEventListener("click", this.moveTile.bind(this));
-    pfWrapper.addEventListener("drag", function (e) {
+    this.pfWrapper.addEventListener("click", this.moveTile.bind(this));
+    this.pfWrapper.addEventListener("drag", function (e) {
       e.preventDefault();
     });
-    pfWrapper.addEventListener("dragstart", this.dragTile.bind(this));
-    pfWrapper.addEventListener("drop", this.dropTile.bind(this));
-    pfWrapper.addEventListener("dragend", this.dropTile.bind(this));
+    this.pfWrapper.addEventListener("dragstart", this.dragTile.bind(this));
+    this.pfWrapper.addEventListener("drop", this.dropTile.bind(this));
+    this.pfWrapper.addEventListener("dragend", this.dropTile.bind(this));
   }
 
   //Move tile
@@ -53,7 +58,7 @@ export class PlayField {
       }
       this.updateMatrix(value);
       this.moves++;
-      movesElement.textContent = `Moves: ${this.moves}`;
+      this.movesElement.textContent = `Moves: ${this.moves}`;
       if (this.sound) {
         this.playAudio();
       }
@@ -85,7 +90,7 @@ export class PlayField {
         this.playAudio();
       }
       this.moves++;
-      movesElement.textContent = `Moves: ${this.moves}`;
+      this.movesElement.textContent = `Moves: ${this.moves}`;
       this.renderField(this.matrix);
     }
   }
@@ -142,16 +147,16 @@ export class PlayField {
   }
 
   renderField(array) {
-    pfWrapper.classList.remove("fieldSize3");
-    pfWrapper.classList.remove("fieldSize4");
-    pfWrapper.classList.remove("fieldSize8");
-    pfWrapper.classList.remove("fieldRecords");
-    pfWrapper.classList.add(`fieldSize${this.typeF}`);
-    pfWrapper.replaceChildren();
+    this.pfWrapper.classList.remove("fieldSize3");
+    this.pfWrapper.classList.remove("fieldSize4");
+    this.pfWrapper.classList.remove("fieldSize8");
+    this.pfWrapper.classList.remove("fieldRecords");
+    this.pfWrapper.classList.add(`fieldSize${this.typeF}`);
+    this.pfWrapper.replaceChildren();
     let count = 1;
     array.forEach((e) =>
       e.forEach((elem) => {
-        pfWrapper.insertAdjacentHTML(
+        this.pfWrapper.insertAdjacentHTML(
           "beforeend",
           `<div class="gem" id='e${elem}' data-position='${count}'>${elem}</div>`
         );
@@ -166,15 +171,15 @@ export class PlayField {
   }
 
   paused() {
-    pfWrapper.replaceChildren();
-    pfWrapper.insertAdjacentHTML(
+    this.pfWrapper.replaceChildren();
+    this.pfWrapper.insertAdjacentHTML(
       "beforeend",
       "<div class='pause'><h2>Game is Paused</h2></div>"
     );
   }
 
   playAudio() {
-    const click = new Audio("../assets/audio/click.wav");
+    const click = new Audio("./assets/audio/click.wav");
     click.play();
   }
 }

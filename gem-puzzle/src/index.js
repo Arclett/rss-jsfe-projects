@@ -1,10 +1,10 @@
 import "/styles/main.scss";
 import { PlayField } from "./scripts/_playField";
 
-const headerElem = document.querySelector(".header-wrapper");
-const timeElem = document.querySelector(".times");
-const pauseElem = document.querySelector(".pause");
-const pfWrapper = document.querySelector(".play-field-wrapper");
+// const headerElem = document.querySelector(".header-wrapper");
+// const timeElem = document.querySelector(".times");
+// const pauseElem = document.querySelector(".pause");
+// const pfWrapper = document.querySelector(".play-field-wrapper");
 
 class Main {
   type;
@@ -13,22 +13,68 @@ class Main {
   gameActive;
   records;
   sortType;
+  pfWrapper;
+  pauseElem;
+  timeElem;
+  headerElem;
   constructor() {
+    this.renderPage();
+    this.pfWrapper = document.querySelector(".play-field-wrapper");
+    this.pauseElem = document.querySelector(".pause");
+    this.timeElem = document.querySelector(".times");
+    this.headerElem = document.querySelector(".header-wrapper");
+
     this.gameActive = true;
     this.records = [];
     this.sortType = "time";
     this.playTime = new Date(2000, 1, 1, 0, 0, 0);
-    timeElem.textContent = "Time: 00:00:00";
+    this.timeElem.textContent = "Time: 00:00:00";
     this.timer();
     this.type = +document.querySelector(".field-size").value;
     this.matrix = this.checkSolvability();
     this.PlayField = new PlayField(this.matrix, this.type);
-    headerElem.addEventListener("click", this.controls.bind(this));
-    pauseElem.addEventListener("click", this.pause.bind(this));
-    pfWrapper.addEventListener("click", this.chechWin.bind(this));
-    pfWrapper.addEventListener("click", this.sortRecords.bind(this));
+    this.headerElem.addEventListener("click", this.controls.bind(this));
+    this.pauseElem.addEventListener("click", this.pause.bind(this));
+    this.pfWrapper.addEventListener("click", this.chechWin.bind(this));
+    this.pfWrapper.addEventListener("click", this.sortRecords.bind(this));
     window.addEventListener("beforeunload", this.setLocal.bind(this));
     window.addEventListener("load", this.getLocal.bind(this));
+  }
+
+  renderPage() {
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div class="wrapper">
+    <header class="header">
+      <div class="header-wrapper">
+        <h1 class="title">Gem Puzzle</h1>
+        <div class="controls">
+          <div class="control-elem new-game">
+            <label class="new"
+              >New Game:
+              <select class="field-size">
+                <option value="3" class='str3'>3x3</option>
+                <option value="4" class='str4' selected>4x4</option>
+                <option value="8" class='str8'>8x8</option>
+              </select>
+            </label>
+          </div>
+          <div class="control-elem refresh">Refresh</div>
+          <div class="control-elem pause">Pause</div>
+          <div class="control-elem sound">Sound: Off</div>
+        </div>
+        <div class="status">
+          <div class="status-elem moves"></div>
+          <div class="status-elem times"></div>
+        </div>
+        <div class="score"></div>
+      </div>
+    </header>
+    <main class="play-field">
+      <div class="play-field-wrapper"></div>
+    </main>
+  </div>`
+    );
   }
 
   controls(e) {
@@ -58,22 +104,28 @@ class Main {
     this.PlayField.matrix = this.matrix;
     this.PlayField.renderField(this.matrix);
     this.PlayField.moves = 0;
+    this.gameActive = true;
     document.querySelector(".moves").textContent = `Moves: 0`;
     this.playTime = new Date(2000, 1, 1, 0, 0, 0);
-    timeElem.textContent = "Time: 00:00:00";
+    this.timeElem.textContent = "Time: 00:00:00";
   }
 
   newGame() {
-    // e.preventDefault();
     this.type = +document.querySelector(".field-size").value;
-    this.matrix = this.generateMatrix();
+    document
+      .querySelectorAll("option")
+      .forEach((e) => e.removeAttribute("selected"));
+    document
+      .querySelector(`.str${this.type}`)
+      .setAttribute("selected", "selected");
+    this.matrix = this.checkSolvability();
     this.PlayField.matrix = this.matrix;
     this.PlayField.typeF = this.type;
     this.PlayField.moves = 0;
     this.gameActive = true;
     document.querySelector(".pause").textContent = "Pause";
     this.playTime = new Date(2000, 1, 1, 0, 0, 0);
-    timeElem.textContent = "Time: 00:00:00";
+    this.timeElem.textContent = "Time: 00:00:00";
     document.querySelector(".moves").textContent = `Moves: 0`;
     this.PlayField.renderField(this.matrix);
   }
@@ -85,7 +137,7 @@ class Main {
       this.paused();
     } else {
       this.gameActive = true;
-      this.PlayField.renderField(this.matrix);
+      this.PlayField.renderField(this.PlayField.matrix);
       document.querySelector(".pause").textContent = "Pause";
     }
   }
@@ -116,7 +168,7 @@ class Main {
   }
 
   setTime(time) {
-    timeElem.textContent = `Time: ${time
+    this.timeElem.textContent = `Time: ${time
       .getHours()
       .toString()
       .padStart(2, "0")}:${time.getMinutes().toString().padStart(2, "0")}:${time
@@ -139,20 +191,20 @@ class Main {
   }
 
   paused() {
-    pfWrapper.replaceChildren();
-    pfWrapper.classList.add("fieldRecords");
+    this.pfWrapper.replaceChildren();
+    this.pfWrapper.classList.add("fieldRecords");
     this.renderRecords();
   }
 
   renderRecords() {
     if (this.records.length === 0) {
-      pfWrapper.insertAdjacentHTML(
+      this.pfWrapper.insertAdjacentHTML(
         "beforeend",
         "<div class='paused'><h2>Game is Paused</h2><h3>Top Results</h3><div class='records'><div class='records-head records-elem'><div class ='pos'>Position</div><div class='mov sort-mov'>Moves</div><div class='time sort-time'>Time</div></div></div>"
       );
       return;
     }
-    pfWrapper.replaceChildren();
+    this.pfWrapper.replaceChildren();
     let ind;
     if (this.sortType === "mov") {
       ind = 0;
@@ -162,7 +214,7 @@ class Main {
     this.records.sort((a, b) => parseInt(a[ind]) - parseInt(b[ind]));
     for (let i = 0; i <= this.records.length; i++) {
       if (i === 0) {
-        pfWrapper.insertAdjacentHTML(
+        this.pfWrapper.insertAdjacentHTML(
           "beforeend",
           "<div class='paused'><h2>Game is Paused</h2><h3>Top Results</h3><div class='records'><div class='records-head records-elem'><div class ='pos'>Position</div><div class='mov sort-mov'>Moves</div><div class='time sort-time'>Time</div></div></div>"
         );
@@ -209,7 +261,7 @@ class Main {
       const moves = this.PlayField.moves;
       this.records.push([moves, time]);
       this.records.sort((a, b) => parseInt(a[1]) - parseInt(b[1]));
-      this.records = this.records.slice(0, 10);
+      this.records = this.records.slice(0, 5);
       this.refresh();
       alert(
         `Hooray! You solved the puzzle in ${timeSting} and ${moves} moves!`
@@ -235,6 +287,12 @@ class Main {
     if (localStorage.getItem("type")) {
       this.type = +localStorage.getItem("type");
       this.PlayField.typeF = +localStorage.getItem("type");
+      document
+        .querySelectorAll("option")
+        .forEach((e) => e.removeAttribute("selected"));
+      document
+        .querySelector(`.str${this.type}`)
+        .setAttribute("selected", "selected");
     } else {
       this.type = +document.querySelector(".field-size").value;
     }

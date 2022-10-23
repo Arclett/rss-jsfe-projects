@@ -3,3 +3,19 @@
   border: 3px solid rgb(197, 150, 62);
   border-radius: 5px;
 }
+
+@mixin border {
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin active {
+  scale: 1.1;
+  cursor: pointer;
+}
