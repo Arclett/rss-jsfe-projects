@@ -1,7 +1,7 @@
 .header-wrapper {
   @include bg;
   width: 90%;
-  height: 100px;
+  height: 150px;
   margin: 0px auto 30px auto;
   display: flex;
   flex-direction: column;
@@ -12,5 +12,34 @@
     font-size: 40px;
     margin: 0px;
     color: rgb(32, 8, 77);
+  }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 90%;
+    justify-content: space-between;
+    height: 50px;
+    font-size: 20px;
+    margin: 0 auto;
+    .control-elem {
+      background-color: rgb(51, 58, 145);
+      color: white;
+    }
+    .new-game {
+      display: flex;
+    }
+  }
+  .status {
+    margin: 10px auto 0 auto;
+    font-size: 20px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    .status-elem {
+      background-color: brown;
+      color: white;
+    }
   }
 }

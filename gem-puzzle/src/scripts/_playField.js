@@ -1,14 +1,29 @@
 const pfWrapper = document.querySelector(".play-field-wrapper");
+const movesElement = document.querySelector(".moves");
 
 export class PlayField {
   #animationGo;
   #moveTarget;
   #movable;
-  constructor(matrix) {
+  typeF;
+  moves;
+  time;
+  sound = false;
+  constructor(matrix, type) {
+    //initial
+    this.moves = 0;
+    movesElement.textContent = `Moves: ${this.moves}`;
+    this.typeF = type;
     this.matrix = matrix;
     this.renderField(this.matrix);
-    pfWrapper.addEventListener("click", this.moveTile.bind(this));
     this.#animationGo = false;
+
+    //even handlers
+
+    pfWrapper.addEventListener("click", this.moveTile.bind(this));
+    pfWrapper.addEventListener("drag", function (e) {
+      e.preventDefault();
+    });
     pfWrapper.addEventListener("dragstart", this.dragTile.bind(this));
     pfWrapper.addEventListener("drop", this.dropTile.bind(this));
     pfWrapper.addEventListener("dragend", this.dropTile.bind(this));
@@ -37,6 +52,11 @@ export class PlayField {
         return;
       }
       this.updateMatrix(value);
+      this.moves++;
+      movesElement.textContent = `Moves: ${this.moves}`;
+      if (this.sound) {
+        this.playAudio();
+      }
       setTimeout(
         function () {
           this.renderField(this.matrix);
@@ -61,6 +81,11 @@ export class PlayField {
     if (e.target === document.querySelector("#e0")) {
       let value = +this.#moveTarget.textContent;
       this.updateMatrix(value);
+      if (this.sound) {
+        this.playAudio();
+      }
+      this.moves++;
+      movesElement.textContent = `Moves: ${this.moves}`;
       this.renderField(this.matrix);
     }
   }
@@ -74,8 +99,8 @@ export class PlayField {
     tempMatrix.splice(zeroIndex, 1, value);
     tempMatrix.splice(targetIndex, 1, 0);
     const res = [];
-    for (let i = 0; i < this.matrix.length; i++) {
-      res.push(tempMatrix.slice(i * 4, (i + 1) * 4));
+    for (let i = 0; i < this.typeF; i++) {
+      res.push(tempMatrix.slice(i * this.typeF, (i + 1) * this.typeF));
     }
     this.matrix = res;
   }
@@ -117,6 +142,11 @@ export class PlayField {
   }
 
   renderField(array) {
+    pfWrapper.classList.remove("fieldSize3");
+    pfWrapper.classList.remove("fieldSize4");
+    pfWrapper.classList.remove("fieldSize8");
+    pfWrapper.classList.remove("fieldRecords");
+    pfWrapper.classList.add(`fieldSize${this.typeF}`);
     pfWrapper.replaceChildren();
     let count = 1;
     array.forEach((e) =>
@@ -133,5 +163,18 @@ export class PlayField {
       e.preventDefault();
     });
     this.isDraggable();
+  }
+
+  paused() {
+    pfWrapper.replaceChildren();
+    pfWrapper.insertAdjacentHTML(
+      "beforeend",
+      "<div class='pause'><h2>Game is Paused</h2></div>"
+    );
+  }
+
+  playAudio() {
+    const click = new Audio("../assets/audio/click.wav");
+    click.play();
   }
 }

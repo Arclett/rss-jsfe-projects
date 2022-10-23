@@ -12,10 +12,23 @@
         <div class="header-wrapper">
           <h1 class="title">Gem Puzzle</h1>
           <div class="controls">
-            <div class="control-elem"></div>
-            <div class="control-elem"></div>
-            <div class="control-elem"></div>
-            <div class="control-elem"></div>
+            <div class="control-elem new-game">
+              <label class="new"
+                >New Game:
+                <select class="field-size">
+                  <option value="3">3x3</option>
+                  <option value="4" selected>4x4</option>
+                  <option value="8">8x8</option>
+                </select>
+              </label>
+            </div>
+            <div class="control-elem refresh">Refresh</div>
+            <div class="control-elem pause">Pause</div>
+            <div class="control-elem sound">Sound: Off</div>
+          </div>
+          <div class="status">
+            <div class="status-elem moves"></div>
+            <div class="status-elem times"></div>
           </div>
           <div class="score"></div>
         </div>
