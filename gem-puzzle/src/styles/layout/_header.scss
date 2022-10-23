@@ -51,6 +51,11 @@
     }
     .new-game {
       display: flex;
+      .new {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
   .status {

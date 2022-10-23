@@ -150,6 +150,9 @@ export class PlayField {
     this.pfWrapper.classList.remove("fieldSize3");
     this.pfWrapper.classList.remove("fieldSize4");
     this.pfWrapper.classList.remove("fieldSize8");
+    this.pfWrapper.classList.remove("fieldSize7");
+    this.pfWrapper.classList.remove("fieldSize6");
+    this.pfWrapper.classList.remove("fieldSize5");
     this.pfWrapper.classList.remove("fieldRecords");
     this.pfWrapper.classList.add(`fieldSize${this.typeF}`);
     this.pfWrapper.replaceChildren();

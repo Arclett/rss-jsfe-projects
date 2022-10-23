@@ -49,18 +49,21 @@ class Main {
       <div class="header-wrapper">
         <h1 class="title">Gem Puzzle</h1>
         <div class="controls">
-          <div class="control-elem new-game">
-            <label class="new"
+          <div class="control-elem new-game" title='Choose board size and start new game'>
+            <label class="new" title='Choose board size and start new game'
               >New Game:
               <select class="field-size">
                 <option value="3" class='str3'>3x3</option>
                 <option value="4" class='str4' selected>4x4</option>
+                <option value="5" class='str5'>5x5</option>
+                <option value="6" class='str6'>6x6</option>
+                <option value="7" class='str7'>7x7</option>
                 <option value="8" class='str8'>8x8</option>
               </select>
             </label>
           </div>
           <div class="control-elem refresh">Refresh</div>
-          <div class="control-elem pause">Pause</div>
+          <div class="control-elem pause">Records</div>
           <div class="control-elem sound">Sound: Off</div>
         </div>
         <div class="status">
@@ -123,7 +126,7 @@ class Main {
     this.PlayField.typeF = this.type;
     this.PlayField.moves = 0;
     this.gameActive = true;
-    document.querySelector(".pause").textContent = "Pause";
+    document.querySelector(".pause").textContent = "Records";
     this.playTime = new Date(2000, 1, 1, 0, 0, 0);
     this.timeElem.textContent = "Time: 00:00:00";
     document.querySelector(".moves").textContent = `Moves: 0`;
@@ -133,12 +136,12 @@ class Main {
   pause() {
     if (this.gameActive) {
       this.gameActive = false;
-      document.querySelector(".pause").textContent = "Play";
+      document.querySelector(".pause").textContent = "Resume";
       this.paused();
     } else {
       this.gameActive = true;
       this.PlayField.renderField(this.PlayField.matrix);
-      document.querySelector(".pause").textContent = "Pause";
+      document.querySelector(".pause").textContent = "Records";
     }
   }
 
@@ -360,10 +363,10 @@ class Main {
       return acc;
     }, 0);
 
-    if (array.length === 3) {
+    if (array.length % 2 > 0) {
       return x % 2 > 0 ? false : true;
     }
-    if (array.length === 4 || array.length) {
+    if (array.length % 2 === 4 || array.length) {
       return (x + blanRow) % 2 > 0 ? true : false;
     }
   }
