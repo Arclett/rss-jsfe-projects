@@ -109,6 +109,7 @@ class Main {
     this.PlayField.moves = 0;
     this.gameActive = true;
     document.querySelector(".moves").textContent = `Moves: 0`;
+    document.querySelector(".pause").textContent = "Records";
     this.playTime = new Date(2000, 1, 1, 0, 0, 0);
     this.timeElem.textContent = "Time: 00:00:00";
   }
@@ -264,7 +265,7 @@ class Main {
       const moves = this.PlayField.moves;
       this.records.push([moves, time]);
       this.records.sort((a, b) => parseInt(a[1]) - parseInt(b[1]));
-      this.records = this.records.slice(0, 5);
+      this.records = this.records.slice(0, 10);
       this.refresh();
       alert(
         `Hooray! You solved the puzzle in ${timeSting} and ${moves} moves!`
