@@ -1,0 +1,26 @@
+.footer-wrapper {
+  background-color: $blackBg;
+  height: 100px;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .settings-icon {
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .rss-icon {
+    width: 100px;
+    height: 50px;
+  }
+  a .git-icon {
+    width: 50px;
+    height: 50px;
+  }
+  .year {
+    @include centered;
+    color: white;
+  }
+}

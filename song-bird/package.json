@@ -5,7 +5,8 @@
   "name": "song-bird",
   "scripts": {
     "start": "webpack serve --env development",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "npm run build && npx gh-pages -d dist -e codejam-puzzle"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
@@ -19,5 +20,8 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1",
     "webpack-remove-empty-scripts": "^0.7.1"
+  },
+  "dependencies": {
+    "gh-pages": "^4.0.0"
   }
 }

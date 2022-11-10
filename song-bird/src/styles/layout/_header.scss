@@ -1,0 +1,12 @@
+.header-wrapper {
+  background-color: $blackBg;
+  width: 100%;
+  font-size: 40px;
+  padding: 15px 0;
+  @include centered;
+  .main-title {
+    @include marginReset;
+    color: white;
+    font-family: Pacifico, cursive;
+  }
+}

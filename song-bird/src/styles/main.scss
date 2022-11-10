@@ -1,3 +1,44 @@
-body {
-  background-color: bisque;
+//abstracts
+
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
+
+//layouts
+
+@import "./layout/header";
+@import "./layout/footer";
+
+//main page styles
+
+.body-wrapper {
+  background: url("../assets/img/default-bg.jpg") no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.main {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  justify-content: space-between;
+
+  .main-links {
+    height: 200px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: $blackBg;
+    transition: 0.5s;
+    &:hover {
+      scale: 1.2;
+    }
+    div {
+      @include centered;
+      color: white;
+      font-size: 25px;
+      font-family: Pacifico, cursive;
+    }
+  }
 }
