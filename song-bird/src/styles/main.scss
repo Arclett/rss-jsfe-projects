@@ -7,9 +7,9 @@
 
 @import "./layout/header";
 @import "./layout/footer";
+@import "./layout/quiz";
 
 //main page styles
-
 .body-wrapper {
   background: url("../assets/img/default-bg.jpg") no-repeat;
   background-size: cover;
@@ -21,7 +21,7 @@
 }
 .main {
   display: flex;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   justify-content: space-between;
 
@@ -29,6 +29,7 @@
     height: 200px;
     width: 150px;
     border-radius: 10px;
+    padding: 10px;
     background-color: $blackBg;
     transition: 0.5s;
     &:hover {
