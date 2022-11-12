@@ -8,3 +8,14 @@
   margin: 0px;
   padding: 0px;
 }
+
+@mixin quizMargin {
+  width: 85%;
+  margin: 10px auto 0px auto;
+}
+
+@mixin buttonBorder {
+  border-radius: 5px;
+  border: 1.5px solid white;
+  background-color: $flatGreyBg;
+}

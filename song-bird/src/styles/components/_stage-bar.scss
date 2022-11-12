@@ -1,0 +1,27 @@
+.stage-bar {
+  @include marginReset;
+  @include quizMargin;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  grid-column: span 2;
+  justify-content: space-between;
+  align-items: center;
+  .stage {
+    font-size: 20px;
+    color: white;
+    border: 1.5px solid white;
+    border-radius: 10px;
+    padding: 5px;
+  }
+}
+.active {
+  background-color: rgb(58, 56, 56);
+  border: 2px solid green !important;
+  color: green !important;
+  transform: scale(1.2);
+}
+.complete {
+  background-color: rgb(7, 40, 7) !important;
+  color: white !important;
+}

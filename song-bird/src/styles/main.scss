@@ -8,13 +8,20 @@
 @import "./layout/header";
 @import "./layout/footer";
 @import "./layout/quiz";
+@import "./layout/result";
+
+//components
+@import "./components/stage-bar";
+@import "./components/guess";
+@import "./components/bird-card";
 
 //main page styles
+
 .body-wrapper {
   background: url("../assets/img/default-bg.jpg") no-repeat;
   background-size: cover;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

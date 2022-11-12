@@ -1,0 +1,20 @@
+.guess-wrapper {
+  margin: 20px auto 10px auto;
+  width: 60%;
+  background: $greyBg;
+  grid-column: span 2;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  .bird-current {
+    width: 180px;
+    height: 180px;
+    background-color: white;
+    border-radius: 20px;
+    @include centered;
+    img {
+      width: 100%;
+    }
+  }
+}

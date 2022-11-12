@@ -1,0 +1,33 @@
+.bird-card {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 20px;
+  background: $greyBg;
+  color: white;
+  font-size: 20px;
+  .bird-image {
+    width: 30%;
+    aspect-ratio: 1/1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .bird-info {
+    width: 65%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+    grid-column-gap: 4%;
+    .audio {
+      background: brown;
+    }
+    .bird-description {
+      margin-top: 20px;
+      grid-column: span 2;
+      width: 100%;
+    }
+  }
+}

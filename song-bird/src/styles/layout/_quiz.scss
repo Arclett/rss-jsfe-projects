@@ -2,33 +2,62 @@
   width: 100%;
   .quiz-wrapper {
     width: 70%;
-    height: 600px;
-    padding: 15px;
+    padding: 10px;
     background-color: $blackBg;
-    margin: 0px auto;
+    margin: 20px auto;
     border-radius: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
-    grid-template-rows: 50px 1fr 50px;
-    .stage-list {
+    grid-template-rows: 50px 230px 50px 1fr 50px;
+    .variants-wrapper {
       @include marginReset;
-      display: flex;
-      list-style: none;
+      @include quizMargin;
       grid-column: span 2;
+      display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-    .guess-wrapper {
-      .bird-image {
-        object-fit: contain;
-        width: 199px;
-        height: 199px;
-        background-color: white;
-        img {
-          width: 200px;
-        }
+      list-style: none;
+      color: white;
+      font-size: 20px;
+      .variant {
+        @include centered;
+        padding: 0 5px;
+        background-color: rgb(58, 56, 56);
+        border: 1.5px solid white;
+        font-size: 20px;
+        border-radius: 5px;
       }
     }
+    .bird-card {
+      @include quizMargin;
+      grid-column: span 2;
+    }
+    .next-stage {
+      margin: 10px 5px 0px 15%;
+      @include centered;
+      color: white;
+      font-size: 20px;
+      @include buttonBorder;
+    }
+    .score {
+      margin: 10px 15% 0px 5px;
+      @include centered;
+      color: white;
+      font-size: 20px;
+    }
   }
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.rightAnswer {
+  border: 2px solid green !important;
+  color: green;
+}
+
+.wrongAnswer {
+  border: 2px solid red !important;
+  color: red;
 }
