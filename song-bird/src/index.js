@@ -1,3 +1,3 @@
 import "./styles/main.scss";
-import { birdCard } from "./scripts/_birdCard";
-birdCard();
+// import { birdCard } from "./scripts/_birdCard";
+// birdCard();

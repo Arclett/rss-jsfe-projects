@@ -6,6 +6,8 @@
   padding: 10px 20px;
   border-radius: 20px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   .bird-current {
     width: 180px;
@@ -16,5 +18,9 @@
     img {
       width: 100%;
     }
+  }
+  .player {
+    @include buttonBorder;
+    padding: 5px;
   }
 }

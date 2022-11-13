@@ -2,7 +2,8 @@
   width: 100%;
   .quiz-wrapper {
     width: 70%;
-    padding: 10px;
+    min-width: 980px;
+    padding: 10px 5px;
     background-color: $blackBg;
     margin: 20px auto;
     border-radius: 20px;
@@ -28,9 +29,17 @@
         border-radius: 5px;
       }
     }
-    .bird-card {
+    .bird-card-wrapper {
       @include quizMargin;
       grid-column: span 2;
+      .bird-card-placeholder {
+        @include buttonBorder;
+        position: relative;
+        color: white;
+        font-size: 30px;
+        top: 190px;
+        text-align: center;
+      }
     }
     .next-stage {
       margin: 10px 5px 0px 15%;

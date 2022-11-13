@@ -1,78 +1,137 @@
 import "../styles/main.scss";
-import { birdCard } from "../scripts/_birdCard";
+import { BirdCard } from "../scripts/_birdCard";
 import birdData from "../scripts/birdData.json";
+import { Player } from "../scripts/_audio";
 
-let currentBird,
-  answer,
-  score = 0,
-  stage = 0,
-  stageIsComplete = false;
+class Quiz {
+  currentBird;
+  answer;
+  score;
+  stage;
+  stageIsComplete;
+  audio;
+  constructor() {
+    this.score = 0;
+    this.stage = 0;
+    this.stageIsComplete = false;
+    this.varWrapElem = document.querySelector(".variants-wrapper");
+    this.birdCardElem = document.querySelector(".bird-card");
+    this.scoreElem = document.querySelector(".score");
+    this.nextStgeElem = document.querySelector(".next-stage");
+    this.stageElem = document.querySelectorAll(".stage");
+    this.birdPlaceholderElem = document.querySelector(".bird-card-placeholder");
+    this.quizWrapper = document.querySelector(".quiz-wrapper");
+    this.audio = new Audio();
 
-const varWrapElem = document.querySelector(".variants-wrapper");
-const birdCardElem = document.querySelector(".bird-card");
-const scoreElem = document.querySelector(".score");
-const nextStgeElem = document.querySelector(".next-stage");
-const stageElem = document.querySelectorAll(".stage");
+    this.setStage(0);
+    this.quizWrapper.addEventListener("click", this.mainHandler.bind(this));
+  }
 
-const randomInt = function (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+  randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
-const setStage = function (num) {
-  varWrapElem.replaceChildren();
-  const birdGroup = birdData[num];
-  birdGroup.forEach((e) => {
-    const variant = document.createElement("li");
-    variant.textContent = e.name;
-    variant.className = "variant";
-    varWrapElem.appendChild(variant);
-  });
-  answer = birdData[stage][randomInt(0, 5)];
-  score += 5;
-  scoreElem.textContent = `Score: ${score}`;
-};
-setStage(0);
-
-varWrapElem.addEventListener("click", function (e) {
-  if (e.target.className === "variant") {
-    currentBird = birdData[stage].reduce((acc, elem) => {
-      if (e.target.textContent === elem.name) {
-        acc = elem;
-        return acc;
-      } else return acc;
+  setStage = function (num) {
+    this.varWrapElem.replaceChildren();
+    const birdGroup = birdData[num];
+    birdGroup.forEach((e) => {
+      const variant = document.createElement("li");
+      variant.textContent = e.name;
+      variant.className = "variant";
+      this.varWrapElem.appendChild(variant);
     });
-    birdCardElem.classList.remove("hidden");
-    if (!stageIsComplete) {
-      birdCard(stage, currentBird.id - 1);
-      if (currentBird === answer) {
-        console.log("winner winer chicken dinner");
-        stageIsComplete = true;
-        e.target.classList.add("rightAnswer");
-        nextStgeElem.classList.add("rightAnswer");
+    this.answer = birdData[this.stage][this.randomInt(0, 5)];
+    // audio.src = answer.audio;
+    // player.audio.src = answer.audio;
+    this.scoreElem.textContent = `Баллы: ${this.score}`;
+    this.score += 5;
+  };
+
+  chooseVariant(e) {
+    if (e.target.classList.contains("variant")) {
+      console.log(this.stage);
+      this.currentBird = birdData[this.stage].reduce((acc, elem) => {
+        if (e.target.textContent === elem.name) {
+          acc = elem;
+          return acc;
+        } else return acc;
+      });
+      this.birdCardElem.classList.remove("hidden");
+      this.birdPlaceholderElem.classList.add("hidden");
+      if (!this.stageIsComplete) {
+        bird.setBird(this.stage, this.currentBird.id - 1);
+        if (this.currentBird === this.answer) {
+          const winAudio = new Audio();
+          winAudio.src = "../assets/audio/win.wav";
+          this.stageIsComplete = true;
+          audioQuiz.audioPaused();
+          cardPlayer.audioPaused();
+          e.target.classList.add("rightAnswer");
+          this.nextStgeElem.classList.add("rightAnswer");
+          this.scoreElem.textContent = `Score: ${this.score}`;
+          winAudio.play();
+        } else {
+          const loseAudio = new Audio();
+          loseAudio.src = "../assets/audio/lose.wav";
+          loseAudio.play();
+          this.score--;
+          e.target.classList.add("wrongAnswer");
+        }
       } else {
-        console.log("lol you suck");
-        score--;
-        scoreElem.textContent = `Score: ${score}`;
-        e.target.classList.add("wrongAnswer");
+        bird.setBird(this.stage, this.currentBird.id - 1);
       }
-    } else {
-      birdCard(stage, currentBird.id - 1);
     }
   }
-});
 
-nextStgeElem.addEventListener("click", function () {
-  window.location.href = "./result.html";
-  if (stageIsComplete && stage < 5) {
-    stageElem[stage].classList.remove("active");
-    stageElem[stage].classList.add("complete");
-    stage++;
-    stageElem[stage].classList.add("active");
-    birdCardElem.classList.add("hidden");
-    stageIsComplete = false;
-    setStage(stage);
+  mainHandler(e) {
+    if (e.target.classList.contains("variant")) {
+      this.chooseVariant(e);
+    }
+    if (e.target.classList.contains("next-stage")) {
+      this.nextStage();
+    }
   }
-  if (stageIsComplete && stage === 5) {
-    window.location.href = "./result.html";
+
+  nextStage() {
+    if (this.stageIsComplete && this.stage < 5) {
+      audioQuiz.audioPaused();
+      cardPlayer.audioPaused();
+      this.stageElem[this.stage].classList.remove("active");
+      this.stageElem[this.stage].classList.add("complete");
+      this.stage++;
+      this.stageElem[this.stage].classList.add("active");
+      this.birdCardElem.classList.add("hidden");
+      this.birdPlaceholderElem.classList.remove("hidden");
+      this.stageIsComplete = false;
+      this.playTime = 0;
+      this.setStage(this.stage);
+      audioQuiz.bird = this.answer;
+      audioQuiz.audio.src = this.answer.audio;
+      audioQuiz.playTime = 0;
+    }
+    if (this.stageIsComplete && this.stage === 5) {
+      audioQuiz.audioPaused();
+      cardPlayer.audioPaused();
+      localStorage.setItem("score", score);
+      window.location.href = "./result.html";
+    }
   }
-});
+  getAnswer() {
+    return this.answer;
+  }
+
+  getCurrentBird() {
+    return this.currentBird;
+  }
+}
+
+const bird = new BirdCard();
+export const quiz = new Quiz();
+const audioQuiz = new Player(
+  quiz.answer,
+  document.querySelector(".guess-wrapper")
+);
+const cardPlayer = new Player(
+  bird.currentBird,
+  document.querySelector(".bird-card")
+);
