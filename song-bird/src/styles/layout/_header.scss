@@ -4,9 +4,12 @@
   font-size: 40px;
   padding: 15px 0;
   @include centered;
-  .main-title {
-    @include marginReset;
-    color: white;
-    font-family: Pacifico, cursive;
+  a {
+    text-decoration: none;
   }
+}
+.main-title {
+  @include marginReset;
+  color: white;
+  font-family: Pacifico, cursive;
 }

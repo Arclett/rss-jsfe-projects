@@ -1,4 +1,4 @@
-import { quiz } from "../pages/quiz";
+import { quiz, cardPlayer, audioQuiz } from "../pages/quiz";
 
 export class Player {
   playTime;
@@ -101,6 +101,8 @@ export class Player {
       this.audio.src = bird.audio;
     }
     if (!this.isPlay) {
+      cardPlayer.audioPaused();
+      audioQuiz.audioPaused();
       this.audioPlay();
     } else {
       this.audioPaused();

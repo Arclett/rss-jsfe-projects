@@ -14,8 +14,18 @@
   margin: 10px auto 0px auto;
 }
 
-@mixin buttonBorder {
+@mixin windowBorder {
   border-radius: 5px;
   border: 1.5px solid white;
   background-color: $flatGreyBg;
+}
+
+@mixin buttonBorder {
+  color: rgb(48, 46, 46);
+  background-color: white;
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 }

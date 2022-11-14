@@ -49,13 +49,15 @@ class Quiz {
 
   chooseVariant(e) {
     if (e.target.classList.contains("variant")) {
-      console.log(this.stage);
+      cardPlayer.audioPaused();
       this.currentBird = birdData[this.stage].reduce((acc, elem) => {
         if (e.target.textContent === elem.name) {
           acc = elem;
           return acc;
         } else return acc;
       });
+      cardPlayer.audio.src = this.currentBird.audio;
+      cardPlayer.audio.playTime = 0;
       this.birdCardElem.classList.remove("hidden");
       this.birdPlaceholderElem.classList.add("hidden");
       if (!this.stageIsComplete) {
@@ -65,7 +67,6 @@ class Quiz {
           winAudio.src = "../assets/audio/win.wav";
           this.stageIsComplete = true;
           audioQuiz.audioPaused();
-          cardPlayer.audioPaused();
           e.target.classList.add("rightAnswer");
           this.nextStgeElem.classList.add("rightAnswer");
           this.scoreElem.textContent = `Score: ${this.score}`;
@@ -102,6 +103,7 @@ class Quiz {
       this.stageElem[this.stage].classList.add("active");
       this.birdCardElem.classList.add("hidden");
       this.birdPlaceholderElem.classList.remove("hidden");
+      this.nextStgeElem.classList.remove("rightAnswer");
       this.stageIsComplete = false;
       this.playTime = 0;
       this.setStage(this.stage);
@@ -112,7 +114,7 @@ class Quiz {
     if (this.stageIsComplete && this.stage === 5) {
       audioQuiz.audioPaused();
       cardPlayer.audioPaused();
-      localStorage.setItem("score", score);
+      localStorage.setItem("score", this.score);
       window.location.href = "./result.html";
     }
   }
@@ -123,15 +125,19 @@ class Quiz {
   getCurrentBird() {
     return this.currentBird;
   }
+
+  getScore() {
+    return this.score;
+  }
 }
 
 const bird = new BirdCard();
 export const quiz = new Quiz();
-const audioQuiz = new Player(
+export const audioQuiz = new Player(
   quiz.answer,
   document.querySelector(".guess-wrapper")
 );
-const cardPlayer = new Player(
+export const cardPlayer = new Player(
   bird.currentBird,
   document.querySelector(".bird-card")
 );

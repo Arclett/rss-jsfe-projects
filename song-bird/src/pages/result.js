@@ -1,15 +1,27 @@
 import "../styles/main.scss";
 
-let gameScore, resultMessage;
-const finalScoreElem = document.querySelector(".final-score");
+class Result {
+  score;
+  constructor() {
+    this.getScore();
+    this.finalScoreElem = document.querySelector(".final-score");
+    this.resultMessage();
+  }
 
-if (localStorage.getItem("score")) {
-  gameScore = localStorage.getItem("score");
+  getScore() {
+    if (localStorage.getItem("score")) {
+      this.score = localStorage.getItem("score");
+    }
+  }
+  resultMessage() {
+    let res;
+    if (this.score === 30) {
+      res = "Вы набрали максимальное количество баллов!";
+    } else {
+      res = `Вы набрали ${this.score} из 30 возможных баллов!`;
+    }
+    this.finalScoreElem.textContent = res;
+  }
 }
 
-if (gameScore === 30) {
-  resultMessage = "Вы набрали максимальное количество баллов!";
-} else {
-  resultMessage = `Вы набрали ${gameScore} из 30 возможных баллов!`;
-}
-finalScoreElem.textContent = resultMessage;
+const result = new Result();

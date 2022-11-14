@@ -43,11 +43,14 @@
     &:hover {
       scale: 1.2;
     }
-    div {
-      @include centered;
-      color: white;
-      font-size: 25px;
-      font-family: Pacifico, cursive;
+    a {
+      text-decoration: none;
+      div {
+        @include centered;
+        color: white;
+        font-size: 25px;
+        font-family: Pacifico, cursive;
+      }
     }
   }
 }

@@ -8,6 +8,9 @@
   background: $greyBg;
   color: white;
   font-size: 20px;
+  @media (max-width: $smallDesktop) {
+    width: 560px;
+  }
   .bird-image {
     width: 30%;
     aspect-ratio: 1/1;
@@ -21,8 +24,15 @@
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 2fr;
     grid-column-gap: 4%;
-    .audio {
-      background: brown;
+    @media (max-width: $smallDesktop) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .player {
+      border: 1.5px solid white;
+      border-radius: 5px;
+      padding: 5px;
     }
     .bird-description {
       margin-top: 20px;
