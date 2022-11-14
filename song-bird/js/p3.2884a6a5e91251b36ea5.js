@@ -1,1 +1,0 @@
-(()=>{"use strict";let e,t;const o=document.querySelector(".final-score");localStorage.getItem("score")&&(e=localStorage.getItem("score")),t=30===e?"Вы набрали максимальное количество баллов!":`Вы набрали ${e} из 30 возможных баллов!`,o.textContent=t})();
