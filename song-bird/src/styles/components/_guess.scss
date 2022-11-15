@@ -16,6 +16,13 @@
     grid-template-columns: 137px 1fr;
     grid-template-rows: 20px 1fr;
   }
+  @media (max-width: $mobile) {
+    margin-top: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+  }
   .answer {
     color: white;
     font-size: 20px;
@@ -33,6 +40,9 @@
       width: 137px;
       height: 137px;
     }
+    @media (max-width: $smallDesktop) {
+      display: none;
+    }
     img {
       width: 100%;
     }
@@ -43,6 +53,9 @@
     padding: 5px;
     @media (max-width: $smallDesktop) {
       margin: 20px 0 0 30px;
+    }
+    @media (max-width: $smallDesktop) {
+      margin: 5px auto 5px auto;
     }
   }
 }

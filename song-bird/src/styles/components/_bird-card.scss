@@ -11,12 +11,25 @@
   @media (max-width: $smallDesktop) {
     width: 560px;
   }
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    padding: 0px;
+    width: 340px;
+    align-items: center;
+  }
   .bird-image {
     width: 30%;
+    height: 190px;
     aspect-ratio: 1/1;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    margin-top: 50px;
+    background-position: top;
+    @media (max-width: $mobile) {
+      width: 90%;
+      aspect-ratio: 1/1;
+      background-position: center;
+    }
   }
   .bird-info {
     width: 65%;
@@ -29,15 +42,34 @@
       flex-direction: column;
       align-items: center;
     }
+    @media (max-width: $mobile) {
+      width: 90%;
+    }
+    .bird-name {
+      text-align: center;
+      @media (max-width: $smallDesktop) {
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
     .player {
       border: 1.5px solid white;
       border-radius: 5px;
       padding: 5px;
+      margin-top: 30px;
+      @media (max-width: $smallDesktop) {
+        margin-top: 0px;
+      }
     }
     .bird-description {
       margin-top: 20px;
       grid-column: span 2;
       width: 100%;
+    }
+    @media (max-width: $mobile) {
+      margin-bottom: 5px;
     }
   }
 }

@@ -17,31 +17,16 @@
       min-width: 360px;
       padding: 0px 0px 10px 0px;
     }
-    .variants-wrapper {
-      @include marginReset;
-      @include quizMargin;
-      width: 95%;
-      margin: 0 auto 0 auto;
-      height: 35px;
-      grid-column: span 2;
+    @media (max-width: $mobile) {
+      width: 340px;
+      min-width: 340px;
       display: flex;
-      justify-content: space-between;
-      list-style: none;
-      color: white;
-      font-size: 20px;
-      gap: 10px;
-      .variant {
-        @include centered;
-        @include buttonBorder;
-        padding: 0 5px;
-        font-size: 20px;
-        border-radius: 5px;
-        transition: 0.5s;
-      }
+      flex-direction: column;
     }
     .bird-card-wrapper {
       @include quizMargin;
       grid-column: span 2;
+      margin-top: -20px;
       @media (max-width: $smallDesktop) {
         width: 100%;
       }
@@ -62,12 +47,20 @@
       font-size: 20px;
       @include buttonBorder;
       border-radius: 5px;
+      @media (max-width: $mobile) {
+        margin: 5px auto;
+      }
     }
     .score {
       margin: 10px 15% 0px 5px;
       @include centered;
+      @include windowBorder;
       color: white;
       font-size: 20px;
+      @media (max-width: $mobile) {
+        margin: 5px auto;
+        width: 70%;
+      }
     }
   }
 }
@@ -77,13 +70,13 @@
 }
 
 .rightAnswer {
-  border: 2px solid green !important;
+  border: 1.5px solid green !important;
   color: white !important;
   background-color: green !important;
 }
 
 .wrongAnswer {
-  border: 2px solid red !important;
+  border: 1.5 solid red !important;
   color: white !important;
   background-color: red !important;
 }

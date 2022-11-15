@@ -15,6 +15,7 @@
 @import "./components/guess";
 @import "./components/bird-card";
 @import "./components/player";
+@import "./components/variants";
 
 //main page styles
 
@@ -23,6 +24,7 @@
   background-size: cover;
   width: 100%;
   min-height: 100vh;
+  min-width: 360px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
