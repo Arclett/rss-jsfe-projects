@@ -1,29 +1,42 @@
-.gallery {
-  width: 90%;
-  margin: -20px auto 20px auto;
-  overflow: hidden;
-  @include windowBorder;
-
+.gallery-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .overlay {
+    width: 100vw;
+    position: fixed;
+    background-color: rgba(39, 39, 39, 0.836);
+    top: 0;
+    height: 100vh;
+    z-index: 8;
+  }
   .gallery-wrapper {
-    width: 600%;
-    position: relative;
-    display: flex;
-    transition: 0.5s;
-    z-index: 10;
-    .slide {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      align-items: center;
-      padding: 10px;
-      .gal-part {
-        background-size: contain;
-        background-position: top 50% left 50%;
-        background-repeat: no-repeat;
-        height: 200px;
-        width: 200px;
-        margin: 0 auto;
+    width: 90%;
+    margin: 10px auto 20px auto;
+    overflow: hidden;
+    @include windowBorder;
+    .gallery-slider {
+      width: 600%;
+      position: relative;
+      display: flex;
+      transition: 0.5s;
+      z-index: 6;
+      .slide {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        padding: 10px;
+        .gal-part {
+          background-size: contain;
+          background-position: top 50% left 50%;
+          background-repeat: no-repeat;
+          height: 200px;
+          width: 200px;
+          margin: 0 auto;
+        }
       }
     }
   }
@@ -35,7 +48,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  z-index: 10;
+  z-index: 7;
   .back {
     background-image: url("../assets/svg/arrow_back.svg");
     background-size: cover;
@@ -55,4 +68,28 @@
 
 .popup {
   position: fixed;
+  width: 80%;
+  left: 8%;
+  z-index: 12;
+  .close {
+    position: fixed;
+    height: 40px;
+    width: 40px;
+    background-image: url("../assets/svg/close.svg");
+    left: 87%;
+    margin-top: 20px;
+  }
+  .bird-card {
+    width: 100%;
+    margin: 0 auto;
+    border: 1.5px solid white;
+  }
+}
+
+.gallery-body {
+  justify-content: flex-start;
+}
+
+.hide {
+  display: none;
 }

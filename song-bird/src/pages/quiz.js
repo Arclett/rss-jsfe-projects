@@ -141,3 +141,7 @@ export const cardPlayer = new Player(
   bird.currentBird,
   document.querySelector(".bird-card")
 );
+export const galPlayer = new Player(
+  bird.currentBird,
+  document.querySelector(".gallery-wrapper")
+);

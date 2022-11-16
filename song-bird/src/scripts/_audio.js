@@ -73,6 +73,8 @@ export class Player {
     if (e.target.classList.contains("play")) {
       if (this.position.classList.contains("guess-wrapper")) {
         this.bird = quiz.getAnswer();
+      } else if (this.position.classList.contains("gallery")) {
+        this.bird = gal.getBird();
       } else {
         this.bird = quiz.getCurrentBird();
       }
@@ -101,7 +103,7 @@ export class Player {
       this.audio.src = bird.audio;
     }
     if (!this.isPlay) {
-      cardPlayer.audioPaused();
+      cardPlayer?.audioPaused();
       audioQuiz.audioPaused();
       this.audioPlay();
     } else {
