@@ -19,7 +19,6 @@ export class QuizCl {
     this.stageElem = document.querySelectorAll(".stage");
     this.birdPlaceholderElem = document.querySelector(".bird-card-placeholder");
     this.quizWrapper = document.querySelector(".quiz-wrapper");
-    this.audio = new Audio();
 
     this.setStage(0);
     this.quizWrapper.addEventListener("click", this.mainHandler.bind(this));

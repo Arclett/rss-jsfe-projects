@@ -5,14 +5,14 @@ export class Player {
     this.position = position;
     this.playTime = 0;
     this.isPlay = false;
+    this.playerWrapperElem = position.querySelector(".player");
     this.lengthElement = position.querySelector(".length");
     this.playElement = position.querySelector(".play");
     this.timeline = position.querySelector(".timeline");
-    this.volumeBtn = position.querySelector(".volume-button");
+    this.volumeBtn = position.querySelector(".volume-icon");
     this.volumeSliderElement = position.querySelector(".volume-slider");
-    this.songElement = position.querySelector(".audio-status");
     this.volumeSlider = position.querySelector(".volume-slider");
-    this.playerWrapperElem = position.querySelector(".player");
+
     this.percentageElem = position.querySelector(".volume-percentage");
     this.quizWrapperElem = document.querySelector(".quiz-wrapper");
     this.audio = new Audio();
@@ -24,33 +24,45 @@ export class Player {
       "mouseleave",
       this.volumeHide.bind(this)
     );
-
-    this.timeline.addEventListener("click", this.timelineFunc.bind(this));
     this.audio.addEventListener("loadeddata", this.loadedData.bind(this));
-    this.volumeSlider.addEventListener(
+    this.playerWrapperElem.addEventListener(
       "click",
-      this.volumeSliderFunc.bind(this)
+      this.clickHandler.bind(this)
     );
-    this.volumeBtn.addEventListener("click", this.mute.bind(this));
   }
 
-  mute() {
+  clickHandler(e) {
+    if (e.target.classList.contains("timeline")) {
+      this.timelineFunc();
+    }
+    if (
+      e.target.classList.contains("volume-percentage") ||
+      e.target.classList.contains("volume-slider")
+    ) {
+      this.volumeSliderFunc(e);
+    }
+    if (e.target.classList.contains("volume-icon")) {
+      this.mute(e);
+    }
+  }
+
+  mute(e) {
     this.audio.muted = !this.audio.muted;
     if (this.audio.muted) {
-      this.volumeBtn.style.backgroundImage = 'url("../assets/svg/mute.svg")';
+      e.target.style.backgroundImage = 'url("../assets/svg/mute.svg")';
     } else {
-      this.volumeBtn.style.backgroundImage = 'url("../assets/svg/volume.svg")';
+      e.target.style.backgroundImage = 'url("../assets/svg/volume.svg")';
     }
   }
 
   volumeShow(e) {
-    if (e.target.classList.contains("volume-button")) {
-      this.volumeSlider.style.display = "block";
+    if (e.target.classList.contains("volume-icon")) {
+      this.volumeSlider.style.opacity = "1";
     }
   }
 
   volumeHide() {
-    this.volumeSlider.style.display = "none";
+    this.volumeSlider.style.opacity = "0";
   }
 
   timebarUpdate() {
