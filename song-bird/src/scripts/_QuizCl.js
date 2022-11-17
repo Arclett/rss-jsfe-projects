@@ -1,7 +1,11 @@
 import birdData from "./birdData.json";
-import { cardPlayer, quizPlayer, bird } from "../pages/quiz";
+import engData from "./engData.json";
+import rusData from "./rusData.json";
 
-export class QuizCl {
+import { cardPlayer, quizPlayer, bird } from "../pages/quiz";
+import { Main } from "./_MainCl";
+
+export class QuizCl extends Main {
   currentBird;
   answer;
   score;
@@ -9,6 +13,7 @@ export class QuizCl {
   stageIsComplete;
   audio;
   constructor() {
+    super();
     this.score = 0;
     this.stage = 0;
     this.stageIsComplete = false;
@@ -22,6 +27,7 @@ export class QuizCl {
 
     this.setStage(0);
     this.quizWrapper.addEventListener("click", this.mainHandler.bind(this));
+    this.footerElem.addEventListener("click", this.setLang.bind(this));
   }
 
   randomInt(min, max) {
@@ -115,5 +121,25 @@ export class QuizCl {
   }
   getAnswer() {
     return this.answer;
+  }
+
+  setLang(e) {
+    if (e.target.classList.contains("eng")) {
+      let data;
+      if (this.lang === "rus") data = rusData[0];
+      else data = engData[0];
+
+      document.querySelectorAll(".stage").forEach((e, i) => {
+        e.textContent = data.quiz.stages[i];
+      });
+      document.querySelector(".answer").textContent = data.quiz.guess;
+      // document.querySelectorAll(".variant").forEach((e, i) => {
+      //   e.textContent = data.var;
+      // });
+      document.querySelector(".bird-card-placeholder").textContent =
+        data.quiz.cardPh;
+      this.nextStgeElem.textContent = data.quiz.next;
+      this.scoreElem.textContent = data.quiz.score;
+    }
   }
 }

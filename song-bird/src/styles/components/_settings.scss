@@ -1,0 +1,42 @@
+.settings-wrapper {
+  position: fixed;
+  bottom: 5px;
+  left: 20px;
+  padding: 7px;
+  width: 300px;
+  transform: translateX(-400px);
+  transition: 0.3s;
+  background-color: $greyBg;
+  @include windowBorder;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  font-size: 16px;
+  text-align: center;
+  .change-bg {
+    width: 150%;
+  }
+  .close-settings {
+    width: 70%;
+    grid-column: span 2;
+    margin-left: 30%;
+  }
+  .rus,
+  .eng,
+  .unplash,
+  .offline,
+  .change-bg,
+  .close-settings {
+    @include centered;
+    @include buttonBorder;
+    border-radius: 5px;
+  }
+  .lang-discript,
+  .bg-source {
+    @include centered;
+    @include windowBorder;
+    color: white;
+  }
+}
