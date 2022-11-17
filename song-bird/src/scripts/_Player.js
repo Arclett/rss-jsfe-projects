@@ -1,19 +1,10 @@
 export class Player {
-  playTime;
-  isPlay;
   constructor(position) {
     this.position = position;
     this.playTime = 0;
     this.isPlay = false;
     this.playerWrapperElem = position.querySelector(".player");
-    this.lengthElement = position.querySelector(".length");
-    this.playElement = position.querySelector(".play");
-    this.timeline = position.querySelector(".timeline");
-    this.volumeBtn = position.querySelector(".volume-icon");
-    this.volumeSliderElement = position.querySelector(".volume-slider");
-    this.volumeSlider = position.querySelector(".volume-slider");
-
-    this.percentageElem = position.querySelector(".volume-percentage");
+    this.renderPlayer();
     this.quizWrapperElem = document.querySelector(".quiz-wrapper");
     this.audio = new Audio();
     this.timebarUpdate();
@@ -29,6 +20,46 @@ export class Player {
       "click",
       this.clickHandler.bind(this)
     );
+  }
+
+  renderPlayer() {
+    //play button
+    this.playElement = document.createElement("button");
+    this.playElement.className = "play";
+    this.playerWrapperElem.appendChild(this.playElement);
+    //timeline
+    this.timeline = document.createElement("div");
+    this.timeline.className = "timeline";
+    this.playerWrapperElem.appendChild(this.timeline);
+    this.progressElem = document.createElement("div");
+    this.progressElem.className = "progress";
+    this.timeline.appendChild(this.progressElem);
+    //time
+    const audioTime = document.createElement("div");
+    audioTime.className = "audio-time";
+    this.playerWrapperElem.appendChild(audioTime);
+    this.currentElem = document.createElement("div");
+    this.currentElem.className = "current";
+    this.currentElem.textContent = "0:00";
+    audioTime.appendChild(this.currentElem);
+    const divider = document.createElement("div");
+    audioTime.appendChild(divider);
+    divider.textContent = "/";
+    this.lengthElem = document.createElement("div");
+    this.lengthElem.className = "length";
+    this.lengthElem.textContent = "0:00";
+    audioTime.appendChild(this.lengthElem);
+    //volume-bar
+    this.volumeSlider = document.createElement("div");
+    this.volumeSlider.className = "volume-slider";
+    this.playerWrapperElem.appendChild(this.volumeSlider);
+    this.percentageElem = document.createElement("div");
+    this.percentageElem.className = "volume-percentage";
+    this.volumeSlider.appendChild(this.percentageElem);
+    //volume-button
+    const volumeBtn = document.createElement("div");
+    volumeBtn.className = "volume-icon";
+    this.playerWrapperElem.appendChild(volumeBtn);
   }
 
   clickHandler(e) {
@@ -67,12 +98,9 @@ export class Player {
 
   timebarUpdate() {
     setInterval(() => {
-      const progress = this.position.querySelector(".progress");
-      progress.style.width =
+      this.progressElem.style.width =
         (this.audio.currentTime / this.audio.duration) * 100 + "%";
-      this.position.querySelector(".current").textContent = this.secToMin(
-        this.audio.currentTime
-      );
+      this.currentElem.textContent = this.secToMin(this.audio.currentTime);
     }, 500);
   }
 
@@ -88,8 +116,7 @@ export class Player {
 
   loadedData() {
     const audioLength = Math.floor(this.audio.duration);
-    this.lengthElement.textContent = `${this.secToMin(audioLength)}`;
-    console.log("loaded");
+    this.lengthElem.textContent = `${this.secToMin(audioLength)}`;
   }
 
   volumeSliderFunc(e) {
