@@ -1,0 +1,28 @@
+[
+  {
+    "index": {
+      "main": ["Gallery", "Quiz"],
+      "settings": [
+        "Languge",
+        "Background",
+        "Offline",
+        "Change background",
+        "Close settings"
+      ]
+    },
+    "quiz": {
+      "stages": [
+        "Warm-up",
+        "Passerines",
+        "Forest birds",
+        "Song birds",
+        "Predatory birds",
+        "Sea birds"
+      ],
+      "guess": "Guess the bird by the song",
+      "cardPh": "Listen to the player and choose a bird from the list",
+      "next": "Next stage",
+      "score": "Score"
+    }
+  }
+]
