@@ -1,19 +1,38 @@
+import engData from "./engData.json";
+import rusData from "./rusData.json";
+
 export class Main {
+  lang;
   constructor() {
-    this.lang = "rus";
+    this.loadLang();
     this.bgSrc = "unplash";
     this.settingsWrapElem = document.querySelector(".settings-wrapper");
     this.renderSettings();
     this.footerElem = document.querySelector(".footer-wrapper");
+    this.applyLang();
     //handlers
 
     this.footerElem.addEventListener("click", this.footerClick.bind(this));
+    window.addEventListener("beforeunload", this.saveLang.bind(this));
   }
+
+  saveLang() {
+    localStorage.setItem("lang", `${this.lang}`);
+    console.log("saved!");
+  }
+
+  loadLang() {
+    if (localStorage.getItem("lang")) {
+      this.lang = localStorage.getItem("lang");
+      console.log("lang loaded");
+    }
+  }
+
   renderSettings() {
-    const langWrapperElem = document.createElement("div");
-    langWrapperElem.className = "lang-discript";
-    langWrapperElem.textContent = "Язык";
-    this.settingsWrapElem.appendChild(langWrapperElem);
+    this.langWrapperElem = document.createElement("div");
+    this.langWrapperElem.className = "lang-discript";
+    this.langWrapperElem.textContent = "Язык";
+    this.settingsWrapElem.appendChild(this.langWrapperElem);
     //
     this.langRusElem = document.createElement("div");
     this.langRusElem.className = "rus active";
@@ -25,10 +44,10 @@ export class Main {
     this.langEngElem.textContent = "English";
     this.settingsWrapElem.appendChild(this.langEngElem);
     //
-    const bgSource = document.createElement("div");
-    bgSource.className = "bg-source";
-    bgSource.textContent = "Фон";
-    this.settingsWrapElem.appendChild(bgSource);
+    this.bgSource = document.createElement("div");
+    this.bgSource.className = "bg-source";
+    this.bgSource.textContent = "Фон";
+    this.settingsWrapElem.appendChild(this.bgSource);
     //
     this.unplashElem = document.createElement("div");
     this.unplashElem.className = "unplash active";
@@ -75,9 +94,19 @@ export class Main {
   }
 
   choseLang() {
+    this.lang = this.lang === "rus" ? "eng" : "rus";
+    this.applyLang();
+  }
+
+  applyLang() {
     this.langRusElem.classList.toggle("active");
     this.langEngElem.classList.toggle("active");
-    this.lang = this.lang === "rus" ? "eng" : "rus";
+    const data = this.lang === "rus" ? rusData[0] : engData[0];
+    this.langWrapperElem.textContent = data.index.settings[0];
+    this.bgSource.textContent = data.index.settings[1];
+    this.offlineElem.textContent = data.index.settings[2];
+    this.changeBgElem.textContent = data.index.settings[3];
+    this.closeSettings.textContent = data.index.settings[4];
   }
 
   choseSrc() {

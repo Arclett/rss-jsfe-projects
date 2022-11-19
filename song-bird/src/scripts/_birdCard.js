@@ -9,8 +9,8 @@ export class BirdCard {
     this.birdDescriptionElem = document.querySelector(".bird-description");
   }
 
-  setBird(stage, num) {
-    this.currentBird = birdData[stage][num];
+  setBird(stage, num, data) {
+    this.currentBird = data[stage][num];
     this.regNameElem.textContent = this.currentBird.name;
     this.speciesElem.textContent = this.currentBird.species;
     this.birdDescriptionElem.textContent = this.currentBird.description;

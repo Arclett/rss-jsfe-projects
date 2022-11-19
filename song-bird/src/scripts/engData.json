@@ -23,6 +23,16 @@
       "cardPh": "Listen to the player and choose a bird from the list",
       "next": "Next stage",
       "score": "Score"
+    },
+    "result": {
+      "congrats": "Congratulations!",
+      "res": [
+        "You scored ",
+        " out of 30 points!",
+        "You have scored the maximum points"
+      ],
+      "togal": "Watch Gallery",
+      "tryagain": "Try again"
     }
   }
 ]

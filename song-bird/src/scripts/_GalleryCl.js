@@ -1,10 +1,16 @@
 import birdData from "../scripts/birdData.json";
+import birdsDataEn from "./_birdEngData";
+import rusData from "./rusData.json";
+import engData from "./engData.json";
+import { Main } from "./_MainCl";
 import { galPlayer, birdGal } from "../pages/gallery";
 
-export class Gallery {
+export class Gallery extends Main {
   galleryPosition;
   galleryBird;
   constructor() {
+    super();
+    this.birdData = this.lang === "rus" ? birdData : birdsDataEn;
     this.galleryPosition = 0;
     this.galleryElem = document.querySelector(".gallery-slider");
     this.renderGallery();
@@ -15,6 +21,7 @@ export class Gallery {
     this.galleryMainElem = document.querySelector(".gallery-main");
 
     this.galleryMainElem.addEventListener("click", this.mainHandler.bind(this));
+    this.footerElem.addEventListener("click", this.setLang.bind(this));
   }
 
   mainHandler(e) {
@@ -72,7 +79,7 @@ export class Gallery {
     if (e.target.classList.contains("gal-part")) {
       const species = e.target.dataset.species;
       let stage, bird;
-      birdData.forEach((e, i) => {
+      this.birdData.forEach((e, i) => {
         e.forEach((elem) => {
           if (elem.species === species) {
             galPlayer.audio.src = elem.audio;
@@ -81,7 +88,7 @@ export class Gallery {
           }
         });
       });
-      birdGal.setBird(stage, bird - 1);
+      birdGal.setBird(stage, bird - 1, this.birdData);
       this.popupElem.classList.remove("hide");
       this.overlayElem.classList.remove("hide");
     }
@@ -96,5 +103,19 @@ export class Gallery {
 
   getBird() {
     return this.galleryBird;
+  }
+
+  setLang(e) {
+    if (
+      e.target.classList.contains("eng") ||
+      e.target.classList.contains("rus")
+    ) {
+      let data;
+      if (this.lang === "rus") {
+        this.birdData = birdData;
+      } else {
+        this.birdData = birdsDataEn;
+      }
+    }
   }
 }
