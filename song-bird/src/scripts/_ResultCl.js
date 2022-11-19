@@ -39,7 +39,7 @@ export class Result extends Main {
       data = engData[0];
     }
     document.querySelector(".result-title").textContent = data.result.congrats;
-    if (this.score === 30) {
+    if (this.score === "30") {
       this.finalScoreElem.textContent = data.result.res[2];
     } else {
       this.finalScoreElem.textContent = `${data.result.res[0]}${this.score}${data.result.res[1]}`;

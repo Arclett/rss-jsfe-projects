@@ -19,7 +19,11 @@
         "Predatory birds",
         "Sea birds"
       ],
-      "guess": "Guess the bird by the song",
+      "guess": [
+        "Guess the bird by the song",
+        "Right! It's ",
+        "Wrong! Try again."
+      ],
       "cardPh": "Listen to the player and choose a bird from the list",
       "next": "Next stage",
       "score": "Score"
@@ -29,7 +33,7 @@
       "res": [
         "You scored ",
         " out of 30 points!",
-        "You have scored the maximum points"
+        "You have scored the maximum points!"
       ],
       "togal": "Watch Gallery",
       "tryagain": "Try again"

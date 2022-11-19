@@ -4,6 +4,9 @@
   font-size: 40px;
   padding: 15px 0;
   @include centered;
+  @media (max-width: $mobile) {
+    font-size: 25px;
+  }
   a {
     text-decoration: none;
   }
@@ -12,6 +15,11 @@
   @include marginReset;
   color: white;
   font-family: Pacifico, cursive;
+  cursor: pointer;
+  transition: 0.4s;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .quiz-title {
   font-size: 30px;

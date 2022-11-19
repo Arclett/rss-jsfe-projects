@@ -42,8 +42,10 @@ export class Gallery extends Main {
     }
   }
 
-  galleryFwd() {
-    if (this.galleryPosition !== 83.3) {
+  galleryFwd(e) {
+    console.log("fwd!");
+    console.log(this.galleryPosition);
+    if (Math.round(this.galleryPosition) !== 83) {
       this.galleryPosition += 16.66;
     } else {
       this.galleryPosition = 0;
@@ -51,9 +53,12 @@ export class Gallery extends Main {
     this.galleryElem.style = `transform: translateX(-${this.galleryPosition}%)`;
   }
 
-  galleryBack() {
-    if (this.galleryPosition !== 0) {
+  galleryBack(e) {
+    console.log("back!");
+    console.log(this.galleryPosition);
+    if (Math.round(this.galleryPosition) !== 0) {
       this.galleryPosition -= 16.66;
+      this.galleryPosition.toFixed(1);
     } else {
       this.galleryPosition = 83.3;
     }

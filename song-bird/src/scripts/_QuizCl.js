@@ -27,6 +27,10 @@ export class QuizCl extends Main {
     this.stageElem = document.querySelectorAll(".stage");
     this.birdPlaceholderElem = document.querySelector(".bird-card-placeholder");
     this.quizWrapper = document.querySelector(".quiz-wrapper");
+    this.guessAnswer = document.querySelector(".answer-guess");
+    this.guessRight = document.querySelector(".answer-right");
+    this.guessWrong = document.querySelector(".answer-wrong");
+    this.curImgElem = document.querySelector(".bird-cur-img");
     this.setStage(0);
     this.setLang();
 
@@ -73,12 +77,19 @@ export class QuizCl extends Main {
           this.nextStgeElem.classList.add("rightAnswer");
           this.scoreElem.textContent = this.score;
           winAudio.play();
+          this.guessAnswer.style.display = "none";
+          this.guessRight.style.display = "flex";
+          this.guessWrong.style.display = "none";
+          this.curImgElem.src = `${this.answer.image}`;
         } else {
           const loseAudio = new Audio();
           loseAudio.src = "../assets/audio/lose.wav";
           loseAudio.play();
           this.score--;
           e.target.classList.add("wrongAnswer");
+          this.guessAnswer.style.display = "none";
+          this.guessWrong.style.display = "flex";
+          this.guessRight.style.display = "none";
         }
       } else {
         bird.setBird(this.stage, this.currentBird.id - 1, this.birdDataLang);
@@ -112,6 +123,11 @@ export class QuizCl extends Main {
       quizPlayer.bird = this.answer;
       quizPlayer.audio.src = this.answer.audio;
       quizPlayer.playTime = 0;
+      this.guessAnswer.style.display = "flex";
+      this.guessRight.style.display = "none";
+      this.guessWrong.style.display = "none";
+      this.setLang();
+      this.curImgElem.src = "../assets/img/bird_outline.jpg";
     }
     if (this.stageIsComplete && this.stage === 5) {
       quizPlayer.audioPaused();
@@ -150,7 +166,9 @@ export class QuizCl extends Main {
     document.querySelectorAll(".stage").forEach((e, i) => {
       e.textContent = data.quiz.stages[i];
     });
-    document.querySelector(".answer").textContent = data.quiz.guess;
+    this.guessAnswer.textContent = data.quiz.guess[0];
+    this.guessRight.textContent = `${data.quiz.guess[1]}${this.answer.name}`;
+    this.guessWrong.textContent = data.quiz.guess[2];
     document.querySelectorAll(".variant").forEach((elem, i) => {
       console.log(this.stage);
       elem.textContent = this.birdDataLang[this.stage][i].name;

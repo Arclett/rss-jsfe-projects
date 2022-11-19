@@ -6,7 +6,7 @@
   .overlay {
     width: 100vw;
     position: fixed;
-    background-color: rgba(39, 39, 39, 0.836);
+    background-color: rgba(214, 214, 214, 0.753);
     top: 0;
     height: 100vh;
     z-index: 8;
@@ -16,6 +16,12 @@
     margin: 10px auto 20px auto;
     overflow: hidden;
     @include windowBorder;
+    @media (max-width: $smallDesktop) {
+      width: 80%;
+    }
+    @media (max-width: $mobile) {
+      width: 80%;
+    }
     .gallery-slider {
       width: 600%;
       position: relative;
@@ -29,6 +35,10 @@
         grid-template-rows: repeat(2, 1fr);
         align-items: center;
         padding: 10px;
+        @media (max-width: $mobile) {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+        }
         .gal-part {
           background-size: contain;
           background-position: top 50% left 50%;
@@ -36,6 +46,14 @@
           height: 200px;
           width: 200px;
           margin: 0 auto;
+          @media (max-width: $smallDesktop) {
+            width: 150px;
+            height: 150px;
+          }
+          @media (max-width: $mobile) {
+            width: 100px;
+            height: 100px;
+          }
         }
       }
     }
@@ -48,21 +66,39 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  z-index: 7;
-  .back {
-    background-image: url("../assets/svg/arrow_back.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 70px;
-    width: 70px;
-    margin-left: 10px;
+  z-index: 1;
+  @media (max-width: $smallDesktop) {
+    top: 200px;
   }
-  .fwd {
-    background-image: url("../assets/svg/arrow_forward.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 70px;
-    width: 70px;
+  .back-wrapper,
+  .fwd-wrapper {
+    height: 50px;
+    width: 40px;
+    border-radius: 5px;
+    img {
+      position: relative;
+      z-index: 7;
+      height: 100%;
+      @include buttonBorder;
+      border-radius: 5px;
+      height: 70px;
+      width: 30px;
+    }
+  }
+  .fwd-wrapper {
+    img {
+      transform: rotate(180deg);
+      @include buttonBorder;
+      border-radius: 5px;
+      &:hover {
+        transform: rotate(180deg) scale(1.2);
+      }
+    }
+  }
+  .back-wrapper {
+    img {
+      margin-left: 10px;
+    }
   }
 }
 

@@ -23,7 +23,7 @@
     flex-direction: column;
     width: 340px;
   }
-  .answer {
+  .answer-guess {
     color: white;
     font-size: 20px;
     @include centered;
@@ -35,12 +35,13 @@
     height: 180px;
     background-color: white;
     border-radius: 20px;
+    overflow: hidden;
     @include centered;
     @media (max-width: $smallDesktop) {
       width: 137px;
       height: 137px;
     }
-    @media (max-width: $smallDesktop) {
+    @media (max-width: $mobile) {
       display: none;
     }
     img {
@@ -54,8 +55,20 @@
     @media (max-width: $smallDesktop) {
       margin: 20px 0 0 30px;
     }
-    @media (max-width: $smallDesktop) {
+    @media (max-width: $mobile) {
       margin: 5px auto 5px auto;
     }
   }
+}
+
+.answer-wrong {
+  @include centered;
+  display: none;
+  color: red;
+}
+
+.answer-right {
+  @include centered;
+  display: none;
+  color: green;
 }
