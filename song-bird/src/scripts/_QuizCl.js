@@ -19,7 +19,6 @@ export class QuizCl extends Main {
     this.stage = 0;
     this.birdDataLang = this.lang === "rus" ? birdData : birdsDataEn;
     this.currentBird = this.birdDataLang[0][0];
-    this.stageIsComplete = false;
     this.varWrapElem = document.querySelector(".variants-wrapper");
     this.birdCardElem = document.querySelector(".bird-card");
     this.scoreElem = document.querySelector(".score");
@@ -28,14 +27,11 @@ export class QuizCl extends Main {
     this.stageElem = document.querySelectorAll(".stage");
     this.birdPlaceholderElem = document.querySelector(".bird-card-placeholder");
     this.quizWrapper = document.querySelector(".quiz-wrapper");
-
     this.setStage(0);
-    this.quizWrapper.addEventListener("click", this.mainHandler.bind(this));
-    this.footerElem.addEventListener("click", this.setLang.bind(this));
-  }
+    this.setLang();
 
-  randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    this.quizWrapper.addEventListener("click", this.mainHandler.bind(this));
+    this.footerElem.addEventListener("click", this.changeLang.bind(this));
   }
 
   setStage = function (num) {
@@ -128,37 +124,41 @@ export class QuizCl extends Main {
     return this.answer;
   }
 
-  setLang(e) {
+  changeLang(e) {
     if (
       e.target.classList.contains("eng") ||
       e.target.classList.contains("rus")
     ) {
-      let data;
-      if (this.lang === "rus") {
-        data = rusData[0];
-        this.birdDataLang = birdData;
-      } else {
-        data = engData[0];
-        this.birdDataLang = birdsDataEn;
-      }
-      const id = this.answer.id;
-      this.answer = this.birdDataLang[this.stage][id - 1];
-      const curId = this.currentBird.id;
-      this.currentBird = this.birdDataLang[this.stage][curId - 1];
-      bird.setBird(this.stage, this.currentBird.id - 1, this.birdDataLang);
-      document.querySelectorAll(".stage").forEach((e, i) => {
-        e.textContent = data.quiz.stages[i];
-      });
-      document.querySelector(".answer").textContent = data.quiz.guess;
-      document.querySelectorAll(".variant").forEach((elem, i) => {
-        console.log(this.stage);
-        elem.textContent = this.birdDataLang[this.stage][i].name;
-      });
-      document.querySelector(".bird-card-placeholder").textContent =
-        data.quiz.cardPh;
-      this.nextStgeElem.textContent = data.quiz.next;
-      document.querySelector(".score-label").textContent =
-        this.lang === "rus" ? "Очки: " : "Score: ";
+      this.setLang();
     }
+  }
+
+  setLang() {
+    let data;
+    if (this.lang === "rus") {
+      data = rusData[0];
+      this.birdDataLang = birdData;
+    } else {
+      data = engData[0];
+      this.birdDataLang = birdsDataEn;
+    }
+    const id = this.answer.id;
+    this.answer = this.birdDataLang[this.stage][id - 1];
+    const curId = this.currentBird.id;
+    this.currentBird = this.birdDataLang[this.stage][curId - 1];
+    bird.setBird(this.stage, this.currentBird.id - 1, this.birdDataLang);
+    document.querySelectorAll(".stage").forEach((e, i) => {
+      e.textContent = data.quiz.stages[i];
+    });
+    document.querySelector(".answer").textContent = data.quiz.guess;
+    document.querySelectorAll(".variant").forEach((elem, i) => {
+      console.log(this.stage);
+      elem.textContent = this.birdDataLang[this.stage][i].name;
+    });
+    document.querySelector(".bird-card-placeholder").textContent =
+      data.quiz.cardPh;
+    this.nextStgeElem.textContent = data.quiz.next;
+    document.querySelector(".score-label").textContent =
+      this.lang === "rus" ? "Очки: " : "Score: ";
   }
 }

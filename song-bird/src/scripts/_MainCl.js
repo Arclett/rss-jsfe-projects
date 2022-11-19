@@ -4,28 +4,32 @@ import rusData from "./rusData.json";
 export class Main {
   lang;
   constructor() {
-    this.loadLang();
-    this.bgSrc = "unplash";
+    this.loadStatus();
     this.settingsWrapElem = document.querySelector(".settings-wrapper");
     this.renderSettings();
     this.footerElem = document.querySelector(".footer-wrapper");
+    this.changeBgElem = document.querySelector(".change-bg");
     this.applyLang();
+    this.setBg();
     //handlers
 
     this.footerElem.addEventListener("click", this.footerClick.bind(this));
-    window.addEventListener("beforeunload", this.saveLang.bind(this));
+    this.changeBgElem.addEventListener("click", this.setBg.bind(this));
+    window.addEventListener("beforeunload", this.saveStatus.bind(this));
   }
 
-  saveLang() {
+  saveStatus() {
     localStorage.setItem("lang", `${this.lang}`);
-    console.log("saved!");
+    localStorage.setItem("bg", `${this.bgSrc}`);
   }
 
-  loadLang() {
+  loadStatus() {
     if (localStorage.getItem("lang")) {
       this.lang = localStorage.getItem("lang");
-      console.log("lang loaded");
-    }
+    } else this.lang = "rus";
+    if (localStorage.getItem("bg")) {
+      this.bgSrc = localStorage.getItem("bg");
+    } else this.bgSrc = "offline";
   }
 
   renderSettings() {
@@ -72,6 +76,10 @@ export class Main {
     console.log("rendered!");
   }
 
+  randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
   footerClick(e) {
     if (e.target.classList.contains("settings-btn")) {
       this.openSettings();
@@ -89,7 +97,7 @@ export class Main {
       e.target.classList.contains("unplash") ||
       e.target.classList.contains("offline")
     ) {
-      this.choseSrc();
+      this.choseBg();
     }
   }
 
@@ -98,9 +106,20 @@ export class Main {
     this.applyLang();
   }
 
+  choseBg() {
+    this.bgSrc = this.bgSrc === "unplash" ? "offline" : "unplash";
+
+    this.setBg();
+  }
+
   applyLang() {
-    this.langRusElem.classList.toggle("active");
-    this.langEngElem.classList.toggle("active");
+    this.langRusElem.classList.remove("active");
+    this.langEngElem.classList.remove("active");
+    if (this.lang === "rus") {
+      this.langRusElem.classList.add("active");
+    } else {
+      this.langEngElem.classList.add("active");
+    }
     const data = this.lang === "rus" ? rusData[0] : engData[0];
     this.langWrapperElem.textContent = data.index.settings[0];
     this.bgSource.textContent = data.index.settings[1];
@@ -109,17 +128,47 @@ export class Main {
     this.closeSettings.textContent = data.index.settings[4];
   }
 
-  choseSrc() {
-    this.unplashElem.classList.toggle("active");
-    this.offlineElem.classList.toggle("active");
-    this.lang = this.lang === "unplash" ? "offline" : "unplash";
-  }
-
   openSettings() {
     this.settingsWrapElem.style.transform = "translateX(0)";
   }
 
   closeSetting() {
     this.settingsWrapElem.style.transform = null;
+  }
+
+  async setBg() {
+    this.unplashElem.classList.remove("active");
+    this.offlineElem.classList.remove("active");
+    if (this.bgSrc === "unplash") {
+      this.unplashElem.classList.add("active");
+    } else {
+      this.offlineElem.classList.add("active");
+    }
+    if (this.bgSrc === "unplash") {
+      const imgLink = await this.getBgLink();
+      const img = new Image();
+      img.src = `${imgLink}`;
+      img.addEventListener("load", function () {
+        document.querySelector(
+          ".body-wrapper"
+        ).style.backgroundImage = `url('${imgLink}')`;
+      });
+      console.log("unplash loaded");
+    } else {
+      document.querySelector(
+        ".body-wrapper"
+      ).style.backgroundImage = `url("../assets/img/default-bg-${this.randomInt(
+        1,
+        10
+      )}.jpg")`;
+      console.log("local loaded");
+    }
+  }
+
+  async getBgLink() {
+    const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=bird&client_id=n--SK77UqCI2ztzPFUUgJKS4GEwIgThxk3MK1623O5c`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.urls.regular;
   }
 }

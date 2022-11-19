@@ -22,8 +22,11 @@
 //main page styles
 
 .body-wrapper {
-  background: url("../assets/img/default-bg.jpg") no-repeat;
+  transition: 0.5s;
+  background-image: url("../assets/img/default-bg-1.jpg");
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   width: 100%;
   min-height: 100vh;
   min-width: 360px;
