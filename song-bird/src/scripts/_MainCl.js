@@ -9,6 +9,7 @@ export class Main {
     this.renderSettings();
     this.footerElem = document.querySelector(".footer-wrapper");
     this.changeBgElem = document.querySelector(".change-bg");
+    this.bodyElem = document.querySelector(".body-wrapper");
     this.applyLang();
     this.setBg();
     //handlers
@@ -155,9 +156,8 @@ export class Main {
       });
       console.log("unplash loaded");
     } else {
-      document.querySelector(
-        ".body-wrapper"
-      ).style.backgroundImage = `url("../assets/img/default-bg-${this.randomInt(
+      const loc = this.bodyElem.classList.contains("index") ? "." : "..";
+      this.bodyElem.style.backgroundImage = `url("${loc}/assets/img/default-bg-${this.randomInt(
         1,
         10
       )}.jpg")`;
