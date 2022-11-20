@@ -8,16 +8,15 @@
   height: 35px;
   grid-column: span 2;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   list-style: none;
   color: white;
   font-size: 20px;
   gap: 10px;
-  @media (max-width: $smallDesktop) {
-    font-size: 16px;
-  }
   @media (max-width: $mobile) {
     display: grid;
+    gap: 8px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
   }
@@ -28,5 +27,8 @@
     font-size: 20px;
     border-radius: 5px;
     transition: 0.5s;
+    @media (max-width: $smallDesktop) {
+      font-size: 16px;
+    }
   }
 }

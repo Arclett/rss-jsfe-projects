@@ -28,6 +28,7 @@
     font-size: 20px;
     @include centered;
     margin-top: 10px;
+    padding: 2px 5px;
   }
   .bird-current {
     grid-row: span 2;
@@ -61,14 +62,14 @@
   }
 }
 
-.answer-wrong {
-  @include centered;
-  display: none;
-  color: red;
-}
-
+.answer-wrong,
 .answer-right {
   @include centered;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
   display: none;
-  color: green;
+  font-size: 20px;
+  padding: 2px 5px;
 }
