@@ -1,5 +1,6 @@
 export class Player {
   constructor(position) {
+    this.timelineGrabbed = false;
     this.position = position;
     this.playTime = 0;
     this.isPlay = false;
@@ -7,7 +8,7 @@ export class Player {
     this.renderPlayer();
     this.quizWrapperElem = document.querySelector(".quiz-wrapper");
     this.audio = new Audio();
-    this.timebarUpdate();
+    this.timebarInterval();
 
     //event handlers
     this.position.addEventListener("mouseover", this.volumeShow.bind(this));
@@ -20,6 +21,12 @@ export class Player {
       "click",
       this.clickHandler.bind(this)
     );
+    this.playerWrapperElem.addEventListener(
+      "input",
+      this.inputHandler.bind(this)
+    );
+    this.timeline.addEventListener("mousedown", this.timelineGrab.bind(this));
+    this.timeline.addEventListener("mouseup", this.timelineDrop.bind(this));
   }
 
   renderPlayer() {
@@ -28,12 +35,13 @@ export class Player {
     this.playElement.className = "play";
     this.playerWrapperElem.appendChild(this.playElement);
     //timeline
-    this.timeline = document.createElement("div");
-    this.timeline.className = "timeline";
+    this.timeline = document.createElement("input");
+    this.timeline.className = "timeline scroll-bar";
+    this.timeline.setAttribute("type", "range");
+    this.timeline.setAttribute("min", 0);
+    this.timeline.setAttribute("step", 1);
+    this.timeline.setAttribute("value", 0);
     this.playerWrapperElem.appendChild(this.timeline);
-    this.progressElem = document.createElement("div");
-    this.progressElem.className = "progress";
-    this.timeline.appendChild(this.progressElem);
     //time
     const audioTime = document.createElement("div");
     audioTime.className = "audio-time";
@@ -50,22 +58,32 @@ export class Player {
     this.lengthElem.textContent = "0:00";
     audioTime.appendChild(this.lengthElem);
     //volume-bar
-    this.volumeSlider = document.createElement("div");
-    this.volumeSlider.className = "volume-slider";
+    this.volumeSlider = document.createElement("input");
+    this.volumeSlider.className = "volume-slider scroll-bar";
+    this.volumeSlider.setAttribute("type", "range");
+    this.volumeSlider.setAttribute("min", 0);
+    this.volumeSlider.setAttribute("max", 100);
+    this.volumeSlider.setAttribute("step", 1);
+    this.volumeSlider.setAttribute("value", 100);
     this.playerWrapperElem.appendChild(this.volumeSlider);
-    this.percentageElem = document.createElement("div");
-    this.percentageElem.className = "volume-percentage";
-    this.volumeSlider.appendChild(this.percentageElem);
     //volume-button
     const volumeBtn = document.createElement("div");
     volumeBtn.className = "volume-icon";
     this.playerWrapperElem.appendChild(volumeBtn);
   }
 
+  secToMin(sec) {
+    return new Date(sec * 1000).toISOString().slice(15, 19);
+  }
+
+  loadedData() {
+    const audioLength = Math.floor(this.audio.duration);
+    this.lengthElem.textContent = `${this.secToMin(audioLength)}`;
+    this.timeline.setAttribute("max", `${Math.floor(this.audio.duration)}`);
+    this.timeline.value = 0;
+  }
+
   clickHandler(e) {
-    if (e.target.classList.contains("timeline")) {
-      this.timelineFunc();
-    }
     if (
       e.target.classList.contains("volume-percentage") ||
       e.target.classList.contains("volume-slider")
@@ -76,6 +94,17 @@ export class Player {
       this.mute(e);
     }
   }
+
+  inputHandler(e) {
+    if (e.target.classList.contains("timeline")) {
+      this.timelineInput();
+    }
+    if (e.target.classList.contains("volume-slider")) {
+      this.volumeSliderFunc();
+    }
+  }
+
+  //volume
 
   mute(e) {
     this.audio.muted = !this.audio.muted;
@@ -96,34 +125,45 @@ export class Player {
     this.volumeSlider.style.opacity = "0";
   }
 
-  timebarUpdate() {
+  volumeSliderFunc() {
+    this.audio.volume = this.volumeSlider.value / 100;
+    this.volumeSlider.style.backgroundSize = `${this.volumeSlider.value}% 100%`;
+  }
+
+  //timebar functions
+
+  timebarInterval() {
     setInterval(() => {
-      this.progressElem.style.width =
-        (this.audio.currentTime / this.audio.duration) * 100 + "%";
-      this.currentElem.textContent = this.secToMin(this.audio.currentTime);
-    }, 500);
+      if (!this.timelineGrabbed) {
+        this.timebarUpdate();
+      }
+    }, 200);
   }
 
-  secToMin(sec) {
-    return new Date(sec * 1000).toISOString().slice(15, 19);
+  timebarUpdate() {
+    this.timeline.value = Math.floor(this.audio.currentTime);
+    this.renderTimeline();
   }
 
-  timelineFunc() {
-    const timelineWidth = window.getComputedStyle(this.timeline).width;
-    const timeToSeek = (e.offsetX / parseInt(timelineWidth)) * audio.duration;
-    this.audio.currentTime = timeToSeek;
+  timelineInput() {
+    this.renderTimeline();
   }
 
-  loadedData() {
-    const audioLength = Math.floor(this.audio.duration);
-    this.lengthElem.textContent = `${this.secToMin(audioLength)}`;
+  timelineGrab() {
+    this.timelineGrabbed = true;
   }
 
-  volumeSliderFunc(e) {
-    const sliderWidth = window.getComputedStyle(this.volumeSlider).width;
-    const newVolume = e.offsetX / parseInt(sliderWidth);
-    this.audio.volume = newVolume;
-    this.percentageElem.style.width = newVolume * 100 + "%";
+  timelineDrop() {
+    this.timelineGrabbed = false;
+    this.audio.currentTime = this.timeline.value;
+    this.playTime = this.timeline.value;
+    this.renderTimeline();
+  }
+
+  renderTimeline() {
+    const size = (this.timeline.value / this.timeline.max) * 100;
+    this.timeline.style.backgroundSize = `${size}% 100%`;
+    this.currentElem.textContent = this.secToMin(this.audio.currentTime);
   }
 
   audioPlay() {

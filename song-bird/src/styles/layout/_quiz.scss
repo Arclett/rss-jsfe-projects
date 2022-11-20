@@ -33,6 +33,7 @@
       .bird-card-placeholder {
         @include windowBorder;
         position: relative;
+        z-index: 0;
         color: white;
         font-size: 30px;
         top: 170px;

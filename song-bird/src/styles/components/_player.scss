@@ -24,14 +24,9 @@
   .timeline {
     grid-column: span 3;
     margin-top: 12px;
-    background: grey;
-    width: 100%;
+    width: 95%;
     cursor: pointer;
     height: 6px;
-    .progress {
-      background: white;
-      height: 100%;
-    }
   }
 
   .audio-time {
@@ -44,13 +39,11 @@
 
   .volume-slider {
     width: 100%;
-    margin-top: 12px;
-    background: grey;
+    margin-top: 10px;
     opacity: 0;
     height: 6px;
-    .volume-percentage {
-      background-color: white;
-      height: 100%;
+    .scroll-bar {
+      background-size: 100% 100%;
     }
   }
 
@@ -65,4 +58,36 @@
       cursor: pointer;
     }
   }
+}
+
+.scroll-bar {
+  display: block;
+  -webkit-appearance: none;
+  background: $greyBg;
+  background-image: linear-gradient(white, white);
+  height: 8px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 0 auto;
+  outline: 0;
+  background-repeat: no-repeat;
+}
+.scroll-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: $flatGreyBg;
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.scroll-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.scroll-bar::-webkit-slider-thumb:active {
+  transform: scale(1.3);
+  background-color: white;
 }

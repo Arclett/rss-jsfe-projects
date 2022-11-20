@@ -1,5 +1,3 @@
-import rusData from "./rusData.json";
-import engData from "./engData.json";
 import { Main } from "./_MainCl";
 
 export class IndexCl extends Main {

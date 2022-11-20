@@ -1,7 +1,5 @@
 import birdData from "../scripts/birdData.json";
 import birdsDataEn from "./_birdEngData";
-import rusData from "./rusData.json";
-import engData from "./engData.json";
 import { Main } from "./_MainCl";
 import { galPlayer, birdGal } from "../pages/gallery";
 

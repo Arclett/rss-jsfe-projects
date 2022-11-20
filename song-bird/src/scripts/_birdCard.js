@@ -1,5 +1,3 @@
-import birdData from "./birdData.json";
-
 export class BirdCard {
   currentBird;
   constructor() {
