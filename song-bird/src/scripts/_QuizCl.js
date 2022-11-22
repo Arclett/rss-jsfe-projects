@@ -85,7 +85,9 @@ export class QuizCl extends Main {
           const loseAudio = new Audio();
           loseAudio.src = "../assets/audio/lose.wav";
           loseAudio.play();
-          this.score--;
+          if (!e.target.classList.contains("wrongAnswer")) {
+            this.score--;
+          }
           e.target.classList.add("wrongAnswer");
           this.guessAnswer.style.display = "none";
           this.guessWrong.style.display = "flex";
