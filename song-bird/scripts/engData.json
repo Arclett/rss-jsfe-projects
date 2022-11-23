@@ -19,11 +19,7 @@
         "Predatory birds",
         "Sea birds"
       ],
-      "guess": [
-        "Guess the bird by the song",
-        "Right! It's ",
-        "Wrong! Try again."
-      ],
+      "guess": ["***", "", "***"],
       "cardPh": "Listen to the player and choose a bird from the list",
       "next": "Next stage",
       "score": "Score"
