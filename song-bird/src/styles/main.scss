@@ -21,6 +21,10 @@
 
 //main page styles
 
+body {
+  margin: 0;
+}
+
 .body-wrapper {
   transition: 0.5s;
   background-image: url("../assets/img/default-bg-1.jpg");
