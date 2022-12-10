@@ -1,6 +1,6 @@
 type Endpoint = {
     endpoint: string;
-    options: object;
+    options?: object;
 };
 
 interface IUrl {
