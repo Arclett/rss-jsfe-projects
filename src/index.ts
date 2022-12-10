@@ -3,3 +3,5 @@ import './global.css';
 
 const app = new App();
 app.start();
+let a: any = 42;
+console.log(a);
