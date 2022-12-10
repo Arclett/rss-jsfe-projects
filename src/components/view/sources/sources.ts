@@ -1,7 +1,7 @@
 import './sources.css';
 export type Item = {
     id: string;
-    name: any;
+    name: string;
 };
 
 class Sources {
