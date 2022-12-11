@@ -9,10 +9,12 @@ body {
 }
 
 header {
-    padding: 10px 5px;
+    padding: 5px;
     display: grid;
+    width: 90%;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
 }
 
 header h1 {
@@ -42,12 +44,6 @@ footer .copyright a:hover {
 }
 footer .copyright:before {
     content: '©';
-}
-
-@media (max-width: 500px) {
-    header {
-        padding: 5px 10px;
-    }
 }
 
 .rss-icon {
