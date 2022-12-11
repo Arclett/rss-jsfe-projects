@@ -1,16 +1,16 @@
 import { Endpoint, IUrl, UrlOptions, Status } from '../types/types';
 
 class Loader {
-    baseLink: string;
+    private baseLink: string;
 
-    options: { apiKey: string };
+    private options: { apiKey: string };
 
     constructor(baseLink: string, options: { apiKey: string }) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp<T>(
+    public getResp<T>(
         { endpoint, options = {} }: Endpoint,
         callback: (data: T) => void = () => {
             console.error('No callback for GET response');
@@ -19,7 +19,7 @@ class Loader {
         this.load('GET', endpoint, callback, options);
     }
 
-    errorHandler(res: Response) {
+    private errorHandler(res: Response) {
         if (!res.ok) {
             if (res.status === Status.NO_FOUND || res.status === Status.UNAUTHORIZED)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -29,7 +29,7 @@ class Loader {
         return res;
     }
 
-    makeUrl(options: object, endpoint: string) {
+    private makeUrl(options: object, endpoint: string) {
         const urlOptions: IUrl = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -42,7 +42,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
+    private load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

@@ -1,13 +1,13 @@
 //types
 
 export type Item = {
-    id: string;
-    name: string;
+    readonly id: string;
+    readonly name: string;
 };
 
 export type Endpoint = {
-    endpoint: string;
-    options?: object;
+    readonly endpoint: string;
+    readonly options?: object;
 };
 
 export type UrlOptions = keyof IUrl;
@@ -22,15 +22,15 @@ export enum Status {
 //interfaces
 
 export interface IData {
-    urlToImage: string;
-    author: string;
-    publishedAt: string;
-    source: {
-        name: string;
+    readonly urlToImage: string;
+    readonly author: string;
+    readonly publishedAt: string;
+    readonly source: {
+        readonly name: string;
     };
-    title: string;
-    description: string;
-    url: string;
+    readonly title: string;
+    readonly description: string;
+    readonly url: string;
 }
 
 export interface IUrl {
