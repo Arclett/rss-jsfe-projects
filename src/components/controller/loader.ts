@@ -1,13 +1,4 @@
-type Endpoint = {
-    endpoint: string;
-    options?: object;
-};
-
-interface IUrl {
-    [index: string]: string;
-}
-
-type UrlOptions = keyof IUrl;
+import { Endpoint, IUrl, UrlOptions, Status } from '../types/types';
 
 class Loader {
     baseLink: string;
@@ -19,9 +10,9 @@ class Loader {
         this.options = options;
     }
 
-    getResp(
+    getResp<T>(
         { endpoint, options = {} }: Endpoint,
-        callback = (): void => {
+        callback: (data: T) => void = () => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -30,7 +21,7 @@ class Loader {
 
     errorHandler(res: Response) {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === Status.NO_FOUND || res.status === Status.UNAUTHORIZED)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
@@ -51,11 +42,13 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    load(method: string, endpoint: string, callback: (data: object) => void, options = {}) {
+    load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}) {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then((data: object) => callback(data))
+            .then((data: T) => {
+                callback(data);
+            })
             .catch((err) => console.error(err));
     }
 }

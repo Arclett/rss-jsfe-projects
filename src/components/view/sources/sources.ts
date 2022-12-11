@@ -1,8 +1,5 @@
 import './sources.css';
-export type Item = {
-    id: string;
-    name: string;
-};
+import { Item } from '../../types/types';
 
 class Sources {
     draw(data: Item[]) {
