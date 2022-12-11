@@ -6,7 +6,8 @@
     "scripts": {
         "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
         "build": "webpack --config ./webpack.config.js --env mode=prod",
-        "lint": "eslint src"
+        "lint": "eslint src",
+        "deploy": "npm run build && npx gh-pages -d dist -e Migration-to-TypeScript"
     },
     "repository": {
         "type": "git",
@@ -38,5 +39,8 @@
         "webpack-cli": "^4.5.0",
         "webpack-dev-server": "^3.11.2",
         "webpack-merge": "^5.7.3"
+    },
+    "dependencies": {
+        "gh-pages": "^4.0.0"
     }
 }
