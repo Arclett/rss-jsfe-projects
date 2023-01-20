@@ -1,20 +1,32 @@
 import { Utilities } from "./_Utilities";
 import { RenderUI } from "./rendering/_RenderUI";
+import { Garage } from "./_Garage";
 
 export class Main extends Utilities {
     createInputText: HTMLInputElement;
     createInputColor: HTMLInputElement;
     updateInputText: HTMLInputElement;
     updateInputColor: HTMLInputElement;
-    garageTitle: HTMLElement;
-    page: HTMLElement;
-    raceWrapper: HTMLElement;
+    garage: Garage;
 
     start() {
         const body: HTMLElement = document.body;
         RenderUI.renderHeader(body);
-        const [inputs, elements] = RenderUI.renderMain(body);
-        [this.createInputText, this.createInputColor, this.updateInputText, this.updateInputColor] = inputs;
-        [this.garageTitle, this.page, this.raceWrapper] = elements;
+
+        const main = document.createElement("main");
+        main.className = "main";
+        body.appendChild(main);
+
+        const controlWrapper = document.createElement("section");
+        controlWrapper.className = "control";
+        main.appendChild(controlWrapper);
+
+        [this.createInputText, this.createInputColor] = RenderUI.renderControlElement(controlWrapper, "create");
+        [this.updateInputText, this.updateInputColor] = RenderUI.renderControlElement(controlWrapper, "update");
+
+        const garageElems: HTMLElement[] = RenderUI.renderGarage(main);
+
+        this.garage = new Garage(garageElems);
+        this.garage.getCars(1, 3);
     }
 }

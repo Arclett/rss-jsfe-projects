@@ -10,25 +10,6 @@ export class RenderUI {
         container.insertAdjacentHTML("afterbegin", header);
     }
 
-    static renderMain(container: HTMLElement): [HTMLInputElement[], HTMLElement[]] {
-        const main = document.createElement("main");
-        main.className = "main";
-        container.appendChild(main);
-
-        const controlWrapper = document.createElement("section");
-        controlWrapper.className = "control";
-
-        const [createInputText, createInputColor] = RenderUI.renderControlElement(controlWrapper, "create");
-        const [updateInputText, updateInputColor] = RenderUI.renderControlElement(controlWrapper, "update");
-        main.appendChild(controlWrapper);
-
-        const [garageTitle, page, raceWrapper] = RenderUI.renderGarage(main);
-
-        const inputs: HTMLInputElement[] = [createInputText, createInputColor, updateInputText, updateInputColor];
-        const elements: HTMLElement[] = [garageTitle, page, raceWrapper];
-        return [inputs, elements];
-    }
-
     static renderControlElement(container: HTMLElement, type: string) {
         const controlElement = document.createElement("div");
         controlElement.className = `control-elem-${type}`;
