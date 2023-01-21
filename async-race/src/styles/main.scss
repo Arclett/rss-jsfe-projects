@@ -1,1 +1,18 @@
+@import "./components/raceField.scss";
+@import "./components/car.scss";
 
+.car-icon {
+    height: 40px;
+    svg {
+        height: 40px;
+    }
+}
+
+.finish-icon {
+    height: 60px;
+}
+
+.road {
+    width: 100%;
+    border-top: 3px solid black;
+}

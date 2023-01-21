@@ -1,3 +1,5 @@
+import { IControlInput, IGarageElems } from "../../types/interfaces";
+
 export class RenderUI {
     static renderHeader(container: HTMLElement): void {
         const header = `
@@ -10,7 +12,7 @@ export class RenderUI {
         container.insertAdjacentHTML("afterbegin", header);
     }
 
-    static renderControlElement(container: HTMLElement, type: string) {
+    static renderControlElement(container: HTMLElement, type: string): IControlInput {
         const controlElement = document.createElement("div");
         controlElement.className = `control-elem-${type}`;
 
@@ -22,26 +24,32 @@ export class RenderUI {
         inputColor.type = "color";
         inputColor.className = `control-input ${type}-color-input`;
 
+        if (type === "update") {
+            inputColor.disabled = true;
+            inputText.disabled = true;
+        }
+
         const button = document.createElement("button");
         button.textContent = type;
         button.className = `control-button ${type}-button`;
 
         controlElement.append(inputText, inputColor, button);
         container.appendChild(controlElement);
-        return [inputText, inputColor];
+        return {
+            inputColor: inputColor,
+            inputText: inputText,
+        };
     }
 
-    static renderGarage(container: HTMLElement) {
+    static renderGarage(container: HTMLElement): IGarageElems {
         const garageWrapper = document.createElement("section");
         garageWrapper.className = "garage-wrapper";
 
         const garageTitle = document.createElement("h2");
         garageTitle.className = "garage-title";
-        garageTitle.textContent = "Garage";
 
         const page = document.createElement("div");
         page.className = "garage-page";
-        page.textContent = "page";
 
         const raceWrapper = document.createElement("div");
         raceWrapper.className = "race-wrapper";
@@ -50,8 +58,8 @@ export class RenderUI {
         pageButtonWrapper.className = "page-button-wrapper";
 
         const pageBack = document.createElement("button");
-        pageBack.textContent = "Back";
-        pageBack.className = "back-page-button";
+        pageBack.textContent = "Prev";
+        pageBack.className = "prev-page-button";
 
         const pageNext = document.createElement("button");
         pageNext.textContent = "Next";
@@ -61,6 +69,6 @@ export class RenderUI {
         garageWrapper.append(garageTitle, page, raceWrapper, pageButtonWrapper);
         container.appendChild(garageWrapper);
 
-        return [garageTitle, page, raceWrapper];
+        return { garageTitle: garageTitle, pageNumber: page, raceWrapper: raceWrapper };
     }
 }
