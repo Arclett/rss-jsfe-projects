@@ -1,9 +1,9 @@
-import { EngineStatus } from "../types/enums";
-import { ICar, ICars, IGarageElems } from "../types/interfaces";
+import { Responses } from "../types/enums";
+import { ICar, ICars, IGarageElems, IWinnerGet, IWinnerUpdate } from "../types/interfaces";
+import { API } from "./_API";
 import { Car } from "./_Car";
-import { Utilities } from "./_Utilities";
 
-export class Garage extends Utilities {
+export class Garage extends API {
     garageElems: IGarageElems;
 
     currentPage: number = 1;
@@ -31,10 +31,9 @@ export class Garage extends Utilities {
         this.carElems.forEach((e) => e.initCar());
     }
 
-    async getCars(page: number, limit: number = 7): Promise<ICars> {
-        const data = await fetch(`${this.makeURL("garage")}?_page=${page}&_limit=${limit}`);
+    async getCars(page: number, limit: number = this.garageLimit): Promise<ICars> {
+        const data = await this.getCarsApi(page, limit);
         const cars: ICar[] = await data.json();
-        console.log(cars);
         const count = data.headers.get("X-Total-Count");
         return { cars: cars, total: count };
     }
@@ -42,7 +41,8 @@ export class Garage extends Utilities {
     async removeCar(elem: HTMLElement) {
         const id = this.getIdFromParent(elem);
         if (!id) return;
-        await fetch(`${this.makeURL("garage")}/${id}`, { method: "DELETE" });
+        await this.removeCarApi(+id);
+        await this.deleteWinnerApi(+id);
         this.initGarage();
     }
 
@@ -59,30 +59,35 @@ export class Garage extends Utilities {
     }
 
     async runEngine(id: string) {
-        console.log(id);
         const car = this.carElems.find((e) => e.carData.id === Number(id));
         if (!car) return;
-        console.log(car.carData.id);
-        car.carStart();
+        return await car.carStart();
     }
 
-    animation() {
-        const req = window.requestAnimationFrame(this.animate.bind(this));
+    async stopEngine(id: string) {
+        const car = this.carElems.find((e) => e.carData.id === Number(id));
+        if (!car) return;
+        return await car.carStop();
     }
 
-    animate(timestamp: any = 0) {
-        if (!this.start) this.start = timestamp;
+    async race() {
+        const { carId: winner, time: time } = await Promise.any(this.carElems.map((e) => e.carStart()));
+        this.updateWinners(winner, time);
+    }
 
-        const progress = timestamp - this.start;
-
-        const x = document.querySelector(".car-icon-1");
-        console.log(progress);
-        if (x instanceof HTMLElement) {
-            x.style.transform = `translateX(${progress / 5}px)`;
-        }
-
-        if (progress < 2000) {
-            window.requestAnimationFrame(this.animate.bind(this));
+    async updateWinners(car: number, timeOfRace: number) {
+        const winner: IWinnerGet = await this.getWinnerApi(car).then(
+            (res) => res.json(),
+            (rej) => rej.status
+        );
+        if (winner.wins > 0) {
+            const data: IWinnerUpdate = {
+                wins: ++winner.wins,
+                time: winner.time > timeOfRace ? timeOfRace : winner.time,
+            };
+            await this.updateWinnerApi(data, car);
+        } else {
+            await this.createWinnerApi(car, timeOfRace);
         }
     }
 }

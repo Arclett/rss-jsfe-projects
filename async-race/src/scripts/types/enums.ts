@@ -1,10 +1,20 @@
 export enum EngineStatus {
     started = "started",
     drive = "drive",
-    stoped = "stopped",
+    stopped = "stopped",
 }
 
 export enum Responses {
     success = 200,
     failure = 500,
+}
+export enum SortType {
+    id = "id",
+    wins = "wins",
+    time = "time",
+}
+
+export enum Order {
+    asc = "ASC",
+    desc = "DESC",
 }

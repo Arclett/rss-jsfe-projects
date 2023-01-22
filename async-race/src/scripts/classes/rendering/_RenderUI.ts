@@ -45,6 +45,22 @@ export class RenderUI {
         const garageWrapper = document.createElement("section");
         garageWrapper.className = "garage-wrapper";
 
+        const garageButtons = document.createElement("div");
+
+        const race = document.createElement("button");
+        race.textContent = "race";
+        race.className = "race-button";
+
+        const reset = document.createElement("button");
+        reset.textContent = "reset";
+        reset.className = "reset-button";
+
+        const generate = document.createElement("button");
+        generate.textContent = "generate cars";
+        generate.className = "generate-button";
+
+        garageButtons.append(race, reset, generate);
+
         const garageTitle = document.createElement("h2");
         garageTitle.className = "garage-title";
 
@@ -66,7 +82,7 @@ export class RenderUI {
         pageNext.className = "next-page-button";
 
         pageButtonWrapper.append(pageBack, pageNext);
-        garageWrapper.append(garageTitle, page, raceWrapper, pageButtonWrapper);
+        garageWrapper.append(garageButtons, garageTitle, page, raceWrapper, pageButtonWrapper);
         container.appendChild(garageWrapper);
 
         return { garageTitle: garageTitle, pageNumber: page, raceWrapper: raceWrapper };

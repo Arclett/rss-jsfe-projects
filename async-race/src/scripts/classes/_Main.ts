@@ -1,10 +1,11 @@
-import { Utilities } from "./_Utilities";
 import { RenderUI } from "./rendering/_RenderUI";
 import { Garage } from "./_Garage";
 import { IGarageElems } from "../types/interfaces";
 import { Control } from "./_Control";
+import { API } from "./_API";
+import { Order, SortType } from "../types/enums";
 
-export class Main extends Utilities {
+export class Main extends API {
     control: Control;
     createTextInput: HTMLInputElement;
     garage: Garage;
@@ -44,12 +45,16 @@ export class Main extends Utilities {
         if (e.target.classList.contains("select-car-button")) this.control.selectCar(e.target);
         if (e.target.classList.contains("update-button")) this.updateCar();
         if (e.target.classList.contains("start-car-button")) this.runEngine(e.target);
+        if (e.target.classList.contains("stop-car-button")) this.stopEngine(e.target);
+        if (e.target.classList.contains("race-button")) this.garage.race();
+        if (e.target.classList.contains("reset-button")) this.garage.initGarage();
+        if (e.target.classList.contains("winners-button")) this.toWinner();
     }
 
     async createCar() {
         if (!this.createTextInput.value) return;
-        const res = await this.control.createCar();
-        this.garage.initGarage();
+        await this.control.createCar();
+        await this.garage.initGarage();
     }
 
     async updateCar() {
@@ -60,6 +65,16 @@ export class Main extends Utilities {
     async runEngine(elem: HTMLElement) {
         const id = this.getIdFromParent(elem);
         if (!id) return;
-        this.garage.runEngine(id);
+        await this.garage.runEngine(id);
+    }
+    async stopEngine(elem: HTMLElement) {
+        const id = this.getIdFromParent(elem);
+        if (!id) return;
+        await this.garage.stopEngine(id);
+    }
+
+    async toWinner() {
+        const res = await this.getWinnersApi(1, 10, SortType.time, Order.desc).then((res) => res.json());
+        console.log(res);
     }
 }

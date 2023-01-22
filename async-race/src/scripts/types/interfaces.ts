@@ -29,3 +29,13 @@ export interface IDrive {
     velocity: number;
     distance: number;
 }
+export interface IWinnerUpdate {
+    wins: number;
+    time: number;
+}
+
+export interface IWinnerGet {
+    wins: number;
+    time: number;
+    id: number;
+}
