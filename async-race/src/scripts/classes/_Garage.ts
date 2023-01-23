@@ -1,4 +1,3 @@
-import { Responses } from "../types/enums";
 import { ICar, ICars, IGarageElems, IWinnerGet, IWinnerUpdate } from "../types/interfaces";
 import { API } from "./_API";
 import { Car } from "./_Car";
@@ -20,6 +19,7 @@ export class Garage extends API {
     }
 
     async initGarage() {
+        window.stop();
         const data = await this.getCars(this.currentPage);
         if (!data.total) return;
         this.carTotal = Number(data.total);
@@ -29,6 +29,7 @@ export class Garage extends API {
         this.garageElems.raceWrapper.replaceChildren();
         this.carElems = data.cars.map((e) => new Car(this.garageElems.raceWrapper, e));
         this.carElems.forEach((e) => e.initCar());
+        this.garageElems.race.disabled = false;
     }
 
     async getCars(page: number, limit: number = this.garageLimit): Promise<ICars> {
@@ -61,7 +62,11 @@ export class Garage extends API {
     async runEngine(id: string) {
         const car = this.carElems.find((e) => e.carData.id === Number(id));
         if (!car) return;
-        return await car.carStart();
+
+        await car.carStart().then(
+            () => {},
+            () => {}
+        );
     }
 
     async stopEngine(id: string) {
@@ -71,7 +76,16 @@ export class Garage extends API {
     }
 
     async race() {
-        const { carId: winner, time: time } = await Promise.any(this.carElems.map((e) => e.carStart()));
+        this.garageElems.race.disabled = true;
+        const data = await Promise.any(this.carElems.map((e) => e.carStart()));
+        console.log("data", data);
+        if (!data) return;
+        const { carId: winner, time: time } = data;
+        const carName = this.carElems.reduce((acc, e) => {
+            if (e.carData.id === winner) acc = e.carData.name;
+            return acc;
+        }, "");
+        this.winMessage(carName, time);
         this.updateWinners(winner, time);
     }
 
@@ -89,5 +103,14 @@ export class Garage extends API {
         } else {
             await this.createWinnerApi(car, timeOfRace);
         }
+    }
+
+    winMessage(car: string, time: number) {
+        console.log("winner");
+        const win = document.createElement("div");
+        win.className = "winner-message";
+        win.textContent = `Winner: ${car}, Time: ${time}`;
+
+        this.garageElems.raceWrapper.appendChild(win);
     }
 }

@@ -4,3 +4,13 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.winner-message {
+    position: fixed;
+    height: 100px;
+    width: 30%;
+    background-color: black;
+    color: white;
+    top: 25%;
+    left: 35%;
+}

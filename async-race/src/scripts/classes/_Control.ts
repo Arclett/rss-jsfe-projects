@@ -1,4 +1,4 @@
-import { ICarUpdate, IControlInput } from "../types/interfaces";
+import { IControlInput } from "../types/interfaces";
 import { ICar } from "../types/interfaces";
 import { API } from "./_API";
 
@@ -15,6 +15,7 @@ export class Control extends API {
     }
 
     async createCar<T>(): Promise<T> {
+        console.log(this.createInputs.inputColor.value);
         const data = {
             name: this.createInputs.inputText.value,
             color: this.createInputs.inputColor.value,
@@ -40,5 +41,15 @@ export class Control extends API {
         };
 
         await this.updateCarApi(this.currentCar.id, data);
+    }
+
+    async generateCars() {
+        for (let i = 0; i < 100; i++) {
+            const data = {
+                name: this.randomName(),
+                color: this.randomColor(),
+            };
+            await this.createCarApi(data);
+        }
     }
 }

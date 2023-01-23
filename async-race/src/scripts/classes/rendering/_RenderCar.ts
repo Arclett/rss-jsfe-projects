@@ -25,6 +25,7 @@ export class RenderCar {
         const stop = document.createElement("button");
         stop.textContent = "stop";
         stop.className = "stop-car-button";
+        stop.disabled = true;
 
         const carLogoWrapper = document.createElement("div");
         carLogoWrapper.className = `car-icon car-icon-${carId}`;
@@ -38,6 +39,6 @@ export class RenderCar {
         road.className = "road";
 
         carWrapper.append(carName, carSelect, carRemove, start, stop, carLogoWrapper, finish, road);
-        return carLogoWrapper;
+        return { carLogo: carLogoWrapper, startButton: start, stopButton: stop };
     }
 }

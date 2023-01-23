@@ -85,6 +85,14 @@ export class RenderUI {
         garageWrapper.append(garageButtons, garageTitle, page, raceWrapper, pageButtonWrapper);
         container.appendChild(garageWrapper);
 
-        return { garageTitle: garageTitle, pageNumber: page, raceWrapper: raceWrapper };
+        return {
+            garageWrapper: garageWrapper,
+            garageTitle: garageTitle,
+            pageNumber: page,
+            raceWrapper: raceWrapper,
+            race: race,
+            pageBack: pageBack,
+            pageNext: pageNext,
+        };
     }
 }
