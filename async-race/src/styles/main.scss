@@ -1,45 +1,10 @@
-@import "./components/raceField.scss";
+@import "./abstracts/variables.scss";
+@import "./abstracts/mixins.scss";
+
+@import "./components/garage.scss";
 @import "./components/car.scss";
+@import "./components/header.scss";
+@import "./components/control.scss";
 
-.car-icon {
-    height: 40px;
-    svg {
-        height: 40px;
-    }
-}
-
-.finish-icon {
-    height: 60px;
-}
-
-.road {
-    width: 100%;
-    border-top: 3px solid black;
-}
-
-.winners {
-    height: 90vh;
-    width: 90vw;
-    background-color: antiquewhite;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    .winners-table {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        .winner-logo {
-            height: 10px;
-            svg {
-                height: 10px;
-            }
-        }
-    }
-}
-
-.hidden {
-    display: none;
-}
-
-.sorted {
-    background-color: azure;
-}
+@import "./layouts/mainPage.scss";
+@import "./layouts/winners.scss";

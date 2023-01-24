@@ -1,0 +1,48 @@
+.garage-wrapper {
+    min-width: 500px;
+    .garage-buttons {
+        width: 300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        button {
+            @include button;
+            height: 30px;
+            width: 100px;
+        }
+    }
+    h2,
+    .garage-page {
+        @include text;
+        @include centered;
+        width: 150px;
+        height: 30px;
+        margin: 10px 0;
+        text-align: center;
+    }
+    .page-button-wrapper {
+        button {
+            @include button;
+            margin: 5px auto;
+        }
+    }
+}
+
+.race-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.winner-message {
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    top: 35%;
+    @include text;
+    font-size: 30px;
+    @include centered;
+    padding: 10px;
+    z-index: 6;
+}

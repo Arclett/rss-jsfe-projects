@@ -4,6 +4,7 @@ import { API } from "./_API";
 
 export class Control extends API {
     createInputs: IControlInput;
+
     updateInputs: IControlInput;
 
     currentCar: ICar;
@@ -15,12 +16,12 @@ export class Control extends API {
     }
 
     async createCar<T>(): Promise<T> {
-        console.log(this.createInputs.inputColor.value);
         const data = {
             name: this.createInputs.inputText.value,
             color: this.createInputs.inputColor.value,
         };
-        return await this.createCarApi(data);
+        const result = await this.createCarApi(data);
+        return result;
     }
 
     async selectCar(elem: HTMLElement) {

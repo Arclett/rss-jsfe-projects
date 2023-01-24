@@ -3,18 +3,57 @@
     display: grid;
     grid-template-columns: 1fr 1fr 70%;
     grid-template-rows: 30px 30px 60px 5px;
+    grid-row-gap: 10px;
+    button {
+        @include button;
+        width: 120px;
+    }
+    .select-car-button,
+    .start-car-button {
+        margin: 0 auto;
+    }
+    .car-remove-button,
+    .stop-car-button {
+        margin: 0;
+    }
     h3 {
         margin: 0;
         padding: 0;
+        @include car;
+        @include centered;
     }
     .finish-icon {
         grid-column: span 2;
         justify-self: end;
+        position: relative;
+        z-index: 2;
+        top: 5px;
+        right: 10vw;
+        height: 60px;
+        svg {
+            height: 60px;
+        }
+    }
+    .car-icon {
+        position: relative;
+        z-index: 4;
+        height: 40px;
+        top: 10px;
+        left: 10px;
+        svg {
+            height: 40px;
+        }
     }
     .stop-car-button {
         grid-column: span 2;
     }
     .road {
         grid-column: span 3;
+        position: relative;
+        height: 70px;
+        background-color: white;
+        top: -70px;
+        border-radius: 5px;
+        border: 2px solid $subColorB;
     }
 }

@@ -31,8 +31,8 @@ export class RenderCar {
         carLogoWrapper.className = `car-icon car-icon-${carId}`;
         carLogoWrapper.insertAdjacentHTML("beforeend", RenderCarIcon.getCarIcon(carColor));
 
-        const finish = new Image();
-        finish.src = "../../assets/svg/finish-icon.svg";
+        const finish = document.createElement("div");
+        finish.insertAdjacentHTML("beforeend", RenderCarIcon.getFinishIcon());
         finish.className = "finish-icon";
 
         const road = document.createElement("div");

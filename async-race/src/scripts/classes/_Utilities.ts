@@ -1,6 +1,8 @@
 export class Utilities {
-    raceWidth: number = 92;
-    garageLimit: number = 7;
+    raceWidth = 86;
+
+    garageLimit = 7;
+
     makeURL(path: string) {
         return `http://localhost:3000/${path}`;
     }

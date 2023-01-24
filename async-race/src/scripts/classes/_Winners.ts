@@ -4,11 +4,16 @@ import { RenderWinners } from "./rendering/_RenderWinners";
 import { API } from "./_API";
 
 export class Winners extends API {
-    currentPage: number = 1;
+    currentPage = 1;
+
     carTotal: number;
-    limit: number = 10;
+
+    limit = 10;
+
     winnersElem: WinnersElem;
+
     container: HTMLElement;
+
     constructor(container: HTMLElement) {
         super();
         this.container = container;
@@ -16,7 +21,7 @@ export class Winners extends API {
 
     async initWinner(sort: SortType = SortType.time, order: Order = Order.asc) {
         this.container.replaceChildren();
-        const res = await this.getWinnersApi(this.currentPage, this.limit, sort, order);
+        const res = await this.getWinnersApi(this.currentPage, sort, order, this.limit);
         const count = res.headers.get("X-Total-Count");
         if (!count) return;
         this.carTotal = +count;
@@ -46,7 +51,7 @@ export class Winners extends API {
         });
     }
 
-    nextPage(limit: number = 7) {
+    nextPage(limit = 7) {
         if (this.carTotal - this.currentPage * limit <= 0) return;
         this.currentPage++;
         this.initWinner();
@@ -56,5 +61,27 @@ export class Winners extends API {
         if (this.currentPage === 1) return;
         this.currentPage--;
         this.initWinner();
+    }
+
+    winnerSort(elem: HTMLElement) {
+        const arr = Array.from(elem.classList);
+        if (arr.includes("sorted") && arr.includes("ASC") && arr.includes("time")) {
+            this.initWinner(SortType.time, Order.desc);
+        }
+        if (arr.includes("sorted") && arr.includes("DESC") && arr.includes("time")) {
+            this.initWinner(SortType.time, Order.asc);
+        }
+        if (arr.includes("sorted") && arr.includes("ASC") && arr.includes("wins")) {
+            this.initWinner(SortType.wins, Order.desc);
+        }
+        if (arr.includes("sorted") && arr.includes("DESC") && arr.includes("wins")) {
+            this.initWinner(SortType.wins, Order.asc);
+        }
+        if (arr.length === 1 && arr.includes("time")) {
+            this.initWinner(SortType.time, Order.asc);
+        }
+        if (arr.length === 1 && arr.includes("wins")) {
+            this.initWinner(SortType.wins, Order.desc);
+        }
     }
 }

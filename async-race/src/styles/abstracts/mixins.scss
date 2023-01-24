@@ -1,0 +1,31 @@
+@mixin button {
+    background-color: $mainColor;
+    color: $colorAccent;
+    border-radius: 5px;
+    border: 1px solid $colorAccent;
+    &:hover {
+        cursor: pointer;
+        background-color: $subColorB;
+        color: $subColorA;
+    }
+}
+
+@mixin text {
+    background-color: $colorAccent;
+    color: $subColorA;
+    border-radius: 5px;
+    border: 1px solid $subColorB;
+}
+
+@mixin centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin car {
+    background-color: $subColorB;
+    color: $subColorA;
+    border-radius: 5px;
+    border: 1px solid $colorAccent;
+}

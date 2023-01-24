@@ -5,13 +5,13 @@ import { Car } from "./_Car";
 export class Garage extends API {
     garageElems: IGarageElems;
 
-    currentPage: number = 1;
+    currentPage = 1;
 
     carTotal: number;
 
     carElems: Car[];
 
-    start: number = 0;
+    start = 0;
 
     constructor(garageElems: IGarageElems) {
         super();
@@ -47,7 +47,7 @@ export class Garage extends API {
         this.initGarage();
     }
 
-    nextPage(limit: number = 7) {
+    nextPage(limit = 7) {
         if (this.carTotal - this.currentPage * limit <= 0) return;
         this.currentPage++;
         this.initGarage();
@@ -72,13 +72,13 @@ export class Garage extends API {
     async stopEngine(id: string) {
         const car = this.carElems.find((e) => e.carData.id === Number(id));
         if (!car) return;
-        return await car.carStop();
+        const result = await car.carStop();
+        return result;
     }
 
     async race() {
         this.garageElems.race.disabled = true;
         const data = await Promise.any(this.carElems.map((e) => e.carStart()));
-        console.log("data", data);
         if (!data) return;
         const { carId: winner, time: time } = data;
         const carName = this.carElems.reduce((acc, e) => {
@@ -106,7 +106,6 @@ export class Garage extends API {
     }
 
     winMessage(car: string, time: number) {
-        console.log("winner");
         const win = document.createElement("div");
         win.className = "winner-message";
         win.textContent = `Winner: ${car}, Time: ${time}`;

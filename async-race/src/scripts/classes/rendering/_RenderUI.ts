@@ -46,6 +46,7 @@ export class RenderUI {
         garageWrapper.className = "garage-wrapper";
 
         const garageButtons = document.createElement("div");
+        garageButtons.className = "garage-buttons";
 
         const race = document.createElement("button");
         race.textContent = "race";

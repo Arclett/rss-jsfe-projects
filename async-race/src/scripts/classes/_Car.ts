@@ -5,12 +5,19 @@ import { API } from "./_API";
 
 export class Car extends API {
     container: HTMLElement;
+
     carData: ICar;
+
     elements: ICarElements;
+
     driveResponse: Responses;
-    start: number = 0;
+
+    start = 0;
+
     time: number;
+
     engineStatus: EngineStatus;
+
     animationId: number;
 
     constructor(container: HTMLElement, car: ICar) {
@@ -25,36 +32,14 @@ export class Car extends API {
 
     async carStart() {
         this.elements.startButton.disabled = true;
-        const res: IDrive = await this.engineStatusApi(EngineStatus.started, this.carData).then((res) => res.json());
+        const resp: IDrive = await this.engineStatusApi(EngineStatus.started, this.carData).then((res) => res.json());
         this.elements.stopButton.disabled = false;
-        this.time = res.distance / res.velocity;
+        this.time = resp.distance / resp.velocity;
         this.animationId = window.requestAnimationFrame(this.animate.bind(this));
         this.driveResponse = await this.engineStatusApi(EngineStatus.drive, this.carData).then((res) => res.status);
         if (this.driveResponse === 200) return { carId: this.carData.id, time: +this.timeToSec(this.time) };
         return Promise.reject();
     }
-
-    // async carStart() {
-    //     this.elements.startButton.disabled = true;
-    //     const res: IDrive = await this.engineStatusApi(EngineStatus.started, this.carData).then((res) => res.json());
-    //     this.elements.stopButton.disabled = false;
-    //     this.time = res.distance / res.velocity;
-    //     const data = { carId: this.carData.id, time: +this.timeToSec(this.time) };
-    //     this.animationId = window.requestAnimationFrame(this.animate.bind(this));
-    //     this.driveResponse = await this.engineStatusApi(EngineStatus.drive, this.carData).then((res) => res.status);
-    //     if (this.driveResponse === 200)
-    //         return Promise.resolve(data).then(
-    //             () => {
-    //                 console.log("winner");
-    //                 return data;
-    //             },
-    //             () => {}
-    //         );
-    //     return Promise.reject(new Error("Alarm! Engine failure!!!")).then(
-    //         () => {},
-    //         (error) => console.error(error)
-    //     );
-    // }
 
     async carStop() {
         this.elements.stopButton.disabled = true;
@@ -65,7 +50,7 @@ export class Car extends API {
         this.start = 0;
     }
 
-    animate(timestamp: number = 0) {
+    animate(timestamp = 0) {
         if (!this.start) this.start = timestamp;
         const progress = timestamp - this.start;
         const path = (progress / this.time) * this.raceWidth;
