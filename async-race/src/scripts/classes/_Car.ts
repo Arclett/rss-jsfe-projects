@@ -1,26 +1,26 @@
-import { ICar, ICarElements, IDrive } from "../types/interfaces";
+import { ICarWithId, ICarElements, IDrive } from "../types/interfaces";
 import { RenderCar } from "./rendering/_RenderCar";
 import { EngineStatus, Responses } from "../types/enums";
 import { API } from "./_API";
 
 export class Car extends API {
-    container: HTMLElement;
+    private container: HTMLElement;
 
-    carData: ICar;
+    carData: ICarWithId;
 
-    elements: ICarElements;
+    private elements: ICarElements;
 
-    driveResponse: Responses;
+    private driveResponse: Responses;
 
-    start = 0;
+    private start = 0;
 
-    time: number;
+    private time: number;
 
-    engineStatus: EngineStatus;
+    private engineStatus: EngineStatus;
 
-    animationId: number;
+    private animationId: number;
 
-    constructor(container: HTMLElement, car: ICar) {
+    constructor(container: HTMLElement, car: ICarWithId) {
         super();
         this.container = container;
         this.carData = car;
@@ -37,7 +37,8 @@ export class Car extends API {
         this.time = resp.distance / resp.velocity;
         this.animationId = window.requestAnimationFrame(this.animate.bind(this));
         this.driveResponse = await this.engineStatusApi(EngineStatus.drive, this.carData).then((res) => res.status);
-        if (this.driveResponse === 200) return { carId: this.carData.id, time: +this.timeToSec(this.time) };
+        if (this.driveResponse === Responses.success)
+            return { carId: this.carData.id, time: +this.timeToSec(this.time) };
         return Promise.reject();
     }
 
@@ -50,7 +51,7 @@ export class Car extends API {
         this.start = 0;
     }
 
-    animate(timestamp = 0) {
+    private animate(timestamp = 0) {
         if (!this.start) this.start = timestamp;
         const progress = timestamp - this.start;
         const path = (progress / this.time) * this.raceWidth;

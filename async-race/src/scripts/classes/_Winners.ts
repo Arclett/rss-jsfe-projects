@@ -4,15 +4,15 @@ import { RenderWinners } from "./rendering/_RenderWinners";
 import { API } from "./_API";
 
 export class Winners extends API {
-    currentPage = 1;
+    private currentPage = 1;
 
-    carTotal: number;
+    private carTotal: number;
 
-    limit = 10;
+    private limit = 10;
 
-    winnersElem: WinnersElem;
+    private winnersElem: WinnersElem;
 
-    container: HTMLElement;
+    private container: HTMLElement;
 
     constructor(container: HTMLElement) {
         super();

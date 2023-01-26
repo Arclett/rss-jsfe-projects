@@ -18,3 +18,11 @@ export enum Order {
     asc = "ASC",
     desc = "DESC",
 }
+
+export enum Methods {
+    PUT = "PUT",
+    GET = "GET",
+    DELETE = "DELETE",
+    PATCH = "PATCH",
+    POST = "POST",
+}

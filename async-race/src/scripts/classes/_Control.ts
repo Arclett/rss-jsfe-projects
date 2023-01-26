@@ -1,13 +1,13 @@
 import { IControlInput } from "../types/interfaces";
-import { ICar } from "../types/interfaces";
+import { ICarWithId } from "../types/interfaces";
 import { API } from "./_API";
 
 export class Control extends API {
-    createInputs: IControlInput;
+    private createInputs: IControlInput;
 
-    updateInputs: IControlInput;
+    private updateInputs: IControlInput;
 
-    currentCar: ICar;
+    private currentCar: ICarWithId;
 
     constructor(createInputs: IControlInput, updateInputs: IControlInput) {
         super();
@@ -45,7 +45,7 @@ export class Control extends API {
     }
 
     async generateCars() {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < this.generatedCarNumber; i++) {
             const data = {
                 name: this.randomName(),
                 color: this.randomColor(),

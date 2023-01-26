@@ -6,19 +6,19 @@ import { API } from "./_API";
 import { Winners } from "./_Winners";
 
 export class Main extends API {
-    control: Control;
+    private control: Control;
 
-    createTextInput: HTMLInputElement;
+    private createTextInput: HTMLInputElement;
 
-    garage: Garage;
+    private garage: Garage;
 
-    controlWrapper: HTMLElement;
+    private controlWrapper: HTMLElement;
 
-    garageElems: IGarageElems;
+    private garageElems: IGarageElems;
 
-    winnerWrapper: HTMLElement;
+    private winnerWrapper: HTMLElement;
 
-    winner: Winners;
+    private winner: Winners;
 
     start() {
         const body: HTMLElement = document.body;
@@ -52,7 +52,7 @@ export class Main extends API {
         body.addEventListener("click", this.clickHandler.bind(this));
     }
 
-    clickHandler(e: Event) {
+    private clickHandler(e: Event) {
         if (!(e.target instanceof HTMLElement)) return;
         if (e.target.classList.contains("create-button")) this.createCar();
         if (e.target.classList.contains("update-button")) this.updateCar();
@@ -76,43 +76,43 @@ export class Main extends API {
             this.winner.winnerSort(e.target);
     }
 
-    async createCar() {
+    private async createCar() {
         if (!this.createTextInput.value) return;
         await this.control.createCar();
         await this.garage.initGarage();
     }
 
-    async updateCar() {
+    private async updateCar() {
         await this.control.updateCarInfo();
         await this.garage.initGarage();
     }
 
-    async runEngine(elem: HTMLElement) {
+    private async runEngine(elem: HTMLElement) {
         const id = this.getIdFromParent(elem);
         if (!id) return;
         await this.garage.runEngine(id);
     }
 
-    async stopEngine(elem: HTMLElement) {
+    private async stopEngine(elem: HTMLElement) {
         const id = this.getIdFromParent(elem);
         if (!id) return;
         await this.garage.stopEngine(id);
     }
 
-    async toWinner() {
+    private async toWinner() {
         await this.winner.initWinner();
         this.winnerWrapper.classList.remove("hidden");
         this.garageElems.garageWrapper.classList.add("hidden");
         this.controlWrapper.classList.add("hidden");
     }
 
-    async toGarage() {
+    private async toGarage() {
         this.winnerWrapper.classList.add("hidden");
         this.garageElems.garageWrapper.classList.remove("hidden");
         this.controlWrapper.classList.remove("hidden");
     }
 
-    async generateCars(e: Event) {
+    private async generateCars(e: Event) {
         if (!(e.target instanceof HTMLButtonElement)) return;
         e.target.disabled = true;
         await this.control.generateCars();

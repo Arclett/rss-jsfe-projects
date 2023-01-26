@@ -1,20 +1,20 @@
 import { Utilities } from "./_Utilities";
-import { ICar, ICarUpdate, IWinnerUpdate } from "../types/interfaces";
-import { EngineStatus, Order, SortType } from "../types/enums";
+import { ICarWithId, ICar, IWinnerUpdate } from "../types/interfaces";
+import { EngineStatus, Methods, Order, SortType } from "../types/enums";
 
 export class API extends Utilities {
-    async removeCarApi(id: number) {
-        await fetch(`${this.makeURL("garage")}/${id}`, { method: "DELETE" });
+    protected async removeCarApi(id: number) {
+        await fetch(`${this.makeURL("garage")}/${id}`, { method: Methods.DELETE });
     }
 
-    async getCarsApi(page: number, limit: number) {
+    protected async getCarsApi(page: number, limit: number) {
         const result = await fetch(`${this.makeURL("garage")}?_page=${page}&_limit=${limit}`);
         return result;
     }
 
-    async createCarApi(data: { name: string; color: string }) {
+    protected async createCarApi(data: { name: string; color: string }) {
         const result = await fetch(`${this.makeURL("garage")}`, {
-            method: "POST",
+            method: Methods.POST,
             body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json",
@@ -23,35 +23,35 @@ export class API extends Utilities {
         return result;
     }
 
-    async getCarApi<T>(id: string): Promise<T> {
+    protected async getCarApi<T>(id: string): Promise<T> {
         const result = await fetch(`${this.makeURL("garage")}/${id}`).then((res) => res.json());
         return result;
     }
 
-    async updateCarApi(id: number, data: ICarUpdate) {
+    protected async updateCarApi(id: number, data: ICar) {
         const result = await fetch(`${this.makeURL("garage")}/${id}`, {
-            method: "PUT",
+            method: Methods.PUT,
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" },
         }).then((res) => res.json());
         return result;
     }
 
-    async engineStatusApi(status: EngineStatus, car: ICar): Promise<Response> {
+    protected async engineStatusApi(status: EngineStatus, car: ICarWithId): Promise<Response> {
         const result = await fetch(`${this.makeURL("engine")}?id=${car.id}&status=${status}`, {
-            method: "PATCH",
+            method: Methods.PATCH,
         });
         return result;
     }
 
-    async createWinnerApi(car: number, time: number) {
+    protected async createWinnerApi(car: number, time: number) {
         const data = {
             id: car,
             wins: 1,
             time: time,
         };
         const result = await fetch(`${this.makeURL("winners")}`, {
-            method: "POST",
+            method: Methods.POST,
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" },
         });
@@ -59,28 +59,28 @@ export class API extends Utilities {
         return result;
     }
 
-    async getWinnerApi(carId: number) {
-        const result = await fetch(`${this.makeURL("winners")}/${carId}`, { method: "GET" });
+    protected async getWinnerApi(carId: number) {
+        const result = await fetch(`${this.makeURL("winners")}/${carId}`, { method: Methods.GET });
         return result;
     }
 
-    async updateWinnerApi(data: IWinnerUpdate, carId: number) {
+    protected async updateWinnerApi(data: IWinnerUpdate, carId: number) {
         const result = await fetch(`${this.makeURL("winners")}/${carId}`, {
-            method: "PUT",
+            method: Methods.PUT,
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" },
         });
         return result;
     }
 
-    async getWinnersApi(page: number, sort: SortType, order: Order, limit = 10) {
+    protected async getWinnersApi(page: number, sort: SortType, order: Order, limit = this.winnersLimit) {
         const url = `${this.makeURL("winners")}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`;
         const result = await fetch(url);
         return result;
     }
 
-    async deleteWinnerApi(carId: number) {
-        const result = await fetch(`${this.makeURL("winners")}/${carId}`, { method: "DELETE" });
+    protected async deleteWinnerApi(carId: number) {
+        const result = await fetch(`${this.makeURL("winners")}/${carId}`, { method: Methods.DELETE });
         return result;
     }
 }

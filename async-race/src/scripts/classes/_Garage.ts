@@ -1,17 +1,17 @@
-import { ICar, ICars, IGarageElems, IWinnerGet, IWinnerUpdate } from "../types/interfaces";
+import { ICarWithId, ICars, IGarageElems, IWinnerGet, IWinnerUpdate } from "../types/interfaces";
 import { API } from "./_API";
 import { Car } from "./_Car";
 
 export class Garage extends API {
-    garageElems: IGarageElems;
+    private garageElems: IGarageElems;
 
-    currentPage = 1;
+    private currentPage = 1;
 
-    carTotal: number;
+    private carTotal: number;
 
-    carElems: Car[];
+    private carElems: Car[];
 
-    start = 0;
+    private start = 0;
 
     constructor(garageElems: IGarageElems) {
         super();
@@ -34,7 +34,7 @@ export class Garage extends API {
 
     async getCars(page: number, limit: number = this.garageLimit): Promise<ICars> {
         const data = await this.getCarsApi(page, limit);
-        const cars: ICar[] = await data.json();
+        const cars: ICarWithId[] = await data.json();
         const count = data.headers.get("X-Total-Count");
         return { cars: cars, total: count };
     }
@@ -47,7 +47,7 @@ export class Garage extends API {
         this.initGarage();
     }
 
-    nextPage(limit = 7) {
+    nextPage(limit = this.garageLimit) {
         if (this.carTotal - this.currentPage * limit <= 0) return;
         this.currentPage++;
         this.initGarage();
@@ -105,7 +105,7 @@ export class Garage extends API {
         }
     }
 
-    winMessage(car: string, time: number) {
+    private winMessage(car: string, time: number) {
         const win = document.createElement("div");
         win.className = "winner-message";
         win.textContent = `Winner: ${car}, Time: ${time}`;

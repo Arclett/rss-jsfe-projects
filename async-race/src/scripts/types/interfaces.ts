@@ -1,10 +1,10 @@
-export interface ICar {
+export interface ICarWithId {
     name: string;
     color: string;
     id: number;
 }
 
-export interface ICarUpdate {
+export interface ICar {
     name: string;
     color: string;
 }
@@ -25,7 +25,7 @@ export interface IControlInput {
 }
 
 export interface ICars {
-    cars: ICar[];
+    cars: ICarWithId[];
     total: string | null;
 }
 
