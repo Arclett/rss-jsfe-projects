@@ -51,7 +51,7 @@ export class Winners extends API {
         });
     }
 
-    nextPage(limit = 7) {
+    nextPage(limit = this.winnersLimit) {
         if (this.carTotal - this.currentPage * limit <= 0) return;
         this.currentPage++;
         this.initWinner();
